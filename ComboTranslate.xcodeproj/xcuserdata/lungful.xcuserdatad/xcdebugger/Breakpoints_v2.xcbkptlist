@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "50F8FA18-E21A-4AC9-8B2E-859897FC3934"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A790D474-F529-432A-9259-3B72D6B89968"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ComboTranslate/Controller/TranslateController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "translate()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "453E9B3B-BF23-403A-AC86-0AE6901C9A0E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ComboTranslate/Model/Cards/CardsGame.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "getNewSecretValue()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3ADEB1CD-564E-4EB5-B241-89F02B486506"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ComboTranslate/Model/Cards/CardsGame.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "getNewSecretValue()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3ADEB1CD-564E-4EB5-B241-89F02B486506 - c0fa2b5acb698ffc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ComboTranslate.CardsGame.getNewSecretValue() -&gt; ComboTranslate.TranslateData"
+                  moduleName = "ComboTranslate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lungful/Projects/ComboTranslate/ComboTranslate/Model/Cards/CardsGame.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "332">
+               </Location>
+               <Location
+                  uuid = "3ADEB1CD-564E-4EB5-B241-89F02B486506 - a2f6b7111482880a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (ComboTranslate.SecretValue) -&gt; Swift.Bool in ComboTranslate.CardsGame.getNewSecretValue() -&gt; ComboTranslate.TranslateData"
+                  moduleName = "ComboTranslate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lungful/Projects/ComboTranslate/ComboTranslate/Model/Cards/CardsGame.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

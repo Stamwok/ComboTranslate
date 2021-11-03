@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="ComboTranslate" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonTrans1" destination="dvE-ci-PyE" id="JEk-sj-NT3"/>
+                <outlet property="buttonTrans2" destination="uKs-Xk-Ykc" id="jiO-Nt-uyy"/>
+                <outlet property="buttonTrans3" destination="dZT-Oo-aMF" id="ewo-OY-kaB"/>
+                <outlet property="buttonTrans4" destination="8rZ-Vt-phw" id="z0f-l8-sEd"/>
+                <outlet property="labelTrans" destination="zHy-TR-nw3" id="xj8-AA-fWO"/>
+                <outlet property="progressBar" destination="A2a-2n-e2z" id="nJ0-Zo-9B5"/>
+                <outletCollection property="gestureRecognizers" destination="n1D-mY-50C" id="cxq-1N-vj6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="CardView" id="iN0-l3-epB" customClass="CardView" customModule="ComboTranslate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A2a-2n-e2z">
+                    <rect key="frame" x="211" y="31" width="73" height="4"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="73" id="WJa-aD-2ov"/>
+                    </constraints>
+                </progressView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHy-TR-nw3">
+                    <rect key="frame" x="114.5" y="73" width="71" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="pGb-gu-klL">
+                    <rect key="frame" x="127" y="155.5" width="46" height="162"/>
+                    <subviews>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvE-ci-PyE">
+                            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="n1R-CN-6k1"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKs-Xk-Ykc">
+                            <rect key="frame" x="0.0" y="44" width="46" height="30"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="RlI-kA-Stp"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZT-Oo-aMF">
+                            <rect key="frame" x="0.0" y="88" width="46" height="30"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="qTK-Ih-oZf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rZ-Vt-phw">
+                            <rect key="frame" x="0.0" y="132" width="46" height="30"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="thH-NY-3yy"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="A2a-2n-e2z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="31" id="93H-4x-8Q0"/>
+                <constraint firstItem="zHy-TR-nw3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="29" id="FCW-h0-y5L"/>
+                <constraint firstItem="pGb-gu-klL" firstAttribute="top" secondItem="zHy-TR-nw3" secondAttribute="bottom" constant="46.5" id="PtA-nF-ZpZ"/>
+                <constraint firstItem="zHy-TR-nw3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="frY-0Z-4k1"/>
+                <constraint firstAttribute="trailing" secondItem="A2a-2n-e2z" secondAttribute="trailing" constant="16" id="qtW-UM-Md4"/>
+                <constraint firstItem="pGb-gu-klL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tmY-zE-lNM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-46.376811594202906" y="-152.00892857142856"/>
+        </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="n1D-mY-50C">
+            <connections>
+                <action selector="handlePanGestureWithSender:" destination="-1" id="kAG-2n-yZk"/>
+            </connections>
+        </panGestureRecognizer>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

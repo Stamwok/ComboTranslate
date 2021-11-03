@@ -1,0 +1,6 @@
+line_length: 200
+identifier_name:
+    min_length: 2
+disabled_rules:
+   - force_cast
+   - trailing_whitespace
