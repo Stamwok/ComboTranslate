@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyView" customModule="ComboTranslate" customModuleProvider="target">
             <connections>
-                <outlet property="label" destination="zKj-kJ-KVZ" id="7NB-gW-R9I"/>
+                <outlet property="labelCount" destination="zKj-kJ-KVZ" id="uqH-0p-geI"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

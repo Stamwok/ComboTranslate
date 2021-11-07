@@ -9,7 +9,7 @@ import UIKit
 
 class EmptyView: CardView {
     
-    @IBOutlet var label: UILabel!
+    @IBOutlet var labelCount: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: .zero)

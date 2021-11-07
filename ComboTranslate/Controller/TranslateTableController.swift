@@ -8,7 +8,11 @@
 import UIKit
 
 class TranslateTableController: UITableViewController {
-    var translateDataCollection: [TranslateData] = []
+    var translateDataCollection: [TranslateData] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +22,10 @@ class TranslateTableController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -48,9 +56,14 @@ class TranslateTableController: UITableViewController {
         
         cell?.translateLabel?.text = translateDataCollection.reversed()[indexPath.row].words.joined(separator: " ")
         cell?.translatedLabel?.text = translateDataCollection.reversed()[indexPath.row].translatedWords.joined(separator: " ")
+        cell?.progress?.progress = translateDataCollection.reversed()[indexPath.row].count
         return cell!
     }
+    
+
+    
 //    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        guard indexPath.row == 0 else { return }
 //        let degree: Double = 90
 //        let rotationAngle = CGFloat(degree * Double.pi / 180)
 //        let rotationTransform = CATransform3DMakeRotation(rotationAngle, 1, 0, 0)
@@ -58,10 +71,10 @@ class TranslateTableController: UITableViewController {
 //        UIView.animate(withDuration: 1, delay: 0.2 * Double(indexPath.row), options: .curveEaseInOut) {
 //            cell.layer.transform = CATransform3DIdentity
 //        }
-//        let translationTransform = CATransform3DTranslate(CATransform3DIdentity, 400, -400, 0)
+//        let translationTransform = CATransform3DTranslate(CATransform3DIdentity, 400, 0, 0)
 //        cell.layer.transform = translationTransform
 //
-//        UIView.animate(withDuration: 1, delay: 0.2 , options: .curveEaseInOut) {
+//        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut) {
 //            cell.layer.transform = CATransform3DIdentity
 //        }
 //

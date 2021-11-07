@@ -100,7 +100,7 @@ class StackContainerView: UIView, SwipeCardsDelegate {
             for (cardIndex, cardView) in visibleCards.reversed().enumerated() {
                 UIView.animate(withDuration: 0.2) {
                     cardView.center = self.center
-                    (cardView as? EmptyView)?.label.text = "combo: \(self.correctAnswers)"
+                    (cardView as? EmptyView)?.labelCount.text = "combo: \(self.correctAnswers)"
                     self.addCardFrame(index: cardIndex, cardView: cardView)
                     self.layoutIfNeeded()
                 }

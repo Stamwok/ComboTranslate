@@ -9,8 +9,10 @@ import UIKit
 
 class WordsPackController: UITableViewController {
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
+       
     }
 
     // MARK: - Table view data source
@@ -23,6 +25,9 @@ class WordsPackController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 1
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 //    override func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

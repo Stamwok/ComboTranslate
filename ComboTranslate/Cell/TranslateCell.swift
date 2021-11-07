@@ -10,4 +10,6 @@ import UIKit
 class TranslateCell: UITableViewCell {
     @IBOutlet var translateLabel: UILabel?
     @IBOutlet var translatedLabel: UILabel?
+    @IBOutlet var progress: UIProgressView?
+    
 }

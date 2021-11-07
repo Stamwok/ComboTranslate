@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,38 +31,38 @@
                         <constraint firstAttribute="width" constant="73" id="WJa-aD-2ov"/>
                     </constraints>
                 </progressView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHy-TR-nw3">
-                    <rect key="frame" x="114.5" y="73" width="71" height="36"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHy-TR-nw3">
+                    <rect key="frame" x="1" y="73" width="298" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="pGb-gu-klL">
-                    <rect key="frame" x="127" y="155.5" width="46" height="162"/>
+                    <rect key="frame" x="20" y="155.5" width="260" height="162"/>
                     <subviews>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvE-ci-PyE">
-                            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="260" height="30"/>
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="n1R-CN-6k1"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKs-Xk-Ykc">
-                            <rect key="frame" x="0.0" y="44" width="46" height="30"/>
+                            <rect key="frame" x="0.0" y="44" width="260" height="30"/>
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="RlI-kA-Stp"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZT-Oo-aMF">
-                            <rect key="frame" x="0.0" y="88" width="46" height="30"/>
+                            <rect key="frame" x="0.0" y="88" width="260" height="30"/>
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="qTK-Ih-oZf"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rZ-Vt-phw">
-                            <rect key="frame" x="0.0" y="132" width="46" height="30"/>
+                            <rect key="frame" x="0.0" y="132" width="260" height="30"/>
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="thH-NY-3yy"/>
@@ -74,12 +75,15 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <gestureRecognizers/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pGb-gu-klL" secondAttribute="trailing" constant="20" id="5pN-tN-dIO"/>
                 <constraint firstItem="A2a-2n-e2z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="31" id="93H-4x-8Q0"/>
-                <constraint firstItem="zHy-TR-nw3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="29" id="FCW-h0-y5L"/>
                 <constraint firstItem="pGb-gu-klL" firstAttribute="top" secondItem="zHy-TR-nw3" secondAttribute="bottom" constant="46.5" id="PtA-nF-ZpZ"/>
-                <constraint firstItem="zHy-TR-nw3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="frY-0Z-4k1"/>
+                <constraint firstItem="zHy-TR-nw3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="1" id="YUr-Ea-bZh"/>
+                <constraint firstItem="pGb-gu-klL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="bB5-9Z-tkZ"/>
+                <constraint firstItem="zHy-TR-nw3" firstAttribute="top" secondItem="A2a-2n-e2z" secondAttribute="top" constant="42" id="cEE-Pa-D8B"/>
                 <constraint firstAttribute="trailing" secondItem="A2a-2n-e2z" secondAttribute="trailing" constant="16" id="qtW-UM-Md4"/>
                 <constraint firstItem="pGb-gu-klL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tmY-zE-lNM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zHy-TR-nw3" secondAttribute="trailing" constant="1" id="wU0-EX-q73"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-46.376811594202906" y="-152.00892857142856"/>

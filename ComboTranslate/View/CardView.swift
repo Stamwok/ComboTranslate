@@ -23,7 +23,6 @@ class CardView: UIView {
   //  var game: CardsGame
     var dataSource: CardsGame? {
         didSet {
-            
             labelTrans?.text = dataSource?.secretValue.words.reduce("", +)
             progressBar?.progress = Float((dataSource?.secretValue.count)!)
             updateButtons()

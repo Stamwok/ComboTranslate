@@ -75,7 +75,7 @@ extension CardsViewController: SwipeCardsDataSource {
             let coinsidenceCount = dataForCard.filter({ value in
                 return value.secretValue!.words == newRandValue.words
             }).count
-            if coinsidenceCount < 1 {
+            if coinsidenceCount < 1 && newRandValue.count < 1.0 {
                 var newValue = SecretValue(collection: [newRandValue])
                 newValue?.secretValueIndex = newRandomIndex
                 dataForCard.append(newValue!)
