@@ -62,6 +62,7 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         cardViewFrame.origin.x += horizontalInset
         cardViewFrame.origin.y += verticalInset
         cardView.frame = cardViewFrame
+        layoutIfNeeded()
     }
     private func removeAllCardViews() {
         for cardView in visibleCards {
@@ -80,20 +81,22 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         if remainingCards > 0 {
             let newIndex = datasource.numberOfCardsToShow() - remainingCards
             addCardView(cardView: datasource.card(at: newIndex), at: 2)
+            layoutIfNeeded()
             for (cardIndex, cardView) in visibleCards.reversed().enumerated() {
                 UIView.animate(withDuration: 0.2) {
                     cardView.center = self.center
                     self.addCardFrame(index: cardIndex, cardView: cardView)
-                    self.layoutIfNeeded()
+                    //self.layoutIfNeeded()
                 }
             }
         } else if remainingCards == 0 {
             addCardView(cardView: datasource.emptyView()! as! EmptyView, at: 2)
+            layoutIfNeeded()
             for (cardIndex, cardView) in visibleCards.reversed().enumerated() {
                 UIView.animate(withDuration: 0.2) {
                     cardView.center = self.center
                     self.addCardFrame(index: cardIndex, cardView: cardView)
-                    self.layoutIfNeeded()
+                    //self.layoutIfNeeded()
                 }
             }
         } else {
@@ -102,7 +105,7 @@ class StackContainerView: UIView, SwipeCardsDelegate {
                     cardView.center = self.center
                     (cardView as? EmptyView)?.labelCount.text = "combo: \(self.correctAnswers)"
                     self.addCardFrame(index: cardIndex, cardView: cardView)
-                    self.layoutIfNeeded()
+                   // self.layoutIfNeeded()
                 }
             }
         }
