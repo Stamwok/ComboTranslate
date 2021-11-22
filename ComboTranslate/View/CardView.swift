@@ -32,6 +32,9 @@ class CardView: UIView {
         correctButtonTag = Array(1...4).randomElement()
         buttonCollection = [buttonTrans1, buttonTrans2, buttonTrans3, buttonTrans4]
         buttonCollection.forEach { button in
+            button?.layer.cornerRadius = 15
+//            button?.titleLabel?.adjustsFontSizeToFitWidth = true
+//            button?.titleLabel?.minimumScaleFactor = 2.5
             if correctButtonTag == button?.tag {
                 button?.setTitle(dataSource?.secretValue.translatedWords.reduce("", +), for: .normal)
             } else {
@@ -59,6 +62,7 @@ class CardView: UIView {
             progressBar?.progress -= 0.25
         }
         dataSource!.closure(dataSource!)
+
     }
     
     // MARK: - Init
@@ -66,6 +70,7 @@ class CardView: UIView {
         super.init(frame: .zero)
         configureShadowView()
         configureCardView()
+        
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -90,7 +95,10 @@ class CardView: UIView {
        // contentView = UIView()
         contentView.layer.cornerRadius = 15
         contentView.clipsToBounds = true
+        labelTrans?.layer.cornerRadius = 15
+       
         shadowView.addSubview(contentView)
+        
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
@@ -130,6 +138,7 @@ class CardView: UIView {
         case .changed:
             let rotation = tan(point.x / (self.frame.width * 2 ))
             card.transform = CGAffineTransform(rotationAngle: rotation)
+
         default:
             break
         }

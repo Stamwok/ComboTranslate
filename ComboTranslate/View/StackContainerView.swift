@@ -53,14 +53,17 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         cardViews.append(cardView)
         insertSubview(cardView, at: 0)
         remainingCards -= 1
+        layoutIfNeeded()
     }
     func addCardFrame(index: Int, cardView: CardView) {
+        
         var cardViewFrame = bounds
         let horizontalInset = CGFloat(index) * self.horizontalInset
         let verticalInset = CGFloat(index) * self.verticalInset
         cardViewFrame.size.width -= 2 * horizontalInset
-        cardViewFrame.origin.x += horizontalInset
-        cardViewFrame.origin.y += verticalInset
+        cardViewFrame.size.height -= 2 * verticalInset
+        cardViewFrame.origin.x = horizontalInset
+        cardViewFrame.origin.y = 3 * verticalInset
         cardView.frame = cardViewFrame
         layoutIfNeeded()
     }
@@ -81,31 +84,28 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         if remainingCards > 0 {
             let newIndex = datasource.numberOfCardsToShow() - remainingCards
             addCardView(cardView: datasource.card(at: newIndex), at: 2)
-            layoutIfNeeded()
             for (cardIndex, cardView) in visibleCards.reversed().enumerated() {
-                UIView.animate(withDuration: 0.2) {
+                UIView.animate(withDuration: 0.5) {
                     cardView.center = self.center
                     self.addCardFrame(index: cardIndex, cardView: cardView)
-                    //self.layoutIfNeeded()
                 }
             }
         } else if remainingCards == 0 {
             addCardView(cardView: datasource.emptyView()! as! EmptyView, at: 2)
             layoutIfNeeded()
             for (cardIndex, cardView) in visibleCards.reversed().enumerated() {
-                UIView.animate(withDuration: 0.2) {
+                UIView.animate(withDuration: 0.5) {
+                    
                     cardView.center = self.center
                     self.addCardFrame(index: cardIndex, cardView: cardView)
-                    //self.layoutIfNeeded()
                 }
             }
         } else {
             for (cardIndex, cardView) in visibleCards.reversed().enumerated() {
-                UIView.animate(withDuration: 0.2) {
+                UIView.animate(withDuration: 0.5) {
                     cardView.center = self.center
                     (cardView as? EmptyView)?.labelCount.text = "combo: \(self.correctAnswers)"
                     self.addCardFrame(index: cardIndex, cardView: cardView)
-                   // self.layoutIfNeeded()
                 }
             }
         }

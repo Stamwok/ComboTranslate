@@ -19,8 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="EmptyView" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKj-kJ-KVZ">
-                    <rect key="frame" x="120.5" y="185" width="59" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="EmptyView" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKj-kJ-KVZ">
+                    <rect key="frame" x="10" y="185" width="280" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -29,6 +29,8 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zKj-kJ-KVZ" secondAttribute="trailing" constant="10" id="N3X-wg-wCk"/>
+                <constraint firstItem="zKj-kJ-KVZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="Tvl-uH-yhq"/>
                 <constraint firstItem="zKj-kJ-KVZ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ZzN-5S-rfL"/>
                 <constraint firstItem="zKj-kJ-KVZ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="e2K-vM-hZG"/>
             </constraints>
