@@ -109,8 +109,9 @@ class CardView: UIView {
     @IBAction func handlePanGesture(sender: UIPanGestureRecognizer) {
         guard let card = sender.view as? CardView else {return}
         let point = sender.translation(in: self)
-        let centerOfParentContainer = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+        let centerOfParentContainer = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
         card.center = CGPoint(x: centerOfParentContainer.x + point.x, y: centerOfParentContainer.y + point.y)
+//        print(centerOfParentContainer)
         switch sender.state {
         case .ended:
             if(card.center.x) > 300 {
@@ -118,7 +119,6 @@ class CardView: UIView {
                 UIView.animate(withDuration: 0.2) {
                     card.center = CGPoint(x: centerOfParentContainer.x + point.x + 200, y: centerOfParentContainer.y + point.y + 75)
                     card.alpha = 0
-                    self.layoutIfNeeded()
                 }
                 return
             } else if card.center.x < 35 {
@@ -126,15 +126,37 @@ class CardView: UIView {
                 UIView.animate(withDuration: 0.2) {
                     card.center = CGPoint(x: centerOfParentContainer.x + point.x - 200, y: centerOfParentContainer.y + point.y + 75)
                     card.alpha = 0
-                    self.layoutIfNeeded()
                 }
                 return
             }
             UIView.animate(withDuration: 0.2) {
                 card.transform = .identity
-                card.center = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-                self.layoutIfNeeded()
+                card.center = centerOfParentContainer
+//                CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+//                self.layoutIfNeeded()
             }
+//            if(card.center.x) > 300 {
+//                delegate?.swipeDidEnd(on: card)
+//                UIView.animate(withDuration: 0.2) {
+//                    card.center = CGPoint(x: centerOfParentContainer.x + point.x + 200, y: centerOfParentContainer.y + point.y + 75)
+//                    card.alpha = 0
+//                    self.layoutIfNeeded()
+//                }
+//                return
+//            } else if card.center.x < 35 {
+//                delegate?.swipeDidEnd(on: card)
+//                UIView.animate(withDuration: 0.2) {
+//                    card.center = CGPoint(x: centerOfParentContainer.x + point.x - 200, y: centerOfParentContainer.y + point.y + 75)
+//                    card.alpha = 0
+//                    self.layoutIfNeeded()
+//                }
+//                return
+//            }
+//            UIView.animate(withDuration: 0.2) {
+//                card.transform = .identity
+//                card.center = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+//                self.layoutIfNeeded()
+//            }
         case .changed:
             let rotation = tan(point.x / (self.frame.width * 2 ))
             card.transform = CGAffineTransform(rotationAngle: rotation)

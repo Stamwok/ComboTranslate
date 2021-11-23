@@ -35,10 +35,9 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         super.init(coder: coder)
         fatalError("init(coder:) has not been implemented")
     }
+    
     func reloadData() {
-        removeAllCardViews()
         guard let datasource = dataSource else { return }
-        setNeedsLayout()
         layoutIfNeeded()
         numberOfCardsToShow = datasource.numberOfCardsToShow()
         remainingCards = numberOfCardsToShow
@@ -49,29 +48,39 @@ class StackContainerView: UIView, SwipeCardsDelegate {
     // MARK: - Configurations
     private func addCardView(cardView: CardView, at index: Int) {
         cardView.delegate = self
-        addCardFrame(index: index, cardView: cardView)
         cardViews.append(cardView)
         insertSubview(cardView, at: 0)
         remainingCards -= 1
-        layoutIfNeeded()
+        addCardFrame(index: index, cardView: cardView)
     }
+    
     func addCardFrame(index: Int, cardView: CardView) {
-        
-        var cardViewFrame = bounds
-        let horizontalInset = CGFloat(index) * self.horizontalInset
-        let verticalInset = CGFloat(index) * self.verticalInset
-        cardViewFrame.size.width -= 2 * horizontalInset
-        cardViewFrame.size.height -= 2 * verticalInset
-        cardViewFrame.origin.x = horizontalInset
-        cardViewFrame.origin.y = 3 * verticalInset
-        cardView.frame = cardViewFrame
-        layoutIfNeeded()
+        cardView.frame = frame
+        let measurements = measurementsForCard(cardView, at: index)
+        cardView.frame = measurements.0
+        cardView.transform = measurements.1
     }
-    private func removeAllCardViews() {
-        for cardView in visibleCards {
-            cardView.removeFromSuperview()
+    
+    private func measurementsForCard(_ card: UIView, at index: Int) -> (CGRect, CGAffineTransform) {
+        let verticalInset = CGFloat(index) * self.verticalInset
+        //var frame = card.frame
+        if index == 2{
+            card.alpha = 0
         }
-        cardViews = []
+        UIView.animate(withDuration: 0.5) {
+            
+            card.center.y = self.frame.height/2 + 4 * verticalInset
+            card.alpha = 1
+        }
+        card.center.x = self.frame.width/2
+        
+//        frame.origin.x = frame.width/2
+        
+//        4 * verticalInset
+        let frame = card.frame
+        let coefficient = 1.0 - CGFloat(index) / 20
+        let transform = CGAffineTransform(scaleX: coefficient, y: coefficient)
+        return (frame, transform)
     }
     
     // MARK: - delegate
@@ -84,29 +93,30 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         if remainingCards > 0 {
             let newIndex = datasource.numberOfCardsToShow() - remainingCards
             addCardView(cardView: datasource.card(at: newIndex), at: 2)
-            for (cardIndex, cardView) in visibleCards.reversed().enumerated() {
-                UIView.animate(withDuration: 0.5) {
-                    cardView.center = self.center
-                    self.addCardFrame(index: cardIndex, cardView: cardView)
-                }
+                for (cardIndex, cardView) in self.visibleCards.reversed().enumerated() {
+                    let measurements = self.measurementsForCard(cardView, at: cardIndex)
+                    UIView.animate(withDuration: 0.5) {
+                        cardView.frame = measurements.0
+                        cardView.transform = measurements.1
+                    }
             }
         } else if remainingCards == 0 {
             addCardView(cardView: datasource.emptyView()! as! EmptyView, at: 2)
-            layoutIfNeeded()
             for (cardIndex, cardView) in visibleCards.reversed().enumerated() {
+                let measurements = self.measurementsForCard(cardView, at: cardIndex)
                 UIView.animate(withDuration: 0.5) {
-                    
-                    cardView.center = self.center
-                    self.addCardFrame(index: cardIndex, cardView: cardView)
+                    cardView.frame = measurements.0
+                    cardView.transform = measurements.1
                 }
             }
         } else {
-            for (cardIndex, cardView) in visibleCards.reversed().enumerated() {
+            for (cardIndex, cardView) in self.visibleCards.reversed().enumerated() {
+                let measurements = self.measurementsForCard(cardView, at: cardIndex)
                 UIView.animate(withDuration: 0.5) {
-                    cardView.center = self.center
                     (cardView as? EmptyView)?.labelCount.text = "combo: \(self.correctAnswers)"
-                    self.addCardFrame(index: cardIndex, cardView: cardView)
-                }
+                    cardView.frame = measurements.0
+                    cardView.transform = measurements.1
+                    }
             }
         }
     }
