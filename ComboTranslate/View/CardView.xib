@@ -17,6 +17,7 @@
                 <outlet property="buttonTrans4" destination="8rZ-Vt-phw" id="z0f-l8-sEd"/>
                 <outlet property="labelTrans" destination="zHy-TR-nw3" id="xj8-AA-fWO"/>
                 <outlet property="progressBar" destination="A2a-2n-e2z" id="nJ0-Zo-9B5"/>
+                <outlet property="rectView" destination="cWE-Pc-RrN" id="3f1-1d-ZhX"/>
                 <outletCollection property="gestureRecognizers" destination="n1D-mY-50C" id="cxq-1N-vj6"/>
             </connections>
         </placeholder>
@@ -30,64 +31,88 @@
                         <constraint firstAttribute="width" constant="73" id="dY7-HF-HLP"/>
                     </constraints>
                 </progressView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" minimumScaleFactor="1" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHy-TR-nw3">
-                    <rect key="frame" x="10" y="73" width="280" height="30"/>
-                    <color key="backgroundColor" red="0.2470588235" green="0.4941176471" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="25"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pGb-gu-klL">
-                    <rect key="frame" x="10" y="149.5" width="280" height="230.5"/>
+                    <rect key="frame" x="10" y="200" width="280" height="180"/>
                     <subviews>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvE-ci-PyE">
-                            <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
-                            <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                            <state key="normal" title="Button"/>
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="37.5"/>
+                            <color key="backgroundColor" red="0.64892088019619532" green="0.65934792671193321" blue="0.67269983863943894" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="n1R-CN-6k1"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKs-Xk-Ykc">
-                            <rect key="frame" x="0.0" y="60" width="280" height="50.5"/>
-                            <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                            <state key="normal" title="Button"/>
+                            <rect key="frame" x="0.0" y="47.5" width="280" height="37.5"/>
+                            <color key="backgroundColor" red="0.64892088019619532" green="0.65934792671193321" blue="0.67269983863943894" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="RlI-kA-Stp"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZT-Oo-aMF">
-                            <rect key="frame" x="0.0" y="120.5" width="280" height="50"/>
-                            <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                            <state key="normal" title="Button"/>
+                            <rect key="frame" x="0.0" y="95" width="280" height="37.5"/>
+                            <color key="backgroundColor" red="0.64892088019619532" green="0.65934792671193321" blue="0.67269983863943894" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="qTK-Ih-oZf"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rZ-Vt-phw">
-                            <rect key="frame" x="0.0" y="180.5" width="280" height="50"/>
-                            <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                            <state key="normal" title="Button"/>
+                            <rect key="frame" x="0.0" y="142.5" width="280" height="37.5"/>
+                            <color key="backgroundColor" red="0.64892088019619532" green="0.65934792671193321" blue="0.67269983863943894" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="thH-NY-3yy"/>
                             </connections>
                         </button>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="cWE-Pc-RrN">
+                    <rect key="frame" x="72" y="68" width="228" height="82"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" minimumScaleFactor="1" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHy-TR-nw3">
+                            <rect key="frame" x="8" y="26" width="212" height="30"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.17952087520000001" green="0.55633819100000004" blue="0.9379547238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="zHy-TR-nw3" firstAttribute="leading" secondItem="cWE-Pc-RrN" secondAttribute="leadingMargin" id="Vw2-bh-Cb2"/>
+                        <constraint firstItem="zHy-TR-nw3" firstAttribute="centerY" secondItem="cWE-Pc-RrN" secondAttribute="centerY" id="cgi-OI-uSs"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="zHy-TR-nw3" secondAttribute="trailing" id="etp-sg-y0N"/>
+                        <constraint firstAttribute="height" constant="82" id="o4n-Nv-dgo"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="zHy-TR-nw3" firstAttribute="top" secondItem="A2a-2n-e2z" secondAttribute="bottom" constant="15" id="3vd-oy-MjW"/>
+                <constraint firstItem="cWE-Pc-RrN" firstAttribute="top" secondItem="A2a-2n-e2z" secondAttribute="bottom" constant="10" id="1NT-Tq-m8I"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pGb-gu-klL" secondAttribute="bottom" constant="20" id="AYz-d6-16R"/>
                 <constraint firstItem="pGb-gu-klL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="NV3-JF-Lnt"/>
-                <constraint firstItem="pGb-gu-klL" firstAttribute="top" secondItem="zHy-TR-nw3" secondAttribute="bottom" constant="46.5" id="PtA-nF-ZpZ"/>
                 <constraint firstItem="A2a-2n-e2z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="10" id="TIk-Cz-Uyn"/>
-                <constraint firstItem="zHy-TR-nw3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="ihO-dT-5DF"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zHy-TR-nw3" secondAttribute="trailing" constant="10" id="jJi-ZA-HRx"/>
+                <constraint firstItem="A2a-2n-e2z" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="YSf-pA-e5c"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cWE-Pc-RrN" secondAttribute="trailing" id="iY8-FU-6gr"/>
+                <constraint firstItem="pGb-gu-klL" firstAttribute="top" secondItem="cWE-Pc-RrN" secondAttribute="bottom" constant="50" id="pFS-s4-xgb"/>
                 <constraint firstAttribute="trailing" secondItem="A2a-2n-e2z" secondAttribute="trailing" constant="16" id="qtW-UM-Md4"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pGb-gu-klL" secondAttribute="trailing" constant="10" id="sgT-uH-aEU"/>
+                <constraint firstItem="cWE-Pc-RrN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="72" id="uHU-LX-3FF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-46.376811594202906" y="-152.00892857142856"/>
@@ -99,9 +124,6 @@
         </panGestureRecognizer>
     </objects>
     <resources>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

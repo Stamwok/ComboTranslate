@@ -21,9 +21,10 @@ class CardsViewController: UIViewController {
     var game: CardsGame!
     // MARK: - Init
     override func loadView() {
+        super.loadView()
        // guard viewModelData.count > 10 else { return }
-        view = UIView()
-        view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.0)
+//        view = UIView()
+//        view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.0)
         stackContainer = StackContainerView()
         view.addSubview(stackContainer)
         configureStackContainer()

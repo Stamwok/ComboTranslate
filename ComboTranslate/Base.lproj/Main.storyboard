@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -66,8 +67,21 @@
                     <view key="view" contentMode="scaleToFill" id="R0W-4J-jAE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Combo_translate-4.png" translatesAutoresizingMaskIntoConstraints="NO" id="PY6-ox-mvb">
+                                <rect key="frame" x="40" y="5" width="240" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Xbb-IZ-VSb"/>
+                                    <constraint firstAttribute="height" constant="95" id="aEC-f1-EaM"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="deS-Gd-Mnu"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.18052515390000001" green="0.55635052920000005" blue="0.93795984980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PY6-ox-mvb" firstAttribute="top" secondItem="deS-Gd-Mnu" secondAttribute="top" constant="5" id="Crx-aS-bsz"/>
+                            <constraint firstItem="PY6-ox-mvb" firstAttribute="centerX" secondItem="R0W-4J-jAE" secondAttribute="centerX" id="Tcp-dW-1FA"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kzl-9g-l6a"/>
                 </viewController>
@@ -92,44 +106,62 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Bsh-pm-1HM">
-                                            <rect key="frame" x="249" y="35.5" width="36" height="4"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="36" id="gTA-BU-o5J"/>
-                                            </constraints>
-                                        </progressView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dlM-DW-bNF">
-                                            <rect key="frame" x="16" y="11" width="223" height="53"/>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-dV-bQ8">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="75"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQ8-6q-h5K">
-                                                    <rect key="frame" x="0.0" y="0.0" width="223" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpB-gt-CnX">
-                                                    <rect key="frame" x="0.0" y="32.5" width="223" height="20.5"/>
-                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Bsh-pm-1HM">
+                                                    <rect key="frame" x="251" y="35.5" width="36" height="4"/>
+                                                    <color key="tintColor" name="AccentColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="gTA-BU-o5J"/>
+                                                    </constraints>
+                                                </progressView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dlM-DW-bNF">
+                                                    <rect key="frame" x="13" y="8" width="233" height="59"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQ8-6q-h5K">
+                                                            <rect key="frame" x="0.0" y="0.0" width="233" height="26.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpB-gt-CnX">
+                                                            <rect key="frame" x="0.0" y="38.5" width="233" height="20.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20.5" id="ZZ3-5N-b9j"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
-                                        </stackView>
+                                            <color key="backgroundColor" red="0.17952087520000001" green="0.55633819100000004" blue="0.9379547238" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="Bsh-pm-1HM" firstAttribute="centerY" secondItem="dtw-dV-bQ8" secondAttribute="centerY" id="8CH-HE-qof"/>
+                                                <constraint firstItem="dlM-DW-bNF" firstAttribute="centerY" secondItem="dtw-dV-bQ8" secondAttribute="centerY" id="Bo6-5s-Psh"/>
+                                                <constraint firstItem="Bsh-pm-1HM" firstAttribute="leading" secondItem="dlM-DW-bNF" secondAttribute="trailing" constant="5" id="Nny-d0-FTh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dlM-DW-bNF" secondAttribute="bottom" id="Qbx-Oa-JS3"/>
+                                                <constraint firstItem="dlM-DW-bNF" firstAttribute="top" secondItem="dtw-dV-bQ8" secondAttribute="topMargin" id="UFU-Nz-Ndn"/>
+                                                <constraint firstItem="dlM-DW-bNF" firstAttribute="leading" secondItem="dtw-dV-bQ8" secondAttribute="leadingMargin" constant="5" id="kTN-sc-k1J"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Bsh-pm-1HM" secondAttribute="trailing" constant="5" id="zq6-R6-fI1"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Bsh-pm-1HM" firstAttribute="centerY" secondItem="YjG-rv-3Pu" secondAttribute="centerY" id="KPd-Df-6YD"/>
-                                        <constraint firstItem="Bsh-pm-1HM" firstAttribute="centerY" secondItem="YjG-rv-3Pu" secondAttribute="centerY" id="MHm-8O-pRd"/>
-                                        <constraint firstItem="dlM-DW-bNF" firstAttribute="top" secondItem="YjG-rv-3Pu" secondAttribute="topMargin" id="Np6-Hq-geB"/>
-                                        <constraint firstItem="dlM-DW-bNF" firstAttribute="leading" secondItem="YjG-rv-3Pu" secondAttribute="leadingMargin" id="PwP-2o-ANe"/>
-                                        <constraint firstItem="Bsh-pm-1HM" firstAttribute="trailing" secondItem="YjG-rv-3Pu" secondAttribute="trailingMargin" constant="1" id="TTZ-dz-MLP"/>
-                                        <constraint firstItem="Bsh-pm-1HM" firstAttribute="leading" secondItem="dlM-DW-bNF" secondAttribute="trailing" constant="10" id="fLv-Dw-tMo"/>
-                                        <constraint firstItem="dlM-DW-bNF" firstAttribute="bottom" secondItem="YjG-rv-3Pu" secondAttribute="bottomMargin" id="m19-dC-ZdD"/>
+                                        <constraint firstItem="dtw-dV-bQ8" firstAttribute="top" secondItem="YjG-rv-3Pu" secondAttribute="top" id="5IL-hc-EM2"/>
+                                        <constraint firstAttribute="trailing" secondItem="dtw-dV-bQ8" secondAttribute="trailing" id="8Ba-32-iZH"/>
+                                        <constraint firstAttribute="bottom" secondItem="dtw-dV-bQ8" secondAttribute="bottom" id="CnF-DM-3Cs"/>
+                                        <constraint firstItem="dtw-dV-bQ8" firstAttribute="leading" secondItem="YjG-rv-3Pu" secondAttribute="leading" id="x5U-2E-zBy"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="progress" destination="Bsh-pm-1HM" id="dJf-3T-jNR"/>
                                     <outlet property="translateLabel" destination="GQ8-6q-h5K" id="fP8-0d-a88"/>
                                     <outlet property="translatedLabel" destination="JpB-gt-CnX" id="iVb-Uh-Qba"/>
+                                    <outlet property="view" destination="dtw-dV-bQ8" id="gMf-xc-bnb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -232,6 +264,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="823-AC-woS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EE8-SS-Z2h">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -246,10 +279,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Combo_translate-4.png" width="375" height="375"/>
         <image name="arrowshape.bounce.right.fill" catalog="system" width="128" height="86"/>
         <image name="cross.fill" catalog="system" width="128" height="116"/>
         <image name="folder.fill" catalog="system" width="128" height="97"/>
         <image name="hare.fill" catalog="system" width="128" height="91"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

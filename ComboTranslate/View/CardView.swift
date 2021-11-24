@@ -10,12 +10,13 @@ import UIKit
 class CardView: UIView {
     var contentView: UIView!
     var shadowView: UIView!
-    @IBOutlet var labelTrans: UILabel?
-    @IBOutlet var buttonTrans1: UIButton?
-    @IBOutlet var buttonTrans2: UIButton?
-    @IBOutlet var buttonTrans3: UIButton?
-    @IBOutlet var buttonTrans4: UIButton?
-    @IBOutlet var progressBar: UIProgressView?
+    @IBOutlet var labelTrans: UILabel!
+    @IBOutlet var buttonTrans1: UIButton!
+    @IBOutlet var buttonTrans2: UIButton!
+    @IBOutlet var buttonTrans3: UIButton!
+    @IBOutlet var buttonTrans4: UIButton!
+    @IBOutlet var progressBar: UIProgressView!
+    @IBOutlet var rectView: UIView!
     
     var buttonCollection: [UIButton?] = []
     var delegate: SwipeCardsDelegate!
@@ -23,8 +24,8 @@ class CardView: UIView {
   //  var game: CardsGame
     var dataSource: CardsGame? {
         didSet {
+            configureProgressView()
             labelTrans?.text = dataSource?.secretValue.words.reduce("", +)
-            progressBar?.progress = Float((dataSource?.secretValue.count)!)
             updateButtons()
         }
     }
@@ -32,7 +33,7 @@ class CardView: UIView {
         correctButtonTag = Array(1...4).randomElement()
         buttonCollection = [buttonTrans1, buttonTrans2, buttonTrans3, buttonTrans4]
         buttonCollection.forEach { button in
-            button?.layer.cornerRadius = 15
+            configureButtonView(button: button!)
 //            button?.titleLabel?.adjustsFontSizeToFitWidth = true
 //            button?.titleLabel?.minimumScaleFactor = 2.5
             if correctButtonTag == button?.tag {
@@ -46,6 +47,8 @@ class CardView: UIView {
     @IBAction func selectWord (sender: UIButton) {
         if sender.tag != correctButtonTag {
             sender.backgroundColor = .red
+            sender.setTitleColor(.brown, for: .disabled)
+            sender.layer.opacity = 0.5
             dataSource?.isGameWin = false
         } else if sender.tag == correctButtonTag {
             dataSource?.isGameWin = true
@@ -80,7 +83,7 @@ class CardView: UIView {
         shadowView = UIView()
         shadowView.backgroundColor = .clear
         shadowView.layer.shadowColor = UIColor.black.cgColor
-        shadowView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        shadowView.layer.shadowOffset = CGSize(width: 5, height: 5)
         shadowView.layer.shadowOpacity = 0.8
         shadowView.layer.shadowRadius = 4.0
         addSubview(shadowView)
@@ -90,12 +93,40 @@ class CardView: UIView {
         shadowView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         shadowView.topAnchor.constraint(equalTo: topAnchor).isActive = true
     }
+    func configureButtonView(button: UIButton) {
+//        button.layer.cornerRadius = 15
+//        button.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        button.layer.shadowOpacity = 0.8
+//        button.layer.shadowRadius = 4.0
+//        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.cornerRadius = 15
+    }
+    func configureProgressView() {
+        progressBar.layer.cornerRadius = 15
+        progressBar.layer.shadowOffset = CGSize(width: 2, height: 2)
+        progressBar.layer.shadowOpacity = 0.8
+        progressBar.layer.shadowRadius = 2
+        progressBar.layer.shadowColor = UIColor.black.cgColor
+        progressBar?.progress = Float((dataSource?.secretValue.count)!)
+        progressBar?.transform = (progressBar?.transform.scaledBy(x: 1, y: 2))!
+    }
+    
+    func configureRectView() {
+        rectView.layer.cornerRadius = 15
+        rectView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        rectView.layer.shadowOpacity = 0.8
+        rectView.layer.shadowRadius = 4.0
+        rectView.layer.shadowColor = UIColor.black.cgColor
+    }
+    
     func configureCardView() {
         contentView = Bundle.main.loadNibNamed("CardView", owner: self, options: nil)?[0] as? UIView
        // contentView = UIView()
         contentView.layer.cornerRadius = 15
         contentView.clipsToBounds = true
+        
         labelTrans?.layer.cornerRadius = 15
+        configureRectView()
        
         shadowView.addSubview(contentView)
         

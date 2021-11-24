@@ -53,7 +53,8 @@ class TranslateTableController: UITableViewController {
     }
     private func getConfiguredTranslateCell(for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TranslateCell", for: indexPath) as? TranslateCell
-        
+//        let cell = UITableViewCell(style: .default, reuseIdentifier: "TranslateCell") as! TranslateCell
+//        cell.contentConfiguration = cell.defaultContentConfiguration()
         cell?.translateLabel?.text = translateDataCollection.reversed()[indexPath.row].words.joined(separator: " ")
         cell?.translatedLabel?.text = translateDataCollection.reversed()[indexPath.row].translatedWords.joined(separator: " ")
         cell?.progress?.progress = translateDataCollection.reversed()[indexPath.row].count

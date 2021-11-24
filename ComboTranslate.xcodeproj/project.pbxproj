@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		044E67BA2700214000B6FA24 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E67B92700214000B6FA24 /* Storage.swift */; };
 		044E67C12706477A00B6FA24 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E67C02706477A00B6FA24 /* CardsViewController.swift */; };
+		044EC83D274EB70B00B41735 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EC83B274EB70A00B41735 /* 1.png */; };
+		044EC840274EBCC500B41735 /* Combo_translate-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EC83F274EBCC400B41735 /* Combo_translate-4.png */; };
 		04CDEE502709F86E0068F6B7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 04CDEE4F2709F86E0068F6B7 /* .swiftlint.yml */; };
 		04CDEE52270A23660068F6B7 /* SwipeCardsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDEE51270A23660068F6B7 /* SwipeCardsDataSource.swift */; };
 		04CDEE87270D9A880068F6B7 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDEE86270D9A880068F6B7 /* CardView.xib */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		044E67B92700214000B6FA24 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		044E67C02706477A00B6FA24 /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
+		044EC83B274EB70A00B41735 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		044EC83F274EBCC400B41735 /* Combo_translate-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo_translate-4.png"; sourceTree = "<group>"; };
 		04CDEE4F2709F86E0068F6B7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		04CDEE51270A23660068F6B7 /* SwipeCardsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardsDataSource.swift; sourceTree = "<group>"; };
 		04CDEE86270D9A880068F6B7 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				04CDFC2526D8093A00D3567E /* LaunchScreen.storyboard */,
 				04CDFC2826D8093A00D3567E /* Info.plist */,
 				04CDEE4F2709F86E0068F6B7 /* .swiftlint.yml */,
+				044EC83B274EB70A00B41735 /* 1.png */,
+				044EC83F274EBCC400B41735 /* Combo_translate-4.png */,
 			);
 			path = ComboTranslate;
 			sourceTree = "<group>";
@@ -219,6 +225,8 @@
 				04CDFC2426D8093A00D3567E /* Assets.xcassets in Resources */,
 				04F966CC2722D6FF004FFCB6 /* EmptyView.xib in Resources */,
 				04CDFC2226D8093300D3567E /* Main.storyboard in Resources */,
+				044EC840274EBCC500B41735 /* Combo_translate-4.png in Resources */,
+				044EC83D274EB70B00B41735 /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
