@@ -16,6 +16,11 @@ extension String {
     }
 }
 
+enum Languages: String {
+    case en
+    case ru
+}
+
 protocol IBMTranslateApiProtocol {
     typealias CompletionHandler = (_ success: TranslateData) -> Void
     var url: URL {get}

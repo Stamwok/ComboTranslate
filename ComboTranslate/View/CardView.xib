@@ -2,8 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +15,9 @@
                 <outlet property="buttonTrans2" destination="uKs-Xk-Ykc" id="jiO-Nt-uyy"/>
                 <outlet property="buttonTrans3" destination="dZT-Oo-aMF" id="ewo-OY-kaB"/>
                 <outlet property="buttonTrans4" destination="8rZ-Vt-phw" id="z0f-l8-sEd"/>
+                <outlet property="cardCountLabel" destination="AiC-r8-TXk" id="gCf-WV-75k"/>
                 <outlet property="labelTrans" destination="zHy-TR-nw3" id="xj8-AA-fWO"/>
+                <outlet property="numberOfCardLabel" destination="Auj-I4-6NV" id="Oe7-Zz-Pme"/>
                 <outlet property="progressBar" destination="A2a-2n-e2z" id="nJ0-Zo-9B5"/>
                 <outlet property="rectView" destination="cWE-Pc-RrN" id="3f1-1d-ZhX"/>
                 <outletCollection property="gestureRecognizers" destination="n1D-mY-50C" id="cxq-1N-vj6"/>
@@ -32,47 +34,67 @@
                     </constraints>
                 </progressView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pGb-gu-klL">
-                    <rect key="frame" x="10" y="200" width="280" height="180"/>
+                    <rect key="frame" x="10" y="180" width="280" height="200"/>
                     <subviews>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvE-ci-PyE">
-                            <rect key="frame" x="0.0" y="0.0" width="280" height="37.5"/>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvE-ci-PyE">
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="42.5"/>
                             <color key="backgroundColor" red="0.64892088019619532" green="0.65934792671193321" blue="0.67269983863943894" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <color key="tintColor" red="0.96188626209999994" green="0.96188626209999994" blue="0.96188626209999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Button">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="titleShadowColor" systemColor="labelColor"/>
+                                <imageReference key="image" image="circle.fill" catalog="system" symbolScale="default"/>
                             </state>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="n1R-CN-6k1"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKs-Xk-Ykc">
-                            <rect key="frame" x="0.0" y="47.5" width="280" height="37.5"/>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKs-Xk-Ykc">
+                            <rect key="frame" x="0.0" y="52.5" width="280" height="42.5"/>
                             <color key="backgroundColor" red="0.64892088019619532" green="0.65934792671193321" blue="0.67269983863943894" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <color key="tintColor" red="0.96188626209999994" green="0.96188626209999994" blue="0.96188626209999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Button">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="titleShadowColor" systemColor="labelColor"/>
+                                <imageReference key="image" image="circle.fill" catalog="system" symbolScale="default"/>
                             </state>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="RlI-kA-Stp"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZT-Oo-aMF">
-                            <rect key="frame" x="0.0" y="95" width="280" height="37.5"/>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZT-Oo-aMF">
+                            <rect key="frame" x="0.0" y="105" width="280" height="42.5"/>
                             <color key="backgroundColor" red="0.64892088019619532" green="0.65934792671193321" blue="0.67269983863943894" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <color key="tintColor" red="0.96188626209999994" green="0.96188626209999994" blue="0.96188626209999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Button">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="titleShadowColor" systemColor="labelColor"/>
+                                <imageReference key="image" image="circle.fill" catalog="system" symbolScale="default"/>
                             </state>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="qTK-Ih-oZf"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rZ-Vt-phw">
-                            <rect key="frame" x="0.0" y="142.5" width="280" height="37.5"/>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rZ-Vt-phw">
+                            <rect key="frame" x="0.0" y="157.5" width="280" height="42.5"/>
                             <color key="backgroundColor" red="0.64892088019619532" green="0.65934792671193321" blue="0.67269983863943894" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <color key="tintColor" red="0.96188626209999994" green="0.96188626209999994" blue="0.96188626209999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Button">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="titleShadowColor" systemColor="labelColor"/>
+                                <imageReference key="image" image="circle.fill" catalog="system" symbolScale="default"/>
                             </state>
                             <connections>
                                 <action selector="selectWordWithSender:" destination="-1" eventType="touchUpInside" id="thH-NY-3yy"/>
@@ -90,7 +112,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.17952087520000001" green="0.55633819100000004" blue="0.9379547238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.1803921568627451" green="0.55686274509803924" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="zHy-TR-nw3" firstAttribute="leading" secondItem="cWE-Pc-RrN" secondAttribute="leadingMargin" id="Vw2-bh-Cb2"/>
                         <constraint firstItem="zHy-TR-nw3" firstAttribute="centerY" secondItem="cWE-Pc-RrN" secondAttribute="centerY" id="cgi-OI-uSs"/>
@@ -98,6 +120,22 @@
                         <constraint firstAttribute="height" constant="82" id="o4n-Nv-dgo"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auj-I4-6NV">
+                    <rect key="frame" x="16" y="44" width="41.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" systemColor="labelColor"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiC-r8-TXk">
+                    <rect key="frame" x="57.5" y="44" width="41.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" systemColor="labelColor"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -105,11 +143,14 @@
             <constraints>
                 <constraint firstItem="cWE-Pc-RrN" firstAttribute="top" secondItem="A2a-2n-e2z" secondAttribute="bottom" constant="10" id="1NT-Tq-m8I"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pGb-gu-klL" secondAttribute="bottom" constant="20" id="AYz-d6-16R"/>
+                <constraint firstItem="Auj-I4-6NV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="CnW-zk-sny"/>
+                <constraint firstItem="AiC-r8-TXk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="MVU-nI-DNk"/>
                 <constraint firstItem="pGb-gu-klL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="NV3-JF-Lnt"/>
                 <constraint firstItem="A2a-2n-e2z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="10" id="TIk-Cz-Uyn"/>
-                <constraint firstItem="A2a-2n-e2z" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="YSf-pA-e5c"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cWE-Pc-RrN" secondAttribute="trailing" id="iY8-FU-6gr"/>
-                <constraint firstItem="pGb-gu-klL" firstAttribute="top" secondItem="cWE-Pc-RrN" secondAttribute="bottom" constant="50" id="pFS-s4-xgb"/>
+                <constraint firstItem="AiC-r8-TXk" firstAttribute="leading" secondItem="Auj-I4-6NV" secondAttribute="trailing" id="njZ-gN-P76"/>
+                <constraint firstItem="pGb-gu-klL" firstAttribute="top" secondItem="cWE-Pc-RrN" secondAttribute="bottom" constant="30" id="pFS-s4-xgb"/>
+                <constraint firstItem="Auj-I4-6NV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="pP4-Fi-NLE"/>
                 <constraint firstAttribute="trailing" secondItem="A2a-2n-e2z" secondAttribute="trailing" constant="16" id="qtW-UM-Md4"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pGb-gu-klL" secondAttribute="trailing" constant="10" id="sgT-uH-aEU"/>
                 <constraint firstItem="cWE-Pc-RrN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="72" id="uHU-LX-3FF"/>
@@ -124,6 +165,10 @@
         </panGestureRecognizer>
     </objects>
     <resources>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

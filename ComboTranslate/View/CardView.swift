@@ -17,11 +17,12 @@ class CardView: UIView {
     @IBOutlet var buttonTrans4: UIButton!
     @IBOutlet var progressBar: UIProgressView!
     @IBOutlet var rectView: UIView!
+    @IBOutlet var numberOfCardLabel: UILabel!
+    @IBOutlet var cardCountLabel: UILabel!
     
-    var buttonCollection: [UIButton?] = []
+    var buttonCollection: [UIButton] = []
     var delegate: SwipeCardsDelegate!
     var correctButtonTag: Int?
-  //  var game: CardsGame
     var dataSource: CardsGame? {
         didSet {
             configureProgressView()
@@ -29,35 +30,37 @@ class CardView: UIView {
             updateButtons()
         }
     }
+    
     private func updateButtons() {
         correctButtonTag = Array(1...4).randomElement()
         buttonCollection = [buttonTrans1, buttonTrans2, buttonTrans3, buttonTrans4]
         buttonCollection.forEach { button in
-            configureButtonView(button: button!)
-//            button?.titleLabel?.adjustsFontSizeToFitWidth = true
-//            button?.titleLabel?.minimumScaleFactor = 2.5
-            if correctButtonTag == button?.tag {
-                button?.setTitle(dataSource?.secretValue.translatedWords.reduce("", +), for: .normal)
+            if correctButtonTag == button.tag {
+                button.setTitle(dataSource?.secretValue.translatedWords.reduce("", +), for: .normal)
             } else {
                 let copySeretValue = dataSource?.getNewSecretValue()
-                button?.setTitle(copySeretValue?.translatedWords.reduce("", +), for: .normal)
+                button.setTitle(copySeretValue?.translatedWords.reduce("", +), for: .normal)
             }
+            configureButtonView(button: button)
         }
     }
+    
     @IBAction func selectWord (sender: UIButton) {
         if sender.tag != correctButtonTag {
             sender.backgroundColor = .red
             sender.setTitleColor(.brown, for: .disabled)
-            sender.layer.opacity = 0.5
+            
             dataSource?.isGameWin = false
         } else if sender.tag == correctButtonTag {
             dataSource?.isGameWin = true
         }
         buttonCollection.forEach {button in
-            if button?.tag == correctButtonTag {
-                button?.backgroundColor = .green
+            if button.tag == correctButtonTag {
+                button.backgroundColor = .green
+                button.setTitleColor(.white, for: .disabled)
+                
             }
-            button?.isEnabled = false
+            button.isEnabled = false
         }
         if dataSource!.isGameWin {
             progressBar?.progress += 0.25
@@ -71,65 +74,42 @@ class CardView: UIView {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        configureShadowView()
         configureCardView()
-        
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    //MARK: - configure views
     func configureShadowView() {
         shadowView = UIView()
         shadowView.backgroundColor = .clear
-        shadowView.layer.shadowColor = UIColor.black.cgColor
-        shadowView.layer.shadowOffset = CGSize(width: 5, height: 5)
-        shadowView.layer.shadowOpacity = 0.8
-        shadowView.layer.shadowRadius = 4.0
         addSubview(shadowView)
-        shadowView.translatesAutoresizingMaskIntoConstraints = false
-        shadowView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        shadowView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        shadowView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        shadowView.topAnchor.constraint(equalTo: topAnchor).isActive = true
     }
+    
     func configureButtonView(button: UIButton) {
-//        button.layer.cornerRadius = 15
-//        button.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        button.layer.shadowOpacity = 0.8
-//        button.layer.shadowRadius = 4.0
-//        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.cornerRadius = 15
+        button.setTitleColor(.lightGray, for: .disabled)
     }
+    
     func configureProgressView() {
         progressBar.layer.cornerRadius = 15
-        progressBar.layer.shadowOffset = CGSize(width: 2, height: 2)
-        progressBar.layer.shadowOpacity = 0.8
-        progressBar.layer.shadowRadius = 2
-        progressBar.layer.shadowColor = UIColor.black.cgColor
         progressBar?.progress = Float((dataSource?.secretValue.count)!)
         progressBar?.transform = (progressBar?.transform.scaledBy(x: 1, y: 2))!
     }
     
     func configureRectView() {
         rectView.layer.cornerRadius = 15
-        rectView.layer.shadowOffset = CGSize(width: 5, height: 5)
-        rectView.layer.shadowOpacity = 0.8
-        rectView.layer.shadowRadius = 4.0
-        rectView.layer.shadowColor = UIColor.black.cgColor
     }
     
     func configureCardView() {
         contentView = Bundle.main.loadNibNamed("CardView", owner: self, options: nil)?[0] as? UIView
-       // contentView = UIView()
         contentView.layer.cornerRadius = 15
         contentView.clipsToBounds = true
-        
         labelTrans?.layer.cornerRadius = 15
         configureRectView()
+        addSubview(contentView)
        
-        shadowView.addSubview(contentView)
-        
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
@@ -137,13 +117,16 @@ class CardView: UIView {
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
     }
     
+    
+    // MARK: - swipe cards logic
     @IBAction func handlePanGesture(sender: UIPanGestureRecognizer) {
         guard let card = sender.view as? CardView else {return}
         let point = sender.translation(in: self)
         let centerOfParentContainer = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
         card.center = CGPoint(x: centerOfParentContainer.x + point.x, y: centerOfParentContainer.y + point.y)
-//        print(centerOfParentContainer)
         switch sender.state {
+        case .began:
+            delegate.swipeDidStart(on: card)
         case .ended:
             if(card.center.x) > 300 {
                 delegate?.swipeDidEnd(on: card)
@@ -163,31 +146,8 @@ class CardView: UIView {
             UIView.animate(withDuration: 0.2) {
                 card.transform = .identity
                 card.center = centerOfParentContainer
-//                CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-//                self.layoutIfNeeded()
             }
-//            if(card.center.x) > 300 {
-//                delegate?.swipeDidEnd(on: card)
-//                UIView.animate(withDuration: 0.2) {
-//                    card.center = CGPoint(x: centerOfParentContainer.x + point.x + 200, y: centerOfParentContainer.y + point.y + 75)
-//                    card.alpha = 0
-//                    self.layoutIfNeeded()
-//                }
-//                return
-//            } else if card.center.x < 35 {
-//                delegate?.swipeDidEnd(on: card)
-//                UIView.animate(withDuration: 0.2) {
-//                    card.center = CGPoint(x: centerOfParentContainer.x + point.x - 200, y: centerOfParentContainer.y + point.y + 75)
-//                    card.alpha = 0
-//                    self.layoutIfNeeded()
-//                }
-//                return
-//            }
-//            UIView.animate(withDuration: 0.2) {
-//                card.transform = .identity
-//                card.center = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-//                self.layoutIfNeeded()
-//            }
+            self.delegate.swipeDidNotEnded(on: card)
         case .changed:
             let rotation = tan(point.x / (self.frame.width * 2 ))
             card.transform = CGAffineTransform(rotationAngle: rotation)
@@ -197,3 +157,4 @@ class CardView: UIView {
         }
     }
 }
+

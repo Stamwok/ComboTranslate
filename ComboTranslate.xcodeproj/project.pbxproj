@@ -10,7 +10,6 @@
 		044E67BA2700214000B6FA24 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E67B92700214000B6FA24 /* Storage.swift */; };
 		044E67C12706477A00B6FA24 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E67C02706477A00B6FA24 /* CardsViewController.swift */; };
 		044EC83D274EB70B00B41735 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EC83B274EB70A00B41735 /* 1.png */; };
-		044EC840274EBCC500B41735 /* Combo_translate-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EC83F274EBCC400B41735 /* Combo_translate-4.png */; };
 		04CDEE502709F86E0068F6B7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 04CDEE4F2709F86E0068F6B7 /* .swiftlint.yml */; };
 		04CDEE52270A23660068F6B7 /* SwipeCardsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDEE51270A23660068F6B7 /* SwipeCardsDataSource.swift */; };
 		04CDEE87270D9A880068F6B7 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDEE86270D9A880068F6B7 /* CardView.xib */; };
@@ -26,6 +25,8 @@
 		04CDFC6B26F37F6900D3567E /* TranslateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFC6A26F37F6900D3567E /* TranslateData.swift */; };
 		04CDFC6D26FCFE3D00D3567E /* TranslateTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFC6C26FCFE3D00D3567E /* TranslateTableController.swift */; };
 		04CDFC7026FD0F2A00D3567E /* TranslateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFC6F26FD0F2A00D3567E /* TranslateCell.swift */; };
+		04EF2FEC27543BC700680656 /* UiColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF2FEB27543BC700680656 /* UiColorHex.swift */; };
+		04EF2FF027552A8600680656 /* Combo_translate-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EF2FEF27552A8500680656 /* Combo_translate-5.png */; };
 		04F966C22715B115004FFCB6 /* CardsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F966C12715B115004FFCB6 /* CardsGame.swift */; };
 		04F966C42715CBA6004FFCB6 /* SecretValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F966C32715CBA6004FFCB6 /* SecretValue.swift */; };
 		04F966C827202825004FFCB6 /* WordsPackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F966C727202825004FFCB6 /* WordsPackController.swift */; };
@@ -37,7 +38,6 @@
 		044E67B92700214000B6FA24 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		044E67C02706477A00B6FA24 /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		044EC83B274EB70A00B41735 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		044EC83F274EBCC400B41735 /* Combo_translate-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo_translate-4.png"; sourceTree = "<group>"; };
 		04CDEE4F2709F86E0068F6B7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		04CDEE51270A23660068F6B7 /* SwipeCardsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardsDataSource.swift; sourceTree = "<group>"; };
 		04CDEE86270D9A880068F6B7 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
@@ -55,6 +55,8 @@
 		04CDFC6A26F37F6900D3567E /* TranslateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateData.swift; sourceTree = "<group>"; };
 		04CDFC6C26FCFE3D00D3567E /* TranslateTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateTableController.swift; sourceTree = "<group>"; };
 		04CDFC6F26FD0F2A00D3567E /* TranslateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateCell.swift; sourceTree = "<group>"; };
+		04EF2FEB27543BC700680656 /* UiColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiColorHex.swift; sourceTree = "<group>"; };
+		04EF2FEF27552A8500680656 /* Combo_translate-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo_translate-5.png"; sourceTree = "<group>"; };
 		04F966C12715B115004FFCB6 /* CardsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsGame.swift; sourceTree = "<group>"; };
 		04F966C32715CBA6004FFCB6 /* SecretValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretValue.swift; sourceTree = "<group>"; };
 		04F966C727202825004FFCB6 /* WordsPackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsPackController.swift; sourceTree = "<group>"; };
@@ -126,7 +128,7 @@
 				04CDFC2826D8093A00D3567E /* Info.plist */,
 				04CDEE4F2709F86E0068F6B7 /* .swiftlint.yml */,
 				044EC83B274EB70A00B41735 /* 1.png */,
-				044EC83F274EBCC400B41735 /* Combo_translate-4.png */,
+				04EF2FEF27552A8500680656 /* Combo_translate-5.png */,
 			);
 			path = ComboTranslate;
 			sourceTree = "<group>";
@@ -149,6 +151,7 @@
 				04CDFC6826F0FC0E00D3567E /* IBMTranslateApi.swift */,
 				04CDFC6A26F37F6900D3567E /* TranslateData.swift */,
 				044E67B92700214000B6FA24 /* Storage.swift */,
+				04EF2FEB27543BC700680656 /* UiColorHex.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,9 +226,9 @@
 				04CDFC2726D8093A00D3567E /* LaunchScreen.storyboard in Resources */,
 				04CDEE87270D9A880068F6B7 /* CardView.xib in Resources */,
 				04CDFC2426D8093A00D3567E /* Assets.xcassets in Resources */,
+				04EF2FF027552A8600680656 /* Combo_translate-5.png in Resources */,
 				04F966CC2722D6FF004FFCB6 /* EmptyView.xib in Resources */,
 				04CDFC2226D8093300D3567E /* Main.storyboard in Resources */,
-				044EC840274EBCC500B41735 /* Combo_translate-4.png in Resources */,
 				044EC83D274EB70B00B41735 /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,6 +276,7 @@
 				04CDFC7026FD0F2A00D3567E /* TranslateCell.swift in Sources */,
 				04CDEE89270D9E9F0068F6B7 /* CardView.swift in Sources */,
 				04CDFC6D26FCFE3D00D3567E /* TranslateTableController.swift in Sources */,
+				04EF2FEC27543BC700680656 /* UiColorHex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,8 +335,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2GBYKA6BBC;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -349,10 +356,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=*]" = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -392,8 +401,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2GBYKA6BBC;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -404,9 +416,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=*]" = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -419,6 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GBYKA6BBC;
 				INFOPLIST_FILE = ComboTranslate/Info.plist;
@@ -427,8 +442,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = "1.0 Bones";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lungful.ComboTranslate;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lungful.Combo-translate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -439,6 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2GBYKA6BBC;
 				INFOPLIST_FILE = ComboTranslate/Info.plist;
@@ -447,8 +464,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = "1.0 Bones";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lungful.ComboTranslate;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lungful.Combo-translate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -464,7 +482,7 @@
 				04CDFC2A26D8093A00D3567E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		04CDFC2B26D8093A00D3567E /* Build configuration list for PBXNativeTarget "ComboTranslate" */ = {
 			isa = XCConfigurationList;
@@ -473,7 +491,7 @@
 				04CDFC2D26D8093A00D3567E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

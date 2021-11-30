@@ -20,10 +20,9 @@ class EmptyView: CardView {
     
     override func configureCardView() {
         contentView = Bundle.main.loadNibNamed("EmptyView", owner: self, options: nil)?[0] as? UIView
-       // contentView = UIView()
         contentView.layer.cornerRadius = 15
         contentView.clipsToBounds = true
-        shadowView.addSubview(contentView)
+        addSubview(contentView)
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true

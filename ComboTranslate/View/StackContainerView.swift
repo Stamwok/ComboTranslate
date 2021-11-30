@@ -46,8 +46,18 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         }
     }
     // MARK: - Configurations
+    
+    private func configureCountLabels(card: CardView, index: Int) {
+        card.numberOfCardLabel.text = String(numberOfCardsToShow - remainingCards + 1)
+        card.cardCountLabel.text = "/\(numberOfCardsToShow)"
+    }
+    
     private func addCardView(cardView: CardView, at index: Int) {
         cardView.delegate = self
+        if !(cardView is EmptyView) {
+            configureCountLabels(card: cardView, index: index)
+        }
+  
         cardViews.append(cardView)
         insertSubview(cardView, at: 0)
         remainingCards -= 1
@@ -61,25 +71,36 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         cardView.transform = measurements.1
     }
     
-    private func measurementsForCard(_ card: UIView, at index: Int) -> (CGRect, CGAffineTransform) {
+    private func measurementsForCard(_ card: CardView, at index: Int) -> (CGRect, CGAffineTransform) {
         let verticalInset = CGFloat(index) * self.verticalInset
-        //var frame = card.frame
-        if index == 2{
+        if index == 2 {
             card.alpha = 0
         }
         UIView.animate(withDuration: 0.5) {
-            
-            card.center.y = self.frame.height/2 + 4 * verticalInset
+            card.center.y = self.frame.height/2 + 2 * verticalInset
             card.alpha = 1
         }
         card.center.x = self.frame.width/2
-        
-//        frame.origin.x = frame.width/2
-        
-//        4 * verticalInset
         let frame = card.frame
         let coefficient = 1.0 - CGFloat(index) / 20
         let transform = CGAffineTransform(scaleX: coefficient, y: coefficient)
+        UIView.animate(withDuration: 0.5) {
+            switch index {
+            case 0:
+                card.contentView.backgroundColor = .white
+                card.isUserInteractionEnabled = true
+            case 1:
+                card.contentView.backgroundColor = UIColor(hex: "#89BFF7")
+                card.isUserInteractionEnabled = false
+            case 2:
+                card.contentView.backgroundColor = UIColor(hex: "#61ABF7")
+                card.isUserInteractionEnabled = false
+            default:
+                card.contentView.backgroundColor = .white
+                card.isUserInteractionEnabled = true
+            }
+        }
+        
         return (frame, transform)
     }
     
@@ -118,6 +139,17 @@ class StackContainerView: UIView, SwipeCardsDelegate {
                     cardView.transform = measurements.1
                     }
             }
+        }
+    }
+    func swipeDidStart(on view: CardView) {
+        UIView.animate(withDuration: 0.2) {
+            self.visibleCards.reversed()[1].contentView.backgroundColor = .white
+        }
+    }
+    
+    func swipeDidNotEnded(on view: CardView) {
+        UIView.animate(withDuration: 0.2) {
+            self.visibleCards.reversed()[1].contentView.backgroundColor = UIColor(hex: "#89BFF7")
         }
     }
 }

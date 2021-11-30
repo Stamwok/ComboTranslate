@@ -15,10 +15,7 @@ import Foundation
 }
 */
 struct TranslateData: Codable {
-    enum Languages: String {
-        case en
-        case ru
-    }
+    
     var words: [String]
     var translatedWords: [String] = []
     var command: String

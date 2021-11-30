@@ -8,14 +8,16 @@
 import UIKit
 
 class CardsViewController: UIViewController {
-   // var correctAnswers: Int = 0
+    @IBAction func cancelButton() {
+        dismiss(animated: true, completion: nil)
+    }
     let storage = Storage()
     var viewModelData: [TranslateData] = [] {
         didSet {
             storage.saveData(data: viewModelData)
         }
     }
-    var stackContainer: StackContainerView!
+   @IBOutlet var stackContainer: StackContainerView!
     var cardsDataModel: [SecretValue] = []
     
     var game: CardsGame!
@@ -41,8 +43,15 @@ class CardsViewController: UIViewController {
     func configureStackContainer() {
         stackContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         stackContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        stackContainer.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        stackContainer.heightAnchor.constraint(equalToConstant: 400).isActive = true
+//        stackContainer.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
+//        stackContainer.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+//        stackContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120).isActive = true
+//        stackContainer.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        let screenRect = UIScreen.main.bounds
+        let widthStackContainer = screenRect.size.width - 40
+        let heightStackContainer = screenRect.size.height - 200
+        stackContainer.widthAnchor.constraint(equalToConstant: widthStackContainer).isActive = true
+        stackContainer.heightAnchor.constraint(equalToConstant: heightStackContainer).isActive = true
     }
 }
 
