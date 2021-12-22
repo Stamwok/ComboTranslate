@@ -19,4 +19,3 @@ protocol SwipeCardsDelegate {
     func swipeDidStart(on view: CardView)
     func swipeDidNotEnded(on view: CardView)
 }
-

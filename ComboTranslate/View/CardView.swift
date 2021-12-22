@@ -80,7 +80,7 @@ class CardView: UIView {
         super.init(coder: coder)
     }
     
-    //MARK: - configure views
+    // MARK: - configure views
     func configureShadowView() {
         shadowView = UIView()
         shadowView.backgroundColor = .clear
@@ -116,7 +116,6 @@ class CardView: UIView {
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
     }
-    
     
     // MARK: - swipe cards logic
     @IBAction func handlePanGesture(sender: UIPanGestureRecognizer) {
@@ -157,4 +156,3 @@ class CardView: UIView {
         }
     }
 }
-

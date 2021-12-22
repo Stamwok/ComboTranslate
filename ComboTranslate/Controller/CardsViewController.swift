@@ -24,9 +24,6 @@ class CardsViewController: UIViewController {
     // MARK: - Init
     override func loadView() {
         super.loadView()
-       // guard viewModelData.count > 10 else { return }
-//        view = UIView()
-//        view.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.0)
         stackContainer = StackContainerView()
         view.addSubview(stackContainer)
         configureStackContainer()
@@ -42,11 +39,7 @@ class CardsViewController: UIViewController {
     }
     func configureStackContainer() {
         stackContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        stackContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        stackContainer.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
-//        stackContainer.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
-//        stackContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120).isActive = true
-//        stackContainer.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        stackContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30).isActive = true
         let screenRect = UIScreen.main.bounds
         let widthStackContainer = screenRect.size.width - 40
         let heightStackContainer = screenRect.size.height - 200
@@ -61,7 +54,6 @@ extension CardsViewController: SwipeCardsDataSource {
     }
     func card(at index: Int) -> CardView {
         let card = CardView()
-        //print(cardsDataModel[index])
         card.dataSource = CardsGame(collection: viewModelData, value: cardsDataModel[index]) {dataSource in
             self.viewModelData[dataSource.secretValueIndex] = dataSource.secretValue
         }

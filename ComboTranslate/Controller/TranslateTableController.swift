@@ -16,16 +16,9 @@ class TranslateTableController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.tableFooterView = UIView()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -62,7 +55,6 @@ class TranslateTableController: UITableViewController {
     }
     
 
-    
 //    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //        guard indexPath.row == 0 else { return }
 //        let degree: Double = 90

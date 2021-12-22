@@ -12,7 +12,6 @@ struct SecretValue {
     var secretValueIndex: Int
     var transDataColection: [TranslateData] = []
 
-    
     init?(collection: [TranslateData]) {
         self.transDataColection = collection
         guard let randomIndex = Array(0...transDataColection.count-1).randomElement() else {return nil}

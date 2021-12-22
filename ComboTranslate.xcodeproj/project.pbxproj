@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0433CB322767AEBB00404501 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433CB312767AEBB00404501 /* LanguagesTableViewController.swift */; };
 		044E67BA2700214000B6FA24 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E67B92700214000B6FA24 /* Storage.swift */; };
 		044E67C12706477A00B6FA24 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E67C02706477A00B6FA24 /* CardsViewController.swift */; };
 		044EC83D274EB70B00B41735 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EC83B274EB70A00B41735 /* 1.png */; };
@@ -25,6 +26,7 @@
 		04CDFC6B26F37F6900D3567E /* TranslateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFC6A26F37F6900D3567E /* TranslateData.swift */; };
 		04CDFC6D26FCFE3D00D3567E /* TranslateTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFC6C26FCFE3D00D3567E /* TranslateTableController.swift */; };
 		04CDFC7026FD0F2A00D3567E /* TranslateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFC6F26FD0F2A00D3567E /* TranslateCell.swift */; };
+		04D073312767ED7E00D8558C /* LanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D073302767ED7E00D8558C /* LanguageCell.swift */; };
 		04EF2FEC27543BC700680656 /* UiColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF2FEB27543BC700680656 /* UiColorHex.swift */; };
 		04EF2FF027552A8600680656 /* Combo_translate-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EF2FEF27552A8500680656 /* Combo_translate-5.png */; };
 		04F966C22715B115004FFCB6 /* CardsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F966C12715B115004FFCB6 /* CardsGame.swift */; };
@@ -35,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0433CB312767AEBB00404501 /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
 		044E67B92700214000B6FA24 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		044E67C02706477A00B6FA24 /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		044EC83B274EB70A00B41735 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
@@ -51,10 +54,11 @@
 		04CDFC2626D8093A00D3567E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04CDFC2826D8093A00D3567E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04CDFC6626EFAD8800D3567E /* TranslateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateController.swift; sourceTree = "<group>"; };
-		04CDFC6826F0FC0E00D3567E /* IBMTranslateApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMTranslateApi.swift; sourceTree = "<group>"; };
+		04CDFC6826F0FC0E00D3567E /* IBMTranslateApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMTranslateApi.swift; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 1; };
 		04CDFC6A26F37F6900D3567E /* TranslateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateData.swift; sourceTree = "<group>"; };
 		04CDFC6C26FCFE3D00D3567E /* TranslateTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateTableController.swift; sourceTree = "<group>"; };
 		04CDFC6F26FD0F2A00D3567E /* TranslateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateCell.swift; sourceTree = "<group>"; };
+		04D073302767ED7E00D8558C /* LanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCell.swift; sourceTree = "<group>"; };
 		04EF2FEB27543BC700680656 /* UiColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiColorHex.swift; sourceTree = "<group>"; };
 		04EF2FEF27552A8500680656 /* Combo_translate-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo_translate-5.png"; sourceTree = "<group>"; };
 		04F966C12715B115004FFCB6 /* CardsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsGame.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				04CDFC6626EFAD8800D3567E /* TranslateController.swift */,
+				0433CB312767AEBB00404501 /* LanguagesTableViewController.swift */,
 				04CDFC6C26FCFE3D00D3567E /* TranslateTableController.swift */,
 				044E67C02706477A00B6FA24 /* CardsViewController.swift */,
 				04F966C727202825004FFCB6 /* WordsPackController.swift */,
@@ -160,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				04CDFC6F26FD0F2A00D3567E /* TranslateCell.swift */,
+				04D073302767ED7E00D8558C /* LanguageCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -261,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04F966C42715CBA6004FFCB6 /* SecretValue.swift in Sources */,
+				0433CB322767AEBB00404501 /* LanguagesTableViewController.swift in Sources */,
 				04CDEE8F270EF3930068F6B7 /* StackContainerView.swift in Sources */,
 				04F966C22715B115004FFCB6 /* CardsGame.swift in Sources */,
 				04CDFC6B26F37F6900D3567E /* TranslateData.swift in Sources */,
@@ -270,6 +277,7 @@
 				04CDFC6926F0FC0E00D3567E /* IBMTranslateApi.swift in Sources */,
 				04CDFC6726EFAD8800D3567E /* TranslateController.swift in Sources */,
 				044E67C12706477A00B6FA24 /* CardsViewController.swift in Sources */,
+				04D073312767ED7E00D8558C /* LanguageCell.swift in Sources */,
 				04CDEE52270A23660068F6B7 /* SwipeCardsDataSource.swift in Sources */,
 				04CDFC1D26D8093200D3567E /* SceneDelegate.swift in Sources */,
 				044E67BA2700214000B6FA24 /* Storage.swift in Sources */,

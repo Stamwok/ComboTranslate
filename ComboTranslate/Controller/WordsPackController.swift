@@ -9,7 +9,6 @@ import UIKit
 
 class WordsPackController: UITableViewController {
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
        
