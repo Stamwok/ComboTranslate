@@ -7,11 +7,25 @@
 
 import UIKit
 
+
+
 class WordsPackController: UITableViewController {
+    
+    var storage = Storage()
+    var wordPacks: [TranslateData]!
+    
+    @IBOutlet var labelCount: UILabel!
+    @IBOutlet var labelName: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        wordPacks = storage.loadData()
+            
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
 
     // MARK: - Table view data source
@@ -29,7 +43,15 @@ class WordsPackController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-//    override func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//            return
-//    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WordsPackCell", for: indexPath)
+        (cell.viewWithTag(1) as? UILabel)?.text = "Переведенные слова"
+        (cell.viewWithTag(2) as? UILabel)?.text = "Слов \(wordPacks.count)"
+        return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "ToCardsViewSegue" else { return }
+        (segue.destination as! CardsViewController).viewModelData = wordPacks
+    }
 }

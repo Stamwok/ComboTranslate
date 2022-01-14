@@ -51,6 +51,11 @@ class TranslateTableController: UITableViewController {
         cell?.translateLabel?.text = translateDataCollection.reversed()[indexPath.row].words.joined(separator: " ")
         cell?.translatedLabel?.text = translateDataCollection.reversed()[indexPath.row].translatedWords.joined(separator: " ")
         cell?.progress?.progress = translateDataCollection.reversed()[indexPath.row].count
+        if indexPath.row + 1 == translateDataCollection.count {
+            cell?.separatorInset = UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)
+        } else {
+            cell?.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        }
         return cell!
     }
     

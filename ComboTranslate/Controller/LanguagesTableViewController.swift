@@ -10,6 +10,9 @@ import UIKit
 class LanguagesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var headerLabel: UILabel!
+    @IBAction func dropView() {
+        dismiss(animated: true, completion: nil)
+    }
     
     var doAfterLanguageSelected: ((String) -> Void)!
     var headerLabelText: String?

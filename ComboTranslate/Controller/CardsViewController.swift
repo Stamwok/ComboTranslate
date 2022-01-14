@@ -12,7 +12,7 @@ class CardsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     let storage = Storage()
-    var viewModelData: [TranslateData] = [] {
+    var viewModelData: [TranslateData]! {
         didSet {
             storage.saveData(data: viewModelData)
         }
@@ -32,7 +32,7 @@ class CardsViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModelData = storage.loadData()
+//        viewModelData = storage.loadData()
         cardsDataModel = generateDataForCards()
         stackContainer.dataSource = self
         

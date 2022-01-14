@@ -9,7 +9,7 @@ import UIKit
 
 class TranslateController: UIViewController, UITabBarControllerDelegate, UITextViewDelegate {
     
-// MARK: - Outlets and initial
+// MARK: Outlets and initial
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var transField: UITextView!
     @IBOutlet var containerWithTable: UIView!
@@ -68,6 +68,11 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let statusBar1 =  UIView()
+        statusBar1.frame = UIApplication.shared.statusBarFrame
+        statusBar1.backgroundColor = UIColor.init(hex: "#2E8EEF")
+        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.keyWindow?.addSubview(statusBar1)
         translateApi.languages.forEach({ key, _ in
             self.languages.append(key)
         })
@@ -78,8 +83,6 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         
         closeButton.isHidden = true
         closeButton.clipsToBounds = true
-        
-//        translateDataCollection = storage.loadData()
         transField?.delegate = self
         transFieldOriginState()
         transField?.smartInsertDeleteType = UITextSmartInsertDeleteType.no
@@ -99,6 +102,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         (self.children[0] as? TranslateTableController)?.translateDataCollection = self.translateDataCollection
     }
     
+    // MARK: api request and response
     func translate(text: String?, sender: UIButton?) {
         guard var word = text, word != "" else {
             return
@@ -134,8 +138,8 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     }
     
     // MARK: configure views
-    @IBAction func closeButton(sender : UIButton?) {
-        if let _ = sender, let _ = translatedView {
+    @IBAction func closeButton(sender: UIButton?) {
+        if sender != nil && translatedView != nil {
             transField.text = ""
             translateView.removeFromSuperview()
             translatedView.removeFromSuperview()
@@ -146,9 +150,15 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         transField.resignFirstResponder()
     }
     
+    @IBAction func switchLanguages() {
+        let temporaryStorage = originLanguage
+        originLanguage = translatedLanguage
+        translatedLanguage = temporaryStorage
+    }
+    
     private func transFieldOriginState() {
         transField.isHidden = false
-        transField?.text = "Введите текст"
+        transField?.text = "    Введите текст"
         transField?.textColor = UIColor.lightGray
         transField?.font = UIFont(name: transField!.font!.fontName, size: 20)
         closeButton.isHidden = true
@@ -211,7 +221,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         translatedLabel.text = transField.text ?? ""
         translatePlaceView.layoutSubviews()
     }
-    @objc func translateButtonAction(sender: UIButton) {
+    @objc func translateButtonAction(sender: UIButton?) {
         translate(text: transField.text!, sender: sender)
         configureTranslatedView()
         UIView.animate(withDuration: 0.2) {
@@ -292,20 +302,20 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     @objc func dropTranslatedView() {
         translateViewHeightAnchor.isActive = false
         translatedViewHeightAnchor.isActive = false
-        UIView.animate(withDuration: 0.2, animations: {
-            self.backgroundView.layoutIfNeeded()
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            self?.translateView.alpha = 0
+            self?.translatedView.alpha = 0
+            self?.backgroundView.layoutIfNeeded()
         }, completion: { bool in
             if bool {
                 self.translateView.removeFromSuperview()
                 self.translatedView.removeFromSuperview()
                 self.transField.isHidden = false
                 self.containerWithTable.isHidden = false
+                (self.children[0] as! TranslateTableController).translateDataCollection = self.translateDataCollection
                 self.transFieldOriginState()
             }
-            
         })
-        
-        
     }
     
     // MARK: - textView
@@ -313,7 +323,8 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         if textView.textColor == .lightGray {
             textView.text = nil
             textView.textColor = .black
-            
+        } else {
+            textView.selectAll(textView)
         }
         closeButton.isHidden = false
         self.imageView.constraints.filter {$0.identifier == "imageHeight"}.first?.constant = 0
@@ -323,15 +334,23 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }
-        
     }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        guard let textFieldText = textView.text else { return }
+        translate(text: "\(textFieldText)", sender: nil)
+        if textFieldText.count > 0 {
+            transButton.isEnabled = true
+        } else {
+            transButton.isEnabled = false
+        }
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             transFieldOriginState()
         }
-//        closeButton.isHidden = true
         transField.resignFirstResponder()
-        
         self.imageView.constraints.filter {$0.identifier == "imageHeight"}.first?.constant = 70
         transFieldHeight.constant *= 1.5
         UIView.animate(withDuration: 0.2) {
@@ -350,7 +369,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         let count = textFieldText.count - substringToReplace.count + text.count
         
         if text == "\n" {
-            textView.selectAll(textView)
+            translateButtonAction(sender: nil)
             textView.resignFirstResponder()
             return false
         }
@@ -363,15 +382,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         }
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        guard let textFieldText = textView.text else { return }
-        translate(text: "\(textFieldText)", sender: nil)
-        if textFieldText.count > 0 {
-            transButton.isEnabled = true
-        } else {
-            transButton.isEnabled = false
-        }
-    }
+    
     
     // MARK: language select
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -380,8 +391,12 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
             destionation.headerLabelText = "Язык оригинала"
             destionation.languages = self.languages
             destionation.checkMarkOn = originLanguage
-            destionation.doAfterLanguageSelected = { language in
-                self.originLanguage = language
+            destionation.doAfterLanguageSelected = { [weak self] language in
+                if language == self?.translatedLanguage {
+                    self?.switchLanguages()
+                } else {
+                    self?.originLanguage = language
+                }
                 destionation.dismiss(animated: true, completion: nil)
             }
         }
@@ -390,8 +405,12 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
             destionation.headerLabelText = "Перевести на"
             destionation.languages = self.languages
             destionation.checkMarkOn = translatedLanguage
-            destionation.doAfterLanguageSelected = { language in
-                self.translatedLanguage = language
+            destionation.doAfterLanguageSelected = { [weak self] language in
+                if language == self?.originLanguage {
+                    self?.switchLanguages()
+                } else {
+                    self?.translatedLanguage = language
+                }
                 destionation.dismiss(animated: true, completion: nil)
             }
         }
