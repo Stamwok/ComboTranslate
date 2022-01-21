@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="TranslateView" id="iN0-l3-epB" customClass="TranslateView" customModule="ComboTranslate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17K-kl-OXX">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="85" id="uSj-ic-7l3"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="tly-4f-yCA"/>
+                    </connections>
+                </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UaZ-og-LbN">
+                    <rect key="frame" x="0.0" y="85" width="320" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Ath-T4-hPQ"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FcB-qg-PHI">
+                    <rect key="frame" x="272" y="5" width="43" height="32"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="15"/>
+                        <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="closeButtonWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZbC-TZ-l5Y"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zku-LB-yEn">
+                    <rect key="frame" x="0.0" y="86" width="320" height="85"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btC-9n-oiv">
+                            <rect key="frame" x="18" y="8" width="224.5" height="0.0"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                            <color key="textColor" red="0.17952087520000001" green="0.55633819100000004" blue="0.9379547238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wu8-ZV-Q72">
+                            <rect key="frame" x="262.5" y="23.5" width="52.5" height="38"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="arrow.right.circle.fill" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                <color key="baseForegroundColor" red="0.17952087520000001" green="0.55633819100000004" blue="0.9379547238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="translateButtonWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="rXC-aU-xHd"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Wu8-ZV-Q72" firstAttribute="leading" secondItem="btC-9n-oiv" secondAttribute="trailing" constant="20" id="1AI-tg-Jjv"/>
+                        <constraint firstItem="btC-9n-oiv" firstAttribute="leading" secondItem="zku-LB-yEn" secondAttribute="leadingMargin" constant="10" id="D20-cy-d00"/>
+                        <constraint firstAttribute="trailing" secondItem="Wu8-ZV-Q72" secondAttribute="trailing" constant="5" id="X2S-Aq-U78"/>
+                        <constraint firstItem="btC-9n-oiv" firstAttribute="top" secondItem="zku-LB-yEn" secondAttribute="topMargin" id="b8r-aW-TB0"/>
+                        <constraint firstItem="Wu8-ZV-Q72" firstAttribute="centerY" secondItem="zku-LB-yEn" secondAttribute="centerY" id="xZI-0p-ene"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="UaZ-og-LbN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1Ys-RT-z3r"/>
+                <constraint firstItem="FcB-qg-PHI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="31c-LX-tGo"/>
+                <constraint firstItem="zku-LB-yEn" firstAttribute="height" secondItem="17K-kl-OXX" secondAttribute="height" id="6Ce-g9-FXl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zku-LB-yEn" secondAttribute="trailing" id="LgN-xS-IHQ"/>
+                <constraint firstItem="UaZ-og-LbN" firstAttribute="top" secondItem="17K-kl-OXX" secondAttribute="bottom" id="Ndc-YF-igr"/>
+                <constraint firstItem="zku-LB-yEn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Obg-4c-IhL"/>
+                <constraint firstItem="17K-kl-OXX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="TuK-om-NpD"/>
+                <constraint firstItem="17K-kl-OXX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aP1-lR-pfz"/>
+                <constraint firstItem="17K-kl-OXX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="dis-Ko-1Dp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FcB-qg-PHI" secondAttribute="trailing" constant="5" id="fM0-jQ-MBC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UaZ-og-LbN" secondAttribute="trailing" id="j5t-Gi-laC"/>
+                <constraint firstItem="zku-LB-yEn" firstAttribute="top" secondItem="UaZ-og-LbN" secondAttribute="bottom" id="k9m-49-A1h"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="translateButton" destination="Wu8-ZV-Q72" id="AkS-az-c68"/>
+                <outlet property="translateField" destination="17K-kl-OXX" id="a2T-V5-0UE"/>
+                <outlet property="translatedField" destination="btC-9n-oiv" id="Wkv-T7-eiE"/>
+            </connections>
+            <point key="canvasLocation" x="138.75" y="-298.94366197183098"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.right.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

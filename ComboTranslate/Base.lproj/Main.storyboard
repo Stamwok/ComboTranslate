@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="cUo-ry-nil">
@@ -176,10 +181,11 @@
             <objects>
                 <tableViewController id="wry-pK-6P2" customClass="TranslateTableController" customModule="ComboTranslate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XfB-C7-dnO">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="273"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="271"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.85098046059999999" green="0.85098052020000003" blue="0.85098046059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" red="0.17952087520000001" green="0.55633819100000004" blue="0.9379547238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.85075480589999997" green="0.85075480589999997" blue="0.85075480589999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <view key="tableHeaderView" clipsSubviews="YES" contentMode="scaleToFill" id="iPD-yB-MGV">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="10"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -236,7 +242,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="progress" destination="Bsh-pm-1HM" id="dJf-3T-jNR"/>
                                     <outlet property="translateLabel" destination="GQ8-6q-h5K" id="fP8-0d-a88"/>
@@ -368,32 +374,24 @@
                                 <rect key="frame" x="0.0" y="70" width="320" height="449"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3U-b0-aF6">
-                                        <rect key="frame" x="10" y="176" width="300" height="273"/>
+                                        <rect key="frame" x="10" y="178" width="300" height="271"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <segue destination="wry-pK-6P2" kind="embed" identifier="infoSegue" id="Vq3-0d-sV0"/>
                                         </connections>
                                     </containerView>
-                                    <textView multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="vz3-xS-843">
-                                        <rect key="frame" x="0.0" y="48" width="320" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="128" identifier="transFieldHeight" id="oCs-dT-NXF"/>
-                                        </constraints>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
-                                    </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THF-Fp-PFl">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ym1-zG-aOK">
-                                                <rect key="frame" x="8" y="8" width="304" height="31"/>
+                                                <rect key="frame" x="8" y="8" width="304" height="32"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="247" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVz-jY-jSm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="31"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="32"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Английский"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Английский">
+                                                            <fontDescription key="titleFontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                        </buttonConfiguration>
                                                         <connections>
                                                             <segue destination="wer-YU-9kU" kind="popoverPresentation" identifier="originLanguage" popoverAnchorView="wVz-jY-jSm" id="cg8-Lx-jR4">
                                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -401,7 +399,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeY-VW-4hi">
-                                                        <rect key="frame" x="130" y="0.0" width="44" height="31"/>
+                                                        <rect key="frame" x="130" y="0.0" width="44" height="32"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="arrow.left.arrow.right" catalog="system"/>
                                                         <connections>
@@ -409,9 +407,11 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="247" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4S-Ue-FqK">
-                                                        <rect key="frame" x="174" y="0.0" width="130" height="31"/>
+                                                        <rect key="frame" x="174" y="0.0" width="130" height="32"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Русский"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Русский">
+                                                            <fontDescription key="titleFontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                        </buttonConfiguration>
                                                         <connections>
                                                             <segue destination="wer-YU-9kU" kind="popoverPresentation" identifier="translatedLanguage" popoverAnchorView="D4S-Ue-FqK" id="Azg-rJ-fau">
                                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -436,36 +436,63 @@
                                             <constraint firstItem="ym1-zG-aOK" firstAttribute="top" secondItem="THF-Fp-PFl" secondAttribute="topMargin" id="acE-GW-CgS"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KkA-t5-hfk">
-                                        <rect key="frame" x="269" y="48" width="51" height="34"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHi-Ft-0cD">
+                                        <rect key="frame" x="0.0" y="50" width="320" height="128"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tz-vZ-7SI">
+                                                <rect key="frame" x="272" y="5" width="43" height="32"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="15"/>
+                                                    <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="closeButtonWithSender:" destination="mDa-Rd-axR" eventType="touchUpInside" id="aWK-St-07j"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Введите текст" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dzh-fc-zEN">
+                                                <rect key="frame" x="20" y="10" width="247" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45E-Ev-seP">
+                                                <rect key="frame" x="15" y="89" width="45" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="doc.on.clipboard" catalog="system">
+                                                    <color key="baseForegroundColor" red="0.17952087520000001" green="0.55633819100000004" blue="0.9379547238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="6mW-HK-hEa"/>
-                                            <constraint firstAttribute="width" constant="51" id="prg-gQ-L8A"/>
+                                            <constraint firstItem="45E-Ev-seP" firstAttribute="leading" secondItem="JHi-Ft-0cD" secondAttribute="leading" constant="15" id="0GO-6m-CDF"/>
+                                            <constraint firstItem="1tz-vZ-7SI" firstAttribute="top" secondItem="JHi-Ft-0cD" secondAttribute="top" constant="5" id="2Fs-ha-5ym"/>
+                                            <constraint firstAttribute="height" constant="128" identifier="transFieldViewHeight" id="3J3-4g-921"/>
+                                            <constraint firstAttribute="bottom" secondItem="45E-Ev-seP" secondAttribute="bottom" constant="8" id="8l3-Vu-w8v"/>
+                                            <constraint firstItem="Dzh-fc-zEN" firstAttribute="leading" secondItem="JHi-Ft-0cD" secondAttribute="leading" constant="20" id="Sns-qj-VHN"/>
+                                            <constraint firstItem="1tz-vZ-7SI" firstAttribute="leading" secondItem="Dzh-fc-zEN" secondAttribute="trailing" constant="5" id="UbK-5b-kxb"/>
+                                            <constraint firstAttribute="trailing" secondItem="1tz-vZ-7SI" secondAttribute="trailing" constant="5" id="ooE-IO-mI5"/>
+                                            <constraint firstItem="Dzh-fc-zEN" firstAttribute="top" secondItem="JHi-Ft-0cD" secondAttribute="top" constant="10" id="yrB-l6-LAD"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain">
-                                            <imageReference key="image" image="xmark" catalog="system" symbolScale="default"/>
-                                            <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
                                         <connections>
-                                            <action selector="closeButtonWithSender:" destination="mDa-Rd-axR" eventType="touchUpInside" id="4F4-wb-BWQ"/>
+                                            <outletCollection property="gestureRecognizers" destination="VCq-sW-8VY" appends="YES" id="Zgg-7c-mqR"/>
                                         </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.85075480588758834" green="0.85075480588758834" blue="0.85075480588758834" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="w3U-b0-aF6" firstAttribute="leading" secondItem="phY-ea-55m" secondAttribute="leading" constant="10" id="1hf-uf-YB0"/>
                                     <constraint firstItem="THF-Fp-PFl" firstAttribute="top" secondItem="phY-ea-55m" secondAttribute="top" id="3pP-zJ-YgT"/>
-                                    <constraint firstItem="w3U-b0-aF6" firstAttribute="top" secondItem="vz3-xS-843" secondAttribute="bottom" id="62n-Q4-9cj"/>
+                                    <constraint firstItem="JHi-Ft-0cD" firstAttribute="leading" secondItem="phY-ea-55m" secondAttribute="leading" id="6b8-uO-0so"/>
                                     <constraint firstAttribute="bottom" secondItem="w3U-b0-aF6" secondAttribute="bottom" id="ARZ-m1-nuY"/>
-                                    <constraint firstItem="vz3-xS-843" firstAttribute="top" secondItem="THF-Fp-PFl" secondAttribute="bottom" constant="1" id="G9d-UX-st7"/>
-                                    <constraint firstAttribute="trailing" secondItem="w3U-b0-aF6" secondAttribute="trailing" constant="10" id="dN4-cx-f0Q"/>
-                                    <constraint firstItem="KkA-t5-hfk" firstAttribute="top" secondItem="vz3-xS-843" secondAttribute="top" id="ewd-b2-Brl"/>
+                                    <constraint firstAttribute="trailing" secondItem="JHi-Ft-0cD" secondAttribute="trailing" id="NNt-d2-u1g"/>
+                                    <constraint firstItem="w3U-b0-aF6" firstAttribute="top" secondItem="JHi-Ft-0cD" secondAttribute="bottom" id="Rn9-Ma-56O"/>
                                     <constraint firstAttribute="trailing" secondItem="THF-Fp-PFl" secondAttribute="trailing" id="fgQ-s6-GSE"/>
-                                    <constraint firstAttribute="trailing" secondItem="vz3-xS-843" secondAttribute="trailing" id="hWo-LC-mHX"/>
-                                    <constraint firstItem="w3U-b0-aF6" firstAttribute="leading" secondItem="phY-ea-55m" secondAttribute="leading" constant="10" id="nuC-Qi-s3z"/>
+                                    <constraint firstAttribute="trailing" secondItem="w3U-b0-aF6" secondAttribute="trailing" constant="10" id="hSt-ho-c6c"/>
                                     <constraint firstItem="THF-Fp-PFl" firstAttribute="leading" secondItem="phY-ea-55m" secondAttribute="leading" id="qA4-61-dJd"/>
-                                    <constraint firstAttribute="trailing" secondItem="KkA-t5-hfk" secondAttribute="trailing" id="yEH-0h-olo"/>
-                                    <constraint firstItem="vz3-xS-843" firstAttribute="leading" secondItem="phY-ea-55m" secondAttribute="leading" id="zA3-Wa-Nvc"/>
+                                    <constraint firstItem="JHi-Ft-0cD" firstAttribute="top" secondItem="THF-Fp-PFl" secondAttribute="bottom" constant="2" id="sEr-ZW-Wfj"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="Combo_translate-5.png" translatesAutoresizingMaskIntoConstraints="NO" id="d64-jy-Ht9">
@@ -493,17 +520,22 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="backgroundView" destination="phY-ea-55m" id="a0n-VP-M1z"/>
-                        <outlet property="closeButton" destination="KkA-t5-hfk" id="24K-fc-wvx"/>
+                        <outlet property="closeButton" destination="1tz-vZ-7SI" id="2pu-as-zkx"/>
                         <outlet property="containerWithTable" destination="w3U-b0-aF6" id="Azy-ci-Reb"/>
                         <outlet property="imageView" destination="d64-jy-Ht9" id="VPx-CC-R8q"/>
                         <outlet property="originLanguageButton" destination="wVz-jY-jSm" id="sMY-i3-EYp"/>
                         <outlet property="stackView" destination="ym1-zG-aOK" id="uf7-rw-Qrn"/>
                         <outlet property="stackViewLanguages" destination="THF-Fp-PFl" id="fmR-yW-tX7"/>
-                        <outlet property="transField" destination="vz3-xS-843" id="la1-zO-Iyo"/>
+                        <outlet property="transFieldView" destination="JHi-Ft-0cD" id="k0j-N3-nek"/>
                         <outlet property="translatedLanguageButton" destination="D4S-Ue-FqK" id="Pk8-5N-ydR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xJ-bC-8x4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="VCq-sW-8VY">
+                    <connections>
+                        <action selector="tapOnTranslateFieldViewWithSender:" destination="mDa-Rd-axR" id="dy5-5E-27l"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="570" y="-570.42253521126759"/>
         </scene>
@@ -535,13 +567,11 @@
         <image name="Combo_translate-5.png" width="375" height="375"/>
         <image name="arrow.left.arrow.right" catalog="system" width="119" height="128"/>
         <image name="cross.fill" catalog="system" width="128" height="116"/>
+        <image name="doc.on.clipboard" catalog="system" width="116" height="128"/>
         <image name="folder.fill" catalog="system" width="128" height="97"/>
         <image name="gearshape.2.fill" catalog="system" width="128" height="100"/>
         <image name="x.circle" catalog="system" width="128" height="121"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

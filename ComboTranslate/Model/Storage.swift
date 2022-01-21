@@ -46,7 +46,6 @@ class Storage {
         storage.set(dictForStorage, forKey: storageKey)
     }
     
-    
     // MARK: languages data
     enum LanguageDataKeys: String {
         case originLanguage

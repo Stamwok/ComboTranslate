@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class WordsPackController: UITableViewController {
     
     var storage = Storage()
@@ -20,8 +18,6 @@ class WordsPackController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         wordPacks = storage.loadData()
-            
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

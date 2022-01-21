@@ -21,7 +21,7 @@ class CardView: UIView {
     @IBOutlet var cardCountLabel: UILabel!
     
     var buttonCollection: [UIButton] = []
-    var delegate: SwipeCardsDelegate!
+    weak var delegate: SwipeCardsDelegate?
     var correctButtonTag: Int?
     var dataSource: CardsGame? {
         didSet {
@@ -125,7 +125,7 @@ class CardView: UIView {
         card.center = CGPoint(x: centerOfParentContainer.x + point.x, y: centerOfParentContainer.y + point.y)
         switch sender.state {
         case .began:
-            delegate.swipeDidStart(on: card)
+            delegate?.swipeDidStart(on: card)
         case .ended:
             if(card.center.x) > 300 {
                 delegate?.swipeDidEnd(on: card)
@@ -146,7 +146,7 @@ class CardView: UIView {
                 card.transform = .identity
                 card.center = centerOfParentContainer
             }
-            self.delegate.swipeDidNotEnded(on: card)
+            self.delegate?.swipeDidNotEnded(on: card)
         case .changed:
             let rotation = tan(point.x / (self.frame.width * 2 ))
             card.transform = CGAffineTransform(rotationAngle: rotation)

@@ -14,7 +14,7 @@ protocol SwipeCardsDataSource {
     func emptyView() -> UIView?
 }
 
-protocol SwipeCardsDelegate {
+protocol SwipeCardsDelegate: AnyObject {
     func swipeDidEnd(on view: CardView)
     func swipeDidStart(on view: CardView)
     func swipeDidNotEnded(on view: CardView)

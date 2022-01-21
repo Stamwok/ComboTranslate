@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TranslateData" representedClassName="TranslateData" syncable="YES" codeGenerationType="class">
+        <attribute name="originLanguage" optional="YES" attributeType="String"/>
+        <attribute name="translated" optional="YES" attributeType="String"/>
+        <attribute name="translatedLanguage" optional="YES" attributeType="String"/>
+        <attribute name="word" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="TranslatedPack" representedClassName="TranslatedPack" syncable="YES" codeGenerationType="class"/>
+    <elements>
+        <element name="TranslateData" positionX="336.3811645507812" positionY="-1361.944030761719" width="128" height="103"/>
+        <element name="TranslatedPack" positionX="360" positionY="-1296" width="128" height="29"/>
+    </elements>
+</model>
