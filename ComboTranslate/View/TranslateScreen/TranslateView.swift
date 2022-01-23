@@ -10,8 +10,8 @@ import UIKit
 
 class TranslateView: UIView, UITextViewDelegate {
     
-    //MARK: init and outlets
-    static weak var delegate: TranslateViewDelegate?
+    // MARK: - init and outlets
+    weak var delegate: TranslateViewDelegate?
     var translateData: TranslateData? {
         didSet {
             translatedField.text = translateData?.translatedWords.reduce("", +)
@@ -23,10 +23,10 @@ class TranslateView: UIView, UITextViewDelegate {
     @IBOutlet var translateButton: UIButton!
     
     @IBAction func closeButton(sender: UIButton) {
-        TranslateView.delegate?.closeTranslateView()
+        delegate?.closeTranslateView()
     }
     @IBAction func translateButton(sender: UIButton) {
-        TranslateView.delegate?.setData(data: translateData)
+        delegate?.setData(data: translateData)
         
     }
     override init(frame: CGRect) {
@@ -38,8 +38,6 @@ class TranslateView: UIView, UITextViewDelegate {
         contentView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        
-        
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -55,7 +53,7 @@ class TranslateView: UIView, UITextViewDelegate {
     
     // MARK: - private metods
     private func updateTranslatedView () {
-        TranslateView.delegate?.translate(text: translateField.text) { [weak self] translated in
+        delegate?.translate(text: translateField.text.trimmingCharacters(in: .whitespaces)) { [weak self] translated in
             DispatchQueue.main.async { [weak self] in
                 if self?.translateField.text != "" {
                     self?.translateData = translated
@@ -65,9 +63,6 @@ class TranslateView: UIView, UITextViewDelegate {
     }
     
     // MARK: - textViewDelegate
-    func textViewDidBeginEditing(_ textView: UITextView) {
-//        textView.selectAll(textView)
-    }
     func textViewDidChange(_ textView: UITextView) {
         guard let textFieldText = textView.text else { return }
         if textFieldText == "" {
@@ -94,7 +89,7 @@ class TranslateView: UIView, UITextViewDelegate {
         let count = textFieldText.count - substringToReplace.count + text.count
         
         if text == "\n" {
-            TranslateView.delegate?.setData(data: translateData)
+            delegate?.setData(data: translateData)
             textView.resignFirstResponder()
             return false
         } else if textView.text == "   " && text == "" && range.length > 0 {

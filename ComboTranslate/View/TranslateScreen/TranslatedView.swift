@@ -9,19 +9,22 @@ import UIKit
 
 class TranslatedView: UIView {
     
-    static weak var delegate: TranslatedViewDelegate?
+    weak var delegate: TranslatedViewDelegate?
     
     @IBOutlet var originLanguageLabel: UILabel!
     @IBOutlet var translatedLanguageLabel: UILabel!
     @IBOutlet var translateTextLabel: UILabel!
     @IBOutlet var translatedTextLabel: UILabel!
     @IBAction func closeButton(sender: UIButton) {
-        TranslatedView.delegate?.closeTranslatedView()
+        delegate?.closeTranslatedView()
     }
-    static var originLanguage: String!
-    static var translatedLanguage: String!
-    static var translateText: String!
-    static var translatedText: String!
+    @IBAction func tapOnTranslateView (sender: UITapGestureRecognizer) {
+        delegate?.edit()
+    }
+    var originLanguage: String?
+    var translatedLanguage: String?
+    var translateText: String?
+    var translatedText: String?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -36,17 +39,17 @@ class TranslatedView: UIView {
         contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         
-        TranslatedView.originLanguage = originLanguage
-        TranslatedView.translatedLanguage = translatedLanguage
-        TranslatedView.translateText = translateText
-        TranslatedView.translatedText = translatedText
+        self.originLanguage = originLanguage
+        self.translatedLanguage = translatedLanguage
+        self.translateText = translateText
+        self.translatedText = translatedText
     }
     override func layoutSubviews() {
-        if originLanguageLabel != nil{
-            self.originLanguageLabel.text = TranslatedView.originLanguage
-            self.translateTextLabel.text = TranslatedView.translateText
-            self.translatedLanguageLabel.text = TranslatedView.translatedLanguage
-            self.translatedTextLabel.text = TranslatedView.translatedText
+        if originLanguageLabel != nil {
+            self.originLanguageLabel.text = originLanguage
+            self.translateTextLabel.text = translateText
+            self.translatedLanguageLabel.text = translatedLanguage
+            self.translatedTextLabel.text = translatedText
         }
     }
     required init?(coder: NSCoder) {

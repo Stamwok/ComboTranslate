@@ -28,13 +28,6 @@ class CardsGame {
         self.secretValue = value.secretValue!
         self.secretValueIndex = value.secretValueIndex
     }
-//    func checkTranslate(userValue: TranslateData) -> Bool {
-//        if userValue.words == secretValue.words {
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
     func getNewSecretValue() -> TranslateData? {
         let uniqueValuesCount = uniqueRandValues.count
         while uniqueRandValues.count <= uniqueValuesCount {

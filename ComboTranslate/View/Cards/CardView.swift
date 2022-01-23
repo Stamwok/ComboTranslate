@@ -48,7 +48,7 @@ class CardView: UIView {
     @IBAction func selectWord (sender: UIButton) {
         if sender.tag != correctButtonTag {
             sender.backgroundColor = .red
-            sender.setTitleColor(.brown, for: .disabled)
+            sender.setTitleColor(.white, for: .disabled)
             
             dataSource?.isGameWin = false
         } else if sender.tag == correctButtonTag {

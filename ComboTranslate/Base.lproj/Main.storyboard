@@ -22,12 +22,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="mJ3-Ek-yUv">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJ3-Ek-yUv">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Настройки" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LO1-NQ-GgS">
-                                        <rect key="frame" x="8" y="8" width="304" height="54"/>
+                                        <rect key="frame" x="116.5" y="25" width="87" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -35,23 +34,25 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.5568627451" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="LO1-NQ-GgS" secondAttribute="trailing" id="AMu-9U-TKT"/>
-                                    <constraint firstItem="LO1-NQ-GgS" firstAttribute="centerY" secondItem="mJ3-Ek-yUv" secondAttribute="centerY" id="F2w-CA-E9j"/>
-                                    <constraint firstItem="LO1-NQ-GgS" firstAttribute="centerX" secondItem="mJ3-Ek-yUv" secondAttribute="centerX" id="Hqk-oa-mQL"/>
-                                    <constraint firstItem="LO1-NQ-GgS" firstAttribute="leading" secondItem="mJ3-Ek-yUv" secondAttribute="leadingMargin" id="VQp-Df-LTj"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="LO1-NQ-GgS" secondAttribute="bottom" id="XnL-yP-vzZ"/>
-                                    <constraint firstItem="LO1-NQ-GgS" firstAttribute="top" secondItem="mJ3-Ek-yUv" secondAttribute="topMargin" id="lsE-fy-tKO"/>
+                                    <constraint firstAttribute="height" constant="70" id="VWj-n8-c8N"/>
+                                    <constraint firstItem="LO1-NQ-GgS" firstAttribute="centerX" secondItem="mJ3-Ek-yUv" secondAttribute="centerX" id="ZKQ-v4-nkF"/>
+                                    <constraint firstItem="LO1-NQ-GgS" firstAttribute="centerY" secondItem="mJ3-Ek-yUv" secondAttribute="centerY" id="sfT-6w-zYC"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VsU-8b-hOX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mJ3-Ek-yUv" firstAttribute="trailing" secondItem="VsU-8b-hOX" secondAttribute="trailing" id="1Io-4b-ZaY"/>
+                            <constraint firstItem="mJ3-Ek-yUv" firstAttribute="leading" secondItem="VsU-8b-hOX" secondAttribute="leading" id="6Zz-DK-Aam"/>
+                            <constraint firstItem="mJ3-Ek-yUv" firstAttribute="top" secondItem="VsU-8b-hOX" secondAttribute="top" id="vM0-x2-Ru4"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="gearshape.2.fill" catalog="system" id="ZTF-ip-sja"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cvc-vD-DB1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="570" y="967"/>
+            <point key="canvasLocation" x="-429" y="871"/>
         </scene>
         <!--Words Pack Controller-->
         <scene sceneID="nhZ-vR-wA3">

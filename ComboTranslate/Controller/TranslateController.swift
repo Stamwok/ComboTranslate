@@ -23,10 +23,9 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     
     var translateApi = IBMTranslateApi()
     var storage = Storage()
-    var translatePlaceView: UIView!
     var opacityView: UIView!
     var translateView: TranslateView!
-    var translatedView: UIView!
+    var translatedView: TranslatedView!
     var languages: [String] = []
     
     var originLanguage: String! {
@@ -74,39 +73,33 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }
-        translateView.removeFromSuperview()
-        opacityView.removeFromSuperview()
+        translateView?.removeFromSuperview()
+        opacityView?.removeFromSuperview()
     }
     func setData(data: TranslateData?) {
-        guard var data = data else { return }
-//        var data = TranslateData(words: word, from: translateApi.languages[originLanguage]!, to: translateApi.languages[translatedLanguage]!)
+        guard var data = data else {
+            return
+        }
         self.translateDataCollection.enumerated().forEach { index, transData in
             if transData.words == data.words {
                 data = transData
                 self.translateDataCollection.remove(at: index)
-                
                 return
             }
-            
         }
         self.translateDataCollection.append(data)
+        
+        imageView.constraints.filter {$0.identifier == "imageHeight"}.first?.constant = 70
+        transFieldView.constraints.filter {$0.identifier == "transFieldViewHeight"}.first?.constant = 128
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
         configureTranslatedView(data: data)
-//        translateApi.translate(data: &data) { outputData in
-//            self.translateDataCollection.append(outputData)
-//            self.configureTranslatedView(data: data)
-//        }
-        closeTranslateView()
-//        configureTranslatedView(data: data)
+        translateView.removeFromSuperview()
+        opacityView.removeFromSuperview()
     }
     func translate(text: String, completionHandler: @escaping (TranslateData) -> Void) {
-        var word = text
-        guard word != "" else {
-            return
-        }
-        if word.last == " " {
-            word.remove(at: word.index(before: word.endIndex))
-        }
-        var data = TranslateData(words: [word], from: translateApi.languages[originLanguage]!, to: translateApi.languages[translatedLanguage]!)
+        var data = TranslateData(words: [text], from: translateApi.languages[originLanguage]!, to: translateApi.languages[translatedLanguage]!)
         translateApi.translate(data: &data) { outputData in
             completionHandler(outputData)
         }
@@ -115,18 +108,22 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     // MARK: - Delegate translatedView
     func closeTranslatedView() {
         transFieldOriginState()
-        
-        translatedView.removeFromSuperview()
-        
+        translatedView?.removeFromSuperview()
     }
     func edit() {
-        
+        closeTranslatedView()
+        imageView.constraints.filter {$0.identifier == "imageHeight"}.first?.constant = 0
+        transFieldView.constraints.filter {$0.identifier == "transFieldViewHeight"}.first?.constant = 170
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+        configureTranslateView()
     }
     
     // MARK: actions
-    @IBAction func closeButton(sender: UIButton?) {
-        transFieldOriginState()
-    }
+//    @IBAction func closeButton(sender: UIButton?) {
+//        transFieldOriginState()
+//    }
     
     @IBAction func tapOnTranslateFieldView(sender: UITapGestureRecognizer) {
         imageView.constraints.filter {$0.identifier == "imageHeight"}.first?.constant = 0
@@ -135,7 +132,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
             self.view.layoutIfNeeded()
         }
         configureTranslateView()
-        configureOpacityView()
+        
     }
     
     // MARK: - Private metods
@@ -162,9 +159,10 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     }
     
     private func configureTranslateView() {
+        configureOpacityView()
         transFieldView.isHidden = false
         translateView = TranslateView()
-        TranslateView.delegate = self
+        translateView?.delegate = self
         translateView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.addSubview(translateView)
         translateView.heightAnchor.constraint(equalTo: transFieldView.heightAnchor).isActive = true
@@ -175,10 +173,9 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     }
     
     private func configureTranslatedView(data: TranslateData) {
-
         transFieldView.isHidden = true
-        translatedView = TranslatedView( originLanguage: originLanguage, translateText: data.words.reduce("", +), translatedLanguage: translatedLanguage, translatedText: data.translatedWords.reduce("", +))
-        TranslatedView.delegate = self
+        translatedView = TranslatedView(originLanguage: originLanguage, translateText: data.words.reduce("", +), translatedLanguage: translatedLanguage, translatedText: data.translatedWords.reduce("", +))
+        translatedView.delegate = self
         
         translatedView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.addSubview(translatedView)
@@ -187,8 +184,6 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         translatedView.rightAnchor.constraint(equalTo: transFieldView.rightAnchor).isActive = true
         translatedView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
         backgroundView.layoutIfNeeded()
-        
-                
     }
     
     private func configureOpacityView() {
