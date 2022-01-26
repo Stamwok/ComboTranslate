@@ -18,65 +18,9 @@ extension String {
     }
 }
 
-enum Languages: String {
-    case ar
-    case eu
-    case bn
-    case bs
-    case bg
-    case ca
-    case zh
-    case zhTW = "zh-TW"
-    case hr
-    case cs
-    case da
-    case nl
-    case en
-    case et
-    case fi
-    case fr
-    case de
-    case el
-    case gu
-    case he
-    case hi
-    case hu
-    case ga
-    case id
-    case it
-    case ja = "Ja"
-    case ko
-    case lv
-    case lt
-    case ms
-    case ml
-    case mt
-    case cnr
-    case ne
-    case nb
-    case pl
-    case pt
-    case ro
-    case ru
-    case sr
-    case si
-    case sk
-    case sl
-    case es
-    case sv
-    case ta
-    case te
-    case th
-    case tr
-    case uk
-    case ur
-    case vi
-    case cy
-}
-
 class IBMTranslateApi {
     
-    var languages: [String: Languages] = ["Арабский": .ar, "Баскский": .eu, "Бенгальский": .bn, "Боснийский": .bs, "Балгарский": .bg, "Каталанский": .ca, "Китайский (Упрощенный)": .zh, "Китайский (Традиционный)": .zhTW, "Хорватский": .hr, "Чешский": .cs, "Датский": .da, "Нидерландский": .nl, "Английский": .en, "Эстонский": .et, "Финский": .fi, "Французский": .fr, "Немецкий": .de, "Греческий": .el, "Гуджарати": .gu, "Иврит": .he, "Хинди": .hi, "Венгерский": .hu, "Ирландский": .ga, "Индонезийский": .id, "Итальянский": .it, "Японский": .ja, "Корейский": .ko, "Латвийский": .lv, "Литовский": .lt, "Малайский": .ms, "Малаялам": .ml, "Мальтийский": .mt, "Черногорский": .cnr, "Непальский": .ne, "Бу́кмол": .nb, "Польский": .pl, "Португальский": .pt, "Румынский": .ro, "Русский": .ru, "Сербский": .sr, "Сингальский": .si, "Словацкий": .sk, "Словенский": .sl, "Испанский": .es, "Шведский": .sv, "Тамильский": .ta, "Телугу": .te, "Тайский": .th, "Турецкий": .tr, "Украинский": .uk, "Урду": .ur, "Вьетнамский": .vi, "Валийский": .cy]
+    var languages: [String: String] = ["Арабский": "ar", "Баскский": "eu", "Бенгальский": "bn", "Боснийский": "bs", "Балгарский": "bg", "Каталанский": "ca", "Китайский (Упрощенный)": "zh", "Китайский (Традиционный)": "zhTW", "Хорватский": "hr", "Чешский": "cs", "Датский": "da", "Нидерландский": "nl", "Английский": "en", "Эстонский": "et", "Финский": "fi", "Французский": "fr", "Немецкий": "de", "Греческий": "el", "Гуджарати": "gu", "Иврит": "he", "Хинди": "hi", "Венгерский": "hu", "Ирландский": "ga", "Индонезийский": "id", "Итальянский": "it", "Японский": "ja", "Корейский": "ko", "Латвийский": "lv", "Литовский": "lt", "Малайский": "ms", "Малаялам": "ml", "Мальтийский": "mt", "Черногорский": "cnr", "Непальский": "ne", "Бу́кмол": "nb", "Польский": "pl", "Португальский": "pt", "Румынский": "ro", "Русский": "ru", "Сербский": "sr", "Сингальский": "si", "Словацкий": "sk", "Словенский": "sl", "Испанский": "es", "Шведский": "sv", "Тамильский": "ta", "Телугу": "te", "Тайский": "th", "Турецкий": "tr", "Украинский": "uk", "Урду": "ur", "Вьетнамский": "vi", "Валийский": "cy"]
     
     typealias CompletionHandler = (_ success: TranslateData) -> Void
     
@@ -93,6 +37,10 @@ class IBMTranslateApi {
     func translate(data: inout TranslateData, completionHandler: @escaping CompletionHandler) {
 
         var outputData = data
+        print(data)
+//        print(languages[data.originLanguage]!)
+        data.command = "\(languages[data.originLanguage]!)-\(languages[data.translatedLanguage]!)"
+        print(data.command)
         let contentType: String = "application/json"
         let headers: HTTPHeaders = [
             "Authorization": authorization,
@@ -109,7 +57,7 @@ class IBMTranslateApi {
         ).responseDecodable(of: TranslateResponse.self) { response in
             switch response.result {
             case .success(let value):
-                outputData.translatedWords = value.translations
+                outputData.translatedWords = value.translations.reduce("", +)
                 completionHandler(outputData)
             case .failure(let error):
                 print(error)

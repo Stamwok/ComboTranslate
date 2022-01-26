@@ -14,7 +14,7 @@ class TranslateView: UIView, UITextViewDelegate {
     weak var delegate: TranslateViewDelegate?
     var translateData: TranslateData? {
         didSet {
-            translatedField.text = translateData?.translatedWords.reduce("", +)
+            translatedField.text = translateData?.translatedWords
         }
     }
 

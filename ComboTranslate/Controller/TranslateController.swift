@@ -99,7 +99,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         opacityView.removeFromSuperview()
     }
     func translate(text: String, completionHandler: @escaping (TranslateData) -> Void) {
-        var data = TranslateData(words: [text], from: translateApi.languages[originLanguage]!, to: translateApi.languages[translatedLanguage]!)
+        var data = TranslateData(words: text, from: originLanguage, to: translatedLanguage)
         translateApi.translate(data: &data) { outputData in
             completionHandler(outputData)
         }
@@ -174,7 +174,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     
     private func configureTranslatedView(data: TranslateData) {
         transFieldView.isHidden = true
-        translatedView = TranslatedView(originLanguage: originLanguage, translateText: data.words.reduce("", +), translatedLanguage: translatedLanguage, translatedText: data.translatedWords.reduce("", +))
+        translatedView = TranslatedView(data: data)
         translatedView.delegate = self
         
         translatedView.translatesAutoresizingMaskIntoConstraints = false

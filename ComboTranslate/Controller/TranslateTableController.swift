@@ -46,8 +46,8 @@ class TranslateTableController: UITableViewController {
     }
     private func getConfiguredTranslateCell(for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TranslateCell", for: indexPath) as? TranslateCell
-        cell?.translateLabel?.text = translateDataCollection.reversed()[indexPath.row].words.joined(separator: " ")
-        cell?.translatedLabel?.text = translateDataCollection.reversed()[indexPath.row].translatedWords.joined(separator: " ")
+        cell?.translateLabel?.text = translateDataCollection.reversed()[indexPath.row].words
+        cell?.translatedLabel?.text = translateDataCollection.reversed()[indexPath.row].translatedWords
         cell?.progress?.progress = translateDataCollection.reversed()[indexPath.row].count
         if indexPath.row + 1 == translateDataCollection.count {
             cell?.separatorInset = UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)

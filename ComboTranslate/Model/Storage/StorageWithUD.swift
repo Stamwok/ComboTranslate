@@ -14,9 +14,9 @@ class Storage {
     enum TranslateDataKey: String {
         case words
         case translatedWords
-        case command
+        case originLanguage
+        case translatedLanguage
         case count
-        case position
     }
     
     // MARK: words data
@@ -26,9 +26,11 @@ class Storage {
         for elem in dictFromStorage {
             let words = elem[TranslateDataKey.words.rawValue]!
             let translatedWords = elem[TranslateDataKey.translatedWords.rawValue]!
-            let command = elem[TranslateDataKey.command.rawValue]!
+            let originLanguage = elem[TranslateDataKey.originLanguage.rawValue]!
+            let translatedLanguage = elem[TranslateDataKey.translatedWords.rawValue]!
+//            let command = elem[TranslateDataKey.command.rawValue]!
             let count = elem[TranslateDataKey.count.rawValue]!
-            resultDict.append(TranslateData(words: words as! [String], translatedWords: translatedWords as! [String], command: command as! String, count: count as! Float))
+            resultDict.append(TranslateData(words: words as! String, translatedWords: translatedWords as! String, originLanguage: originLanguage as! String, translatedLanguage: translatedLanguage as! String, count: count as! Float))
         }
         return resultDict
     }
@@ -39,7 +41,9 @@ class Storage {
             var elemForStorage: [String: Any] = [:]
             elemForStorage[TranslateDataKey.words.rawValue] = elem.words
             elemForStorage[TranslateDataKey.translatedWords.rawValue] = elem.translatedWords
-            elemForStorage[TranslateDataKey.command.rawValue] = elem.command
+            elemForStorage[TranslateDataKey.originLanguage.rawValue] = elem.originLanguage
+            elemForStorage[TranslateDataKey.translatedLanguage.rawValue] = elem.translatedLanguage
+//            elemForStorage[TranslateDataKey.command.rawValue] = elem.command
             elemForStorage[TranslateDataKey.count.rawValue] = elem.count
             dictForStorage.append(elemForStorage)
         }

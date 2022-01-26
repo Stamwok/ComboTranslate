@@ -26,7 +26,7 @@ class CardView: UIView {
     var dataSource: CardsGame? {
         didSet {
             configureProgressView()
-            labelTrans?.text = dataSource?.secretValue.words.reduce("", +)
+            labelTrans?.text = dataSource?.secretValue.words
             updateButtons()
         }
     }
@@ -36,10 +36,10 @@ class CardView: UIView {
         buttonCollection = [buttonTrans1, buttonTrans2, buttonTrans3, buttonTrans4]
         buttonCollection.forEach { button in
             if correctButtonTag == button.tag {
-                button.setTitle(dataSource?.secretValue.translatedWords.reduce("", +), for: .normal)
+                button.setTitle(dataSource?.secretValue.translatedWords, for: .normal)
             } else {
                 let copySeretValue = dataSource?.getNewSecretValue()
-                button.setTitle(copySeretValue?.translatedWords.reduce("", +), for: .normal)
+                button.setTitle(copySeretValue?.translatedWords, for: .normal)
             }
             configureButtonView(button: button)
         }

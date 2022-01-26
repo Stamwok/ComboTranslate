@@ -10,8 +10,10 @@
 		042713962799A75D00DD862F /* TranslatedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042713952799A75D00DD862F /* TranslatedView.xib */; };
 		0427139A2799A7C200DD862F /* TranslatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042713992799A7C200DD862F /* TranslatedView.swift */; };
 		0433CB322767AEBB00404501 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433CB312767AEBB00404501 /* LanguagesTableViewController.swift */; };
+		0439D1D127A0651400BD1C3C /* StorageWithCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0439D1CF27A0651400BD1C3C /* StorageWithCD.xcdatamodeld */; };
+		0439D1E127A154A800BD1C3C /* StorageWithCDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439D1E027A154A800BD1C3C /* StorageWithCDManager.swift */; };
 		044A716C2791D9FB00F4748C /* TranslateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044A716B2791D9FB00F4748C /* TranslateView.xib */; };
-		044E67BA2700214000B6FA24 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E67B92700214000B6FA24 /* Storage.swift */; };
+		044E67BA2700214000B6FA24 /* StorageWithUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E67B92700214000B6FA24 /* StorageWithUD.swift */; };
 		044E67C12706477A00B6FA24 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E67C02706477A00B6FA24 /* CardsViewController.swift */; };
 		044EC83D274EB70B00B41735 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EC83B274EB70A00B41735 /* 1.png */; };
 		04A82D642791E14B00F69895 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04A82D572791E14B00F69895 /* Roboto-Medium.ttf */; };
@@ -59,8 +61,10 @@
 		042713952799A75D00DD862F /* TranslatedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TranslatedView.xib; sourceTree = "<group>"; };
 		042713992799A7C200DD862F /* TranslatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedView.swift; sourceTree = "<group>"; };
 		0433CB312767AEBB00404501 /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
+		0439D1D027A0651400BD1C3C /* StorageWithCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StorageWithCD.xcdatamodel; sourceTree = "<group>"; };
+		0439D1E027A154A800BD1C3C /* StorageWithCDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWithCDManager.swift; sourceTree = "<group>"; };
 		044A716B2791D9FB00F4748C /* TranslateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TranslateView.xib; sourceTree = "<group>"; };
-		044E67B92700214000B6FA24 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		044E67B92700214000B6FA24 /* StorageWithUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWithUD.swift; sourceTree = "<group>"; };
 		044E67C02706477A00B6FA24 /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		044EC83B274EB70A00B41735 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		04A82D572791E14B00F69895 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -117,6 +121,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0439D1CE27A064CD00BD1C3C /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				044E67B92700214000B6FA24 /* StorageWithUD.swift */,
+				0439D1CF27A0651400BD1C3C /* StorageWithCD.xcdatamodeld */,
+				0439D1E027A154A800BD1C3C /* StorageWithCDManager.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		044A71692791D98200F4748C /* Cards */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,10 +245,10 @@
 		04CDFC6526EFAD3400D3567E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0439D1CE27A064CD00BD1C3C /* Storage */,
 				04CDEE8D270DA1490068F6B7 /* Cards */,
 				04CDFC6826F0FC0E00D3567E /* IBMTranslateApi.swift */,
 				04CDFC6A26F37F6900D3567E /* TranslateData.swift */,
-				044E67B92700214000B6FA24 /* Storage.swift */,
 				04EF2FEB27543BC700680656 /* UiColorHex.swift */,
 				04A82D732791FCD800F69895 /* TranslateDelegate.swift */,
 			);
@@ -375,15 +389,17 @@
 				04F966CA2722D41C004FFCB6 /* EmptyView.swift in Sources */,
 				04F966C827202825004FFCB6 /* WordsPackController.swift in Sources */,
 				04A82D742791FCD800F69895 /* TranslateDelegate.swift in Sources */,
+				0439D1E127A154A800BD1C3C /* StorageWithCDManager.swift in Sources */,
 				04CDFC1B26D8093200D3567E /* AppDelegate.swift in Sources */,
 				04CDFC6926F0FC0E00D3567E /* IBMTranslateApi.swift in Sources */,
 				0427139A2799A7C200DD862F /* TranslatedView.swift in Sources */,
+				0439D1D127A0651400BD1C3C /* StorageWithCD.xcdatamodeld in Sources */,
 				04CDFC6726EFAD8800D3567E /* TranslateController.swift in Sources */,
 				044E67C12706477A00B6FA24 /* CardsViewController.swift in Sources */,
 				04D073312767ED7E00D8558C /* LanguageCell.swift in Sources */,
 				04CDEE52270A23660068F6B7 /* SwipeCardsDataSource.swift in Sources */,
 				04CDFC1D26D8093200D3567E /* SceneDelegate.swift in Sources */,
-				044E67BA2700214000B6FA24 /* Storage.swift in Sources */,
+				044E67BA2700214000B6FA24 /* StorageWithUD.swift in Sources */,
 				04A82D722791E76200F69895 /* TranslateView.swift in Sources */,
 				04CDFC7026FD0F2A00D3567E /* TranslateCell.swift in Sources */,
 				04CDEE89270D9E9F0068F6B7 /* CardView.swift in Sources */,
@@ -625,6 +641,19 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		0439D1CF27A0651400BD1C3C /* StorageWithCD.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0439D1D027A0651400BD1C3C /* StorageWithCD.xcdatamodel */,
+			);
+			currentVersion = 0439D1D027A0651400BD1C3C /* StorageWithCD.xcdatamodel */;
+			path = StorageWithCD.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 04CDFC0F26D8093200D3567E /* Project object */;
 }

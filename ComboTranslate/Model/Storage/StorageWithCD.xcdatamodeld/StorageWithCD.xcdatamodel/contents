@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="RowOfWordPacks" representedClassName=".RowOfWordPacks" syncable="YES">
+        <attribute name="wordPackName" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <relationship name="words" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word"/>
+    </entity>
+    <entity name="Word" representedClassName=".Word" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="originLanguage" optional="YES" attributeType="String"/>
+        <attribute name="translatedLanguage" optional="YES" attributeType="String"/>
+        <attribute name="translatedWords" optional="YES" attributeType="String"/>
+        <attribute name="words" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="WordPacks" representedClassName=".WordPacks" syncable="YES">
+        <relationship name="rowsOfWordPack" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RowOfWordPacks"/>
+    </entity>
+    <elements>
+        <element name="Word" positionX="-54" positionY="0" width="128" height="118"/>
+        <element name="WordPacks" positionX="-267.2360229492188" positionY="-124.8583068847656" width="128" height="58"/>
+        <element name="RowOfWordPacks" positionX="-63.23919677734375" positionY="-183.8667755126953" width="128" height="73"/>
+    </elements>
+</model>

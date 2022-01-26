@@ -7,28 +7,25 @@
 
 import Foundation
 
-/*protocol TranslateDataProtocol:Encodable{
-    var words:[String]{get}
-    var translatedWords: [String]{get set}
-    var command: String{get}
-    func encode(to encoder: Encoder) throws
-}
-*/
-struct TranslateData: Codable {
+struct TranslateData: Encodable {
     
-    var words: [String]
-    var translatedWords: [String] = []
-    var command: String
+    var words: String
+    var translatedWords: String = ""
+    var command: String = ""
+    var originLanguage: String
+    var translatedLanguage: String
     var count: Float = 0
-    init(words: [String], translatedWords: [String], command: String, count: Float) {
+    init(words: String, translatedWords: String, originLanguage: String, translatedLanguage: String, count: Float) {
         self.words = words
         self.translatedWords = translatedWords
-        self.command = command
+        self.originLanguage = originLanguage
+        self.translatedLanguage = translatedLanguage
         self.count = count
     }
-    init(words: [String], from: Languages, to: Languages) {
+    init(words: String, from: String, to: String) {
         self.words = words
-        self.command = "\(from.rawValue)-\(to.rawValue)"
+        self.originLanguage = from
+        self.translatedLanguage = to
     }
     enum CodingKeys: String, CodingKey {
         case words = "text"
