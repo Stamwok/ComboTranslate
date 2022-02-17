@@ -41,8 +41,8 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         layoutIfNeeded()
         numberOfCardsToShow = datasource.numberOfCardsToShow()
         remainingCards = numberOfCardsToShow
-        for i in 0..<min(numberOfCardsToShow, cardsBeToVisible) {
-            addCardView(cardView: datasource.card(at: i), at: i)
+        for num in 0..<min(numberOfCardsToShow, cardsBeToVisible) {
+            addCardView(cardView: datasource.card(at: num), at: num)
         }
     }
     // MARK: - Configurations

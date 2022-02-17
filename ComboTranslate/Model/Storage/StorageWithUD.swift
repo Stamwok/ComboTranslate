@@ -30,7 +30,8 @@ class Storage {
             let translatedLanguage = elem[TranslateDataKey.translatedWords.rawValue]!
 //            let command = elem[TranslateDataKey.command.rawValue]!
             let count = elem[TranslateDataKey.count.rawValue]!
-            resultDict.append(TranslateData(words: words as! String, translatedWords: translatedWords as! String, originLanguage: originLanguage as! String, translatedLanguage: translatedLanguage as! String, count: count as! Float))
+            let dataForDict = TranslateData(words: words as! String, translatedWords: translatedWords as! String, originLanguage: originLanguage as! String, translatedLanguage: translatedLanguage as! String, count: count as! Float)
+            resultDict.append(dataForDict)
         }
         return resultDict
     }

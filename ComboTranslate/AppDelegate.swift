@@ -12,11 +12,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let statusBar1 =  UIView()
-        statusBar1.frame = UIApplication.shared.statusBarFrame
-        statusBar1.backgroundColor = UIColor.init(hex: "#2E8EEF")
-        UIApplication.shared.statusBarStyle = .lightContent
-        UIApplication.shared.keyWindow?.addSubview(statusBar1)
+//        let statusBar1 =  UIView()
+//        statusBar1.frame = UIApplication.shared.statusBarFrame
+//        statusBar1.backgroundColor = UIColor.init(hex: "#2E8EEF")
+//        UIApplication.shared.statusBarStyle = .lightContent
+//        UIApplication.shared.keyWindow?.addSubview(statusBar1)
         return true
     }
 

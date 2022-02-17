@@ -2,7 +2,7 @@
 //  Word+CoreDataProperties.swift
 //  ComboTranslate
 //
-//  Created by  Егор Шуляк on 26.01.22.
+//  Created by  Егор Шуляк on 16.02.22.
 //
 //
 
@@ -17,13 +17,31 @@ extension Word {
     }
 
     @NSManaged public var count: Float
-    @NSManaged public var originLanguage: String?
-    @NSManaged public var translatedLanguage: String?
     @NSManaged public var translatedWords: String?
     @NSManaged public var words: String?
+    @NSManaged public var originLanguage: String?
+    @NSManaged public var translatedLanguage: String?
+    @NSManaged public var wordPacks: NSSet?
 
 }
 
-extension Word : Identifiable {
+// MARK: Generated accessors for wordPacks
+extension Word {
+
+    @objc(addWordPacksObject:)
+    @NSManaged public func addToWordPacks(_ value: WordPacks)
+
+    @objc(removeWordPacksObject:)
+    @NSManaged public func removeFromWordPacks(_ value: WordPacks)
+
+    @objc(addWordPacks:)
+    @NSManaged public func addToWordPacks(_ values: NSSet)
+
+    @objc(removeWordPacks:)
+    @NSManaged public func removeFromWordPacks(_ values: NSSet)
+
+}
+
+extension Word: Identifiable {
 
 }

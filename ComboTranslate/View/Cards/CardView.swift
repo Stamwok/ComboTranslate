@@ -47,7 +47,7 @@ class CardView: UIView {
     
     @IBAction func selectWord (sender: UIButton) {
         if sender.tag != correctButtonTag {
-            sender.backgroundColor = .red
+            sender.backgroundColor = UIColor(hex: "#F05046")
             sender.setTitleColor(.white, for: .disabled)
             
             dataSource?.isGameWin = false
@@ -56,7 +56,7 @@ class CardView: UIView {
         }
         buttonCollection.forEach {button in
             if button.tag == correctButtonTag {
-                button.backgroundColor = .green
+                button.backgroundColor = UIColor(hex: "#D9F016")
                 button.setTitleColor(.white, for: .disabled)
                 
             }
@@ -106,7 +106,7 @@ class CardView: UIView {
         contentView = Bundle.main.loadNibNamed("CardView", owner: self, options: nil)?[0] as? UIView
         contentView.layer.cornerRadius = 15
         contentView.clipsToBounds = true
-        labelTrans?.layer.cornerRadius = 15
+//        labelTrans?.layer.cornerRadius = 15
         configureRectView()
         addSubview(contentView)
        

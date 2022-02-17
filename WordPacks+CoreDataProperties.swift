@@ -2,7 +2,7 @@
 //  WordPacks+CoreDataProperties.swift
 //  ComboTranslate
 //
-//  Created by  Егор Шуляк on 26.01.22.
+//  Created by  Егор Шуляк on 16.02.22.
 //
 //
 
@@ -16,27 +16,28 @@ extension WordPacks {
         return NSFetchRequest<WordPacks>(entityName: "WordPacks")
     }
 
-    @NSManaged public var rowsOfWordPack: NSSet?
+    @NSManaged public var name: String?
+    @NSManaged public var word: NSSet?
 
 }
 
-// MARK: Generated accessors for rowsOfWordPack
+// MARK: Generated accessors for word
 extension WordPacks {
 
-    @objc(addRowsOfWordPackObject:)
-    @NSManaged public func addToRowsOfWordPack(_ value: RowOfWordPacks)
+    @objc(addWordObject:)
+    @NSManaged public func addToWord(_ value: Word)
 
-    @objc(removeRowsOfWordPackObject:)
-    @NSManaged public func removeFromRowsOfWordPack(_ value: RowOfWordPacks)
+    @objc(removeWordObject:)
+    @NSManaged public func removeFromWord(_ value: Word)
 
-    @objc(addRowsOfWordPack:)
-    @NSManaged public func addToRowsOfWordPack(_ values: NSSet)
+    @objc(addWord:)
+    @NSManaged public func addToWord(_ values: NSSet)
 
-    @objc(removeRowsOfWordPack:)
-    @NSManaged public func removeFromRowsOfWordPack(_ values: NSSet)
+    @objc(removeWord:)
+    @NSManaged public func removeFromWord(_ values: NSSet)
 
 }
 
-extension WordPacks : Identifiable {
+extension WordPacks: Identifiable {
 
 }

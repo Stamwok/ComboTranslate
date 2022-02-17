@@ -29,11 +29,11 @@ class LanguagesTableViewController: UIViewController, UITableViewDataSource, UIT
         super.viewDidLoad()
         headerLabel.text = headerLabelText
         
-        let statusBar1 =  UIView()
-        statusBar1.frame = UIApplication.shared.statusBarFrame
-        statusBar1.backgroundColor = UIColor.init(hex: "#2E8EEF")
-        UIApplication.shared.statusBarStyle = .lightContent
-        UIApplication.shared.keyWindow?.addSubview(statusBar1)
+//        let statusBar1 =  UIView()
+//        statusBar1.frame = UIApplication.shared.statusBarFrame
+//        statusBar1.backgroundColor = UIColor.init(hex: "#2E8EEF")
+//        UIApplication.shared.statusBarStyle = .lightContent
+//        UIApplication.shared.keyWindow?.addSubview(statusBar1)
     }
 
     // MARK: - Table view data source

@@ -154,8 +154,10 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         
         tabBarController?.tabBar.layer.shadowOffset = CGSize(width: 0, height: -2)
         tabBarController?.tabBar.layer.shadowOpacity = 0.3
-        tabBarController?.tabBar.layer.shadowColor = UIColor.black.cgColor
-        tabBarController?.tabBar.layer.shadowRadius = 2
+        tabBarController?.tabBar.layer.shadowColor = UIColor.lightGray.cgColor
+        tabBarController?.tabBar.layer.shadowRadius = 5
+        tabBarController?.tabBar.shadowImage = UIImage()
+        tabBarController?.tabBar.backgroundImage = UIImage()
     }
     
     private func configureTranslateView() {

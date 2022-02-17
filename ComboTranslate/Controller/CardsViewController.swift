@@ -9,7 +9,7 @@ import UIKit
 
 class CardsViewController: UIViewController {
     @IBAction func cancelButton() {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     let storage = Storage()
     var viewModelData: [TranslateData]! {
@@ -17,40 +17,39 @@ class CardsViewController: UIViewController {
             storage.saveData(data: viewModelData)
         }
     }
-   @IBOutlet var stackContainer: StackContainerView!
+    var stackContainer: StackContainerView!
     var cardsDataModel: [SecretValue] = []
     
     var game: CardsGame!
     // MARK: - Init
     override func loadView() {
         super.loadView()
-        stackContainer = StackContainerView()
-        view.addSubview(stackContainer)
-        configureStackContainer()
-        stackContainer.translatesAutoresizingMaskIntoConstraints = false
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        viewModelData = storage.loadData()
+        
+        stackContainer = StackContainerView()
+        view.addSubview(stackContainer)
+        configureStackContainer()
         cardsDataModel = generateDataForCards()
         stackContainer.dataSource = self
-        
-        let statusBar1 =  UIView()
-        statusBar1.frame = UIApplication.shared.statusBarFrame
-        statusBar1.backgroundColor = UIColor.init(hex: "#2E8EEF")
-        UIApplication.shared.statusBarStyle = .lightContent
-        UIApplication.shared.keyWindow?.addSubview(statusBar1)
+//        let statusBar1 =  UIView()
+//        statusBar1.frame = UIApplication.shared.statusBarFrame
+//        statusBar1.backgroundColor = UIColor.init(hex: "#2E8EEF")
+//        UIApplication.shared.statusBarStyle = .lightContent
+//        UIApplication.shared.keyWindow?.addSubview(statusBar1)
         
     }
     func configureStackContainer() {
-        stackContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        stackContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30).isActive = true
-        let screenRect = UIScreen.main.bounds
-        let widthStackContainer = screenRect.size.width - 40
-        let heightStackContainer = screenRect.size.height - 200
+        let widthStackContainer = view.frame.size.width - 40
+        let heightStackContainer = view.frame.size.height - 200
+        stackContainer.translatesAutoresizingMaskIntoConstraints = false
         stackContainer.widthAnchor.constraint(equalToConstant: widthStackContainer).isActive = true
         stackContainer.heightAnchor.constraint(equalToConstant: heightStackContainer).isActive = true
+        stackContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        stackContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30).isActive = true
+        view.layoutIfNeeded()
     }
 }
 
