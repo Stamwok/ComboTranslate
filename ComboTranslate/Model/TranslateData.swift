@@ -9,26 +9,27 @@ import Foundation
 
 struct TranslateData: Encodable {
     
-    var words: String
-    var translatedWords: String = ""
+    var word: String
+    var translatedWord: String = ""
     var command: String = ""
-    var originLanguage: String
-    var translatedLanguage: String
-    var count: Float = 0
-    init(words: String, translatedWords: String, originLanguage: String, translatedLanguage: String, count: Float) {
-        self.words = words
-        self.translatedWords = translatedWords
+    var originLanguage: String = ""
+    var translationLanguage: String = ""
+//    var count: Float = 0
+//    init(word: String, translatedWord: String, originLanguage: String, translationLanguage: String, count: Float) {
+//        self.word = word
+//        self.translatedWord = translatedWord
+//        self.originLanguage = originLanguage
+//        self.translationLanguage = translationLanguage
+//        self.count = count
+//    }
+    init(word: String, from originLanguage: String, to translationLanguage: String) {
+        self.word = word
+//        self.command = "\(originLanguage)-\(translationLanguage)"
         self.originLanguage = originLanguage
-        self.translatedLanguage = translatedLanguage
-        self.count = count
-    }
-    init(words: String, from: String, to: String) {
-        self.words = words
-        self.originLanguage = from
-        self.translatedLanguage = to
+        self.translationLanguage = translationLanguage
     }
     enum CodingKeys: String, CodingKey {
-        case words = "text"
+        case word = "text"
         case command = "model_id"
     }
 }

@@ -23,9 +23,11 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     
     var translateApi = IBMTranslateApi()
     var storage = Storage()
+//    var cdManager = StorageWithCDManager()
     var opacityView: UIView!
     var translateView: TranslateView!
     var translatedView: TranslatedView!
+    var tableView: TranslateTableController!
     var languages: [String] = []
     
     var originLanguage: String! {
@@ -34,24 +36,22 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
             originLanguageButton.setTitle(originLanguage, for: .normal)
         }
     }
-    var translatedLanguage: String! {
+    var translationLanguage: String! {
         didSet {
-            storage.saveTranslatedLanguage(translatedLanguage)
-            translatedLanguageButton.setTitle(translatedLanguage, for: .normal)
+            storage.saveTranslatedLanguage(translationLanguage)
+            translatedLanguageButton.setTitle(translationLanguage, for: .normal)
         }
     }
     
-    var translateDataCollection: [TranslateData] = [] {
+    lazy var translateDataCollection: [Word] = [] {
         didSet {
-            DispatchQueue.main.async {
-                (self.children[0] as? TranslateTableController)?.translateDataCollection = self.translateDataCollection
-            }
-            storage.saveData(data: translateDataCollection)
+            tableView.translateDataCollection = translateDataCollection
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView = self.children[0] as? TranslateTableController
         translateApi.languages.forEach({ key, _ in
             self.languages.append(key)
         })
@@ -60,10 +60,14 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        translateDataCollection = storage.loadData()
+        reloadData()
         originLanguage = storage.loadOriginLanguage()
-        translatedLanguage = storage.loadTranslatedLanguage()
-        (self.children[0] as? TranslateTableController)?.translateDataCollection = self.translateDataCollection
+        translationLanguage = storage.loadTranslatedLanguage()
+//        (self.children[0] as? TranslateTableController)?.translateDataCollection = self.translateDataCollection
+    }
+    
+    func reloadData() {
+        translateDataCollection = StorageWithCDManager.instance.loadWords()
     }
     
     // MARK: - Delegate translateView
@@ -77,30 +81,30 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         opacityView?.removeFromSuperview()
     }
     func setData(data: TranslateData?) {
-        guard var data = data else {
-            return
-        }
-        self.translateDataCollection.enumerated().forEach { index, transData in
-            if transData.words == data.words {
-                data = transData
-                self.translateDataCollection.remove(at: index)
+        guard let data = data else { return }
+        let newWord = StorageWithCDManager.instance.addNewWord(word: data)
+        self.translateDataCollection.enumerated().forEach { _, transData in
+            if transData.word == data.word {
+                newWord.count = transData.count
+                StorageWithCDManager.instance.removeItem(item: transData)
                 return
             }
         }
-        self.translateDataCollection.append(data)
+        StorageWithCDManager.instance.saveContext()
+        reloadData()
         
         imageView.constraints.filter {$0.identifier == "imageHeight"}.first?.constant = 70
         transFieldView.constraints.filter {$0.identifier == "transFieldViewHeight"}.first?.constant = 128
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }
-        configureTranslatedView(data: data)
+        configureTranslatedView(data: newWord)
         translateView.removeFromSuperview()
         opacityView.removeFromSuperview()
     }
     func translate(text: String, completionHandler: @escaping (TranslateData) -> Void) {
-        var data = TranslateData(words: text, from: originLanguage, to: translatedLanguage)
-        translateApi.translate(data: &data) { outputData in
+        let data = TranslateData(word: text, from: originLanguage, to: translationLanguage)
+        translateApi.translate(data: data) {outputData in
             completionHandler(outputData)
         }
     }
@@ -174,7 +178,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         translateView.bottomAnchor.constraint(equalTo: transFieldView.bottomAnchor).isActive = true
     }
     
-    private func configureTranslatedView(data: TranslateData) {
+    private func configureTranslatedView(data: Word) {
         transFieldView.isHidden = true
         translatedView = TranslatedView(data: data)
         translatedView.delegate = self
@@ -209,8 +213,8 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     
     @IBAction func switchLanguages() {
         let temporaryStorage = originLanguage
-        originLanguage = translatedLanguage
-        translatedLanguage = temporaryStorage
+        originLanguage = translationLanguage
+        translationLanguage = temporaryStorage
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -220,7 +224,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
             destionation.languages = self.languages
             destionation.checkMarkOn = originLanguage
             destionation.doAfterLanguageSelected = { [weak self] language in
-                if language == self?.translatedLanguage {
+                if language == self?.translationLanguage {
                     self?.switchLanguages()
                 } else {
                     self?.originLanguage = language
@@ -232,12 +236,12 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
             guard let destionation = segue.destination as? LanguagesTableViewController else { return }
             destionation.headerLabelText = "Перевести на"
             destionation.languages = self.languages
-            destionation.checkMarkOn = translatedLanguage
+            destionation.checkMarkOn = translationLanguage
             destionation.doAfterLanguageSelected = { [weak self] language in
                 if language == self?.originLanguage {
                     self?.switchLanguages()
                 } else {
-                    self?.translatedLanguage = language
+                    self?.translationLanguage = language
                 }
                 destionation.dismiss(animated: true, completion: nil)
             }

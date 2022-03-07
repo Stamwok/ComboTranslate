@@ -12,11 +12,7 @@ class CardsViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     let storage = Storage()
-    var viewModelData: [TranslateData]! {
-        didSet {
-            storage.saveData(data: viewModelData)
-        }
-    }
+    var viewModelData: [Word]!
     var stackContainer: StackContainerView!
     var cardsDataModel: [SecretValue] = []
     
@@ -59,8 +55,8 @@ extension CardsViewController: SwipeCardsDataSource {
     }
     func card(at index: Int) -> CardView {
         let card = CardView()
-        card.dataSource = CardsGame(collection: viewModelData, value: cardsDataModel[index]) {dataSource in
-            self.viewModelData[dataSource.secretValueIndex] = dataSource.secretValue
+        card.dataSource = CardsGame(collection: viewModelData, value: cardsDataModel[index]) { dataSource in
+            StorageWithCDManager.instance.saveContext()
         }
         return card
     }
@@ -80,7 +76,7 @@ extension CardsViewController: SwipeCardsDataSource {
             let newRandomIndex = randomIndex
             let newRandValue = viewModelData[newRandomIndex]
             let coinsidenceCount = dataForCard.filter({ value in
-                return value.secretValue!.words == newRandValue.words
+                return value.secretValue!.word == newRandValue.word
             }).count
             if coinsidenceCount < 1 && newRandValue.count < 1.0 {
                 var newValue = SecretValue(collection: [newRandValue])

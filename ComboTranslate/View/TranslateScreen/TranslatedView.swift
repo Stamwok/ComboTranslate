@@ -29,7 +29,7 @@ class TranslatedView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
     }
-    init?(data: TranslateData) {
+    init?(data: Word) {
         super.init(frame: .zero)
         let contentView = Bundle.main.loadNibNamed("TranslatedView", owner: self, options: nil)?.first as! UIView
         addSubview(contentView)
@@ -40,9 +40,9 @@ class TranslatedView: UIView {
         contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         
         self.originLanguage = data.originLanguage
-        self.translatedLanguage = data.translatedLanguage
-        self.translateText = data.words
-        self.translatedText = data.translatedWords
+        self.translatedLanguage = data.translationLanguage
+        self.translateText = data.word
+        self.translatedText = data.translatedWord
     }
     override func layoutSubviews() {
         if originLanguageLabel != nil {

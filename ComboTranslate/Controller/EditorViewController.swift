@@ -9,25 +9,50 @@ import UIKit
 
 class EditorViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var dataSource: [TranslateData]!
-    var wordsInPack: [TranslateData]!
+    var dataSource: [Word] = StorageWithCDManager.instance.loadWords()
+    var wordPack: WordPack?
     let edgeInset: CGFloat = 8
     let minSpacing: CGFloat = 8
+    var completionHandler: (() -> Void)?
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var nameField: UITextField!
     @IBOutlet var deleteButton: UIButton!
-    @IBAction func deletePack(_ : UIButton) {
-        
-    }
     @IBAction func acceptPack (_ : UIButton) {
-        
+        guard let name = nameField.text, let selectedItems = collectionView.indexPathsForSelectedItems else { return }
+        if selectedItems.count != 0 && !name.isEmpty {
+            var set: [Word] {
+                var result: [Word] = []
+                for itemNum in selectedItems {
+                    result.append(dataSource[itemNum.row])
+                }
+                return result
+            }
+            if wordPack != nil {
+                wordPack?.name = nameField.text
+                wordPack?.words = NSSet(array: set)
+            } else {
+                StorageWithCDManager.instance.saveNewPack(name: name, set: set)
+            }
+            StorageWithCDManager.instance.saveContext()
+            completionHandler?()
+            self.dismiss(animated: true)
+        }
     }
-
+    
+    @IBAction func deletePack (_: UIButton) {
+        StorageWithCDManager.instance.removeItem(item: wordPack as Any)
+        self.dismiss(animated: true)
+        completionHandler?()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let packName = wordPack?.name {
+            nameField.text = packName
+        }
         deleteButton.layer.cornerRadius = 15
-        dataSource = Storage().loadData()
+//        dataSource = Storage().loadData().reversed()
         collectionView.register(EditorCollectionViewCell.nib, forCellWithReuseIdentifier: EditorCollectionViewCell.reuseID)
         let flowLayout = CenterAlignedCollectionViewFlowLayout()
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
@@ -38,13 +63,10 @@ class EditorViewController: UIViewController, UICollectionViewDelegate, UICollec
     // MARK: - collectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        (collectionView.cellForItem(at: indexPath) as? EditorCollectionViewCell)?.colorView.backgroundColor = UIColor(hex: "2E8EEF")
-//        (collectionView.cellForItem(at: indexPath) as? EditorCollectionViewCell)?.label.textColor = .white
-//        (collectionView.cellForItem(at: indexPath) as? EditorCollectionViewCell)?.imageView.isHidden = false
-        (collectionView.cellForItem(at: indexPath) as? EditorCollectionViewCell)?.select()
+
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        (collectionView.cellForItem(at: indexPath) as? EditorCollectionViewCell)?.deselect()
+
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
@@ -53,9 +75,13 @@ class EditorViewController: UIViewController, UICollectionViewDelegate, UICollec
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EditorCollectionViewCell.reuseID, for: indexPath) as? EditorCollectionViewCell else {
             fatalError("Wrong cell")
         }
-        let dataForCell = dataSource.reversed()[indexPath.row]
-        cell.label.text = dataForCell.words
-        cell.imageView.isHidden = true
+        let dataForCell = dataSource[indexPath.row]
+        cell.label.text = dataForCell.word
+        if let wordPack = wordPack, let words = wordPack.words?.allObjects as? [Word], words.contains(dataForCell) {
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+//            }
+        }
+        cell.clipsToBounds = false
         return cell
     }
     

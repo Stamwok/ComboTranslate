@@ -8,8 +8,8 @@
 import Foundation
 
 class CardsGame {
-    var secretValue: TranslateData
-    var transDataCollection: [TranslateData]
+    var secretValue: Word
+    var transDataCollection: [Word]
     var uniqueRandValues: [SecretValue] = []
     var secretValueIndex: Int
     var isGameWin: Bool = false {
@@ -22,19 +22,19 @@ class CardsGame {
         }
     }
     var closure: (CardsGame) -> Void
-    init(collection: [TranslateData], value: SecretValue, closure: @escaping (CardsGame) -> Void) {
+    init(collection: [Word], value: SecretValue, closure: @escaping (CardsGame) -> Void) {
         self.closure = closure
         self.transDataCollection = collection
         self.secretValue = value.secretValue!
         self.secretValueIndex = value.secretValueIndex
     }
-    func getNewSecretValue() -> TranslateData? {
+    func getNewSecretValue() -> Word? {
         let uniqueValuesCount = uniqueRandValues.count
         while uniqueRandValues.count <= uniqueValuesCount {
             let newSecretValue = SecretValue(collection: transDataCollection)!
-            guard newSecretValue.secretValue?.words != secretValue.words else { continue }
+            guard newSecretValue.secretValue?.word != secretValue.word else { continue }
             let coinsidenceCount = uniqueRandValues.filter({ value in
-                return value.secretValue?.words == newSecretValue.secretValue?.words
+                return value.secretValue?.word == newSecretValue.secretValue?.word
             }).count
             if coinsidenceCount < 1 {
                 uniqueRandValues.append(newSecretValue)

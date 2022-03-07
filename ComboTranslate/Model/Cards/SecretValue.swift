@@ -8,11 +8,11 @@
 import Foundation
 
 struct SecretValue {
-    var secretValue: TranslateData?
+    var secretValue: Word?
     var secretValueIndex: Int
-    var transDataColection: [TranslateData] = []
+    var transDataColection: [Word] = []
 
-    init?(collection: [TranslateData]) {
+    init?(collection: [Word]) {
         self.transDataColection = collection
         guard let randomIndex = Array(0...transDataColection.count-1).randomElement() else {return nil}
         self.secretValueIndex = randomIndex

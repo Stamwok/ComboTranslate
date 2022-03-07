@@ -10,15 +10,29 @@ import UIKit
 class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var storage = Storage()
-    var wordPacks: [TranslateData]!
-    
-//    @IBOutlet var labelCount: UILabel!
-//    @IBOutlet var labelName: UILabel!
+    var wordPacks: [WordPack] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     @IBOutlet var tableView: UITableView!
     @IBAction func addPack(_ : UIButton) {
         guard let destination = self.storyboard?.instantiateViewController(withIdentifier: String(describing: EditorViewController.self)) as? EditorViewController else { return }
+        destination.completionHandler = {
+            self.wordPacks = StorageWithCDManager.instance.loadWordPacks()
+        }
         present(destination, animated: true, completion: nil)
         
+    }
+    
+    func editPack(cell: UITableViewCell) {
+        guard let destination = self.storyboard?.instantiateViewController(withIdentifier: String(describing: EditorViewController.self)) as? EditorViewController else { return }
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        destination.wordPack = wordPacks[indexPath.row]
+        destination.completionHandler = {
+            self.wordPacks = StorageWithCDManager.instance.loadWordPacks()
+        }
+        present(destination, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -31,8 +45,9 @@ class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        wordPacks = storage.loadData()
-        tableView.reloadData()
+        
+        wordPacks = StorageWithCDManager.instance.loadWordPacks()
+        print("viewWillAppear")
     }
 
     // MARK: - Table view data source
@@ -44,11 +59,15 @@ class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDat
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return wordPacks.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let destination = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CardsViewController.self)) as? CardsViewController else { return }
-        destination.viewModelData = wordPacks
+        guard let words = wordPacks[indexPath.row].words, words.count > 6 else {
+            tableView.cellForRow(at: indexPath)?.isSelected = false
+            return
+        }
+        destination.viewModelData = words.allObjects as? [Word]
         destination.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(destination, animated: true)
 //        tableView.deselectRow(at: indexPath, animated: true)
@@ -56,9 +75,24 @@ class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WordsPackCell", for: indexPath)
-        (cell.viewWithTag(1) as! UILabel).text = "Переведенные слова"
-        (cell.viewWithTag(2) as! UILabel).text = "Слов \(wordPacks.count)"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WordsPackCell", for: indexPath) as? WordsPackCell else { return WordsPackCell() }
+        guard let words = wordPacks[indexPath.row].words?.allObjects as? [Word] else { return WordsPackCell() }
+        cell.packName.text = wordPacks[indexPath.row].name
+        cell.wordsCount.text = String("\(words.count) слов")
+        var shortList: String = {
+            var resultArr: [String] = []
+            for item in words {
+                guard let word = item.word else { continue }
+                resultArr.append(word)
+            }
+            
+            return resultArr.reduce("", {$0 + ", " + $1})
+        }()
+        cell.shortList.text = shortList
+        cell.delegate = self
+        if indexPath.row == 0 {
+            cell.editButton.isHidden = true
+        }
         return cell
     }
     

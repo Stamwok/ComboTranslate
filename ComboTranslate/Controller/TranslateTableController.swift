@@ -8,12 +8,14 @@
 import UIKit
 
 class TranslateTableController: UITableViewController {
-    var translateDataCollection: [TranslateData] = [] {
+    
+    // MARK: - initiate
+    var translateDataCollection: [Word] = [] {
         didSet {
             tableView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -24,12 +26,10 @@ class TranslateTableController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return translateDataCollection.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,17 +37,17 @@ class TranslateTableController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let actionDelete = UIContextualAction(style: .destructive, title: "Удалить") {_, _, _ in
-            var newCollection: [TranslateData] = self.translateDataCollection.reversed()
-            newCollection.remove(at: indexPath.row)
-            (self.parent as? TranslateController)?.translateDataCollection = newCollection.reversed()
-            tableView.reloadData()
+            let itemForRemove = self.translateDataCollection.reversed()[indexPath.row]
+            StorageWithCDManager.instance.removeItem(item: itemForRemove)
+            StorageWithCDManager.instance.saveContext()
+            (self.parent as? TranslateController)?.reloadData()
         }
         return UISwipeActionsConfiguration(actions: [actionDelete])
     }
     private func getConfiguredTranslateCell(for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TranslateCell", for: indexPath) as? TranslateCell
-        cell?.translateLabel?.text = translateDataCollection.reversed()[indexPath.row].words
-        cell?.translatedLabel?.text = translateDataCollection.reversed()[indexPath.row].translatedWords
+        cell?.translateLabel?.text = translateDataCollection.reversed()[indexPath.row].word
+        cell?.translatedLabel?.text = translateDataCollection.reversed()[indexPath.row].translatedWord
         cell?.progress?.progress = translateDataCollection.reversed()[indexPath.row].count
         if indexPath.row + 1 == translateDataCollection.count {
             cell?.separatorInset = UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)

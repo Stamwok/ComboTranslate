@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Word" representedClassName=".Word" syncable="YES" codeGenerationType="class">
-        <attribute name="count" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="StorageWithCD">
+    <entity name="Word" representedClassName=".Word" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="originLanguage" optional="YES" attributeType="String"/>
-        <attribute name="translatedLanguage" optional="YES" attributeType="String"/>
-        <attribute name="translatedWords" optional="YES" attributeType="String"/>
-        <attribute name="words" optional="YES" attributeType="String"/>
-        <relationship name="wordPacks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WordPacks" inverseName="word" inverseEntity="WordPacks"/>
+        <attribute name="translatedWord" optional="YES" attributeType="String"/>
+        <attribute name="translationLanguage" optional="YES" attributeType="String"/>
+        <attribute name="word" optional="YES" attributeType="String"/>
+        <relationship name="wordPacks" toMany="YES" deletionRule="Nullify" destinationEntity="WordPack" inverseName="words" inverseEntity="WordPack"/>
     </entity>
-    <entity name="WordPacks" representedClassName=".WordPacks" syncable="YES" codeGenerationType="class">
+    <entity name="WordPack" representedClassName=".WordPack" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="word" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="wordPacks" inverseEntity="Word"/>
+        <relationship name="words" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="wordPacks" inverseEntity="Word"/>
     </entity>
     <elements>
-        <element name="Word" positionX="-459.6923217773438" positionY="112.3434448242188" width="128" height="119"/>
-        <element name="WordPacks" positionX="-417.6100463867188" positionY="-49.20111083984372" width="128" height="59"/>
+        <element name="Word" positionX="-256.7955322265626" positionY="87.9361572265625" width="128" height="148"/>
+        <element name="WordPack" positionX="-417.6100463867188" positionY="-49.20111083984372" width="128" height="88"/>
     </elements>
 </model>

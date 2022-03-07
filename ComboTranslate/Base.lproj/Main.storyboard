@@ -119,7 +119,7 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="deletePack:" destination="mbM-PI-cxa" eventType="touchUpInside" id="sZS-L2-Kfp"/>
+                                    <action selector="deletePack:" destination="mbM-PI-cxa" eventType="touchUpInside" id="M1P-J9-XEr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -226,7 +226,7 @@
                                 <rect key="frame" x="0.0" y="70" width="320" height="498"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WordsPackCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordsPackCell" rowHeight="99" id="Dgj-lX-mJW">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WordsPackCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordsPackCell" rowHeight="99" id="Dgj-lX-mJW" customClass="WordsPackCell" customModule="ComboTranslate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="320" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dgj-lX-mJW" id="PzJ-4i-dVR">
@@ -266,6 +266,9 @@
                                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25" scale="default"/>
                                                         <color key="baseForegroundColor" red="0.17952087520000001" green="0.55633819100000004" blue="0.9379547238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="editPack:" destination="Dgj-lX-mJW" eventType="touchUpInside" id="eIy-hl-nag"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -277,6 +280,7 @@
                                                 <constraint firstItem="FGq-ar-Jq7" firstAttribute="leading" secondItem="PzJ-4i-dVR" secondAttribute="leadingMargin" id="KZ6-bg-qDP"/>
                                                 <constraint firstItem="XjA-ke-EfL" firstAttribute="top" secondItem="xkD-WG-yl5" secondAttribute="bottom" constant="8" id="L3A-mE-xof"/>
                                                 <constraint firstItem="e7E-c2-TRA" firstAttribute="leading" secondItem="FGq-ar-Jq7" secondAttribute="trailing" constant="8" id="O3f-HS-Pi8"/>
+                                                <constraint firstAttribute="bottom" secondItem="XjA-ke-EfL" secondAttribute="bottom" constant="29" id="QIJ-is-ycK"/>
                                                 <constraint firstItem="e7E-c2-TRA" firstAttribute="top" secondItem="PzJ-4i-dVR" secondAttribute="top" constant="8" id="RKm-ZR-FX0"/>
                                                 <constraint firstItem="fIA-8w-srs" firstAttribute="top" secondItem="e7E-c2-TRA" secondAttribute="bottom" constant="8" id="dyz-fB-0tu"/>
                                                 <constraint firstItem="FGq-ar-Jq7" firstAttribute="centerY" secondItem="PzJ-4i-dVR" secondAttribute="centerY" id="qnB-gM-5Al"/>
@@ -285,6 +289,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="editButton" destination="xkD-WG-yl5" id="Rjz-gj-Esn"/>
+                                            <outlet property="packName" destination="e7E-c2-TRA" id="dIy-Kw-hvr"/>
+                                            <outlet property="shortList" destination="fIA-8w-srs" id="BOZ-4H-4zN"/>
+                                            <outlet property="wordsCount" destination="XjA-ke-EfL" id="JOW-3i-RSC"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

@@ -2,13 +2,12 @@
 //  Word+CoreDataProperties.swift
 //  ComboTranslate
 //
-//  Created by  Егор Шуляк on 16.02.22.
+//  Created by  Егор Шуляк on 4.03.22.
 //
 //
 
 import Foundation
 import CoreData
-
 
 extension Word {
 
@@ -17,10 +16,11 @@ extension Word {
     }
 
     @NSManaged public var count: Float
-    @NSManaged public var translatedWords: String?
-    @NSManaged public var words: String?
     @NSManaged public var originLanguage: String?
-    @NSManaged public var translatedLanguage: String?
+    @NSManaged public var translatedWord: String?
+    @NSManaged public var translationLanguage: String?
+    @NSManaged public var word: String?
+    @NSManaged public var id: Double
     @NSManaged public var wordPacks: NSSet?
 
 }
@@ -29,10 +29,10 @@ extension Word {
 extension Word {
 
     @objc(addWordPacksObject:)
-    @NSManaged public func addToWordPacks(_ value: WordPacks)
+    @NSManaged public func addToWordPacks(_ value: WordPack)
 
     @objc(removeWordPacksObject:)
-    @NSManaged public func removeFromWordPacks(_ value: WordPacks)
+    @NSManaged public func removeFromWordPacks(_ value: WordPack)
 
     @objc(addWordPacks:)
     @NSManaged public func addToWordPacks(_ values: NSSet)
@@ -43,5 +43,4 @@ extension Word {
 }
 
 extension Word: Identifiable {
-
 }

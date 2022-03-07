@@ -19,6 +19,8 @@ class CardView: UIView {
     @IBOutlet var rectView: UIView!
     @IBOutlet var numberOfCardLabel: UILabel!
     @IBOutlet var cardCountLabel: UILabel!
+    @IBOutlet var originLanguage: UILabel!
+    @IBOutlet var translationLanguage: UILabel!
     
     var buttonCollection: [UIButton] = []
     weak var delegate: SwipeCardsDelegate?
@@ -26,7 +28,9 @@ class CardView: UIView {
     var dataSource: CardsGame? {
         didSet {
             configureProgressView()
-            labelTrans?.text = dataSource?.secretValue.words
+            labelTrans.text = dataSource?.secretValue.word
+            originLanguage.text = dataSource?.secretValue.originLanguage
+            translationLanguage.text = dataSource?.secretValue.translationLanguage
             updateButtons()
         }
     }
@@ -36,10 +40,10 @@ class CardView: UIView {
         buttonCollection = [buttonTrans1, buttonTrans2, buttonTrans3, buttonTrans4]
         buttonCollection.forEach { button in
             if correctButtonTag == button.tag {
-                button.setTitle(dataSource?.secretValue.translatedWords, for: .normal)
+                button.setTitle(dataSource?.secretValue.translatedWord, for: .normal)
             } else {
                 let copySeretValue = dataSource?.getNewSecretValue()
-                button.setTitle(copySeretValue?.translatedWords, for: .normal)
+                button.setTitle(copySeretValue?.translatedWord, for: .normal)
             }
             configureButtonView(button: button)
         }
