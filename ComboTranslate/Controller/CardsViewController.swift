@@ -8,9 +8,10 @@
 import UIKit
 
 class CardsViewController: UIViewController {
-    @IBAction func cancelButton() {
+    @IBAction func cancelButton(sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+    @IBOutlet var cancelButton: UIButton!
     let storage = Storage()
     var viewModelData: [Word]!
     var stackContainer: StackContainerView!
@@ -25,6 +26,9 @@ class CardsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cancelButton.layer.shadowRadius = 2
+        cancelButton.layer.shadowOffset = CGSize(width: 2, height: 2)
+        cancelButton.layer.shadowOpacity = 0.5
         stackContainer = StackContainerView()
         view.addSubview(stackContainer)
         configureStackContainer()
@@ -55,7 +59,7 @@ extension CardsViewController: SwipeCardsDataSource {
     }
     func card(at index: Int) -> CardView {
         let card = CardView()
-        card.dataSource = CardsGame(collection: viewModelData, value: cardsDataModel[index]) { dataSource in
+        card.dataSource = CardsGame(collection: viewModelData, value: cardsDataModel[index]) { _ in
             StorageWithCDManager.instance.saveContext()
         }
         return card

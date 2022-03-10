@@ -47,7 +47,7 @@ class TranslateView: UIView, UITextViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         if translateField != nil {
-            translateField.text = "   "
+//            translateField.text = "   "
             translateField.becomeFirstResponder()
             translateButton.isEnabled = false
         }
@@ -90,10 +90,11 @@ class TranslateView: UIView, UITextViewDelegate {
             delegate?.setData(data: translateData)
             textView.resignFirstResponder()
             return false
-        } else if textView.text + text == "   " && text == "" && range.length > 0 {
-            return false
+//        } else if textView.text + text == "   " && text == "" && range.length > 0 {
+//            return false
         } else {
-            return count <= 30
+//            return count <= 39
+            return true
         }
     }
 }

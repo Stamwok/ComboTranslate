@@ -15,6 +15,8 @@ class TranslatedView: UIView {
     @IBOutlet var translatedLanguageLabel: UILabel!
     @IBOutlet var translateTextLabel: UILabel!
     @IBOutlet var translatedTextLabel: UILabel!
+    @IBOutlet var translateView: UIView!
+    @IBOutlet var translatedView: UIView!
     @IBAction func closeButton(sender: UIButton) {
         delegate?.closeTranslatedView()
     }
@@ -43,6 +45,15 @@ class TranslatedView: UIView {
         self.translatedLanguage = data.translationLanguage
         self.translateText = data.word
         self.translatedText = data.translatedWord
+        
+        translatedView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        translatedView.layer.shadowOpacity = 0.5
+        translatedView.layer.shadowRadius = 2
+        
+        translateView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        translateView.layer.shadowOpacity = 0.5
+        translateView.layer.shadowRadius = 2
+        
     }
     override func layoutSubviews() {
         if originLanguageLabel != nil {

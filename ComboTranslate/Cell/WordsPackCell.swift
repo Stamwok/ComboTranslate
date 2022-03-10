@@ -11,7 +11,6 @@ class WordsPackCell: UITableViewCell {
     
     weak var delegate: WordsPackController?
     
-    
     @IBOutlet var packName: UILabel!
     @IBOutlet var shortList: UILabel!
     @IBOutlet var wordsCount: UILabel!
@@ -23,6 +22,11 @@ class WordsPackCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        editButton.layer.shadowOpacity = 0.5
+        editButton.layer.shadowOffset = CGSize(width: 2, height: 2)
+        editButton.layer.shadowColor = UIColor.black.cgColor
+        editButton.layer.shadowRadius = 2
+        editButton.clipsToBounds = true
         
         // Initialization code
     }

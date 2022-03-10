@@ -21,6 +21,7 @@
 		045D109827D2268300FBDC4F /* WordPack+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D109427D2268300FBDC4F /* WordPack+CoreDataProperties.swift */; };
 		045D109927D2268300FBDC4F /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D109527D2268300FBDC4F /* Word+CoreDataClass.swift */; };
 		045D109A27D2268300FBDC4F /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D109627D2268300FBDC4F /* Word+CoreDataProperties.swift */; };
+		047BF8D427DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047BF8D327DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift */; };
 		04A82D642791E14B00F69895 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04A82D572791E14B00F69895 /* Roboto-Medium.ttf */; };
 		04A82D652791E14B00F69895 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04A82D582791E14B00F69895 /* Roboto-Light.ttf */; };
 		04A82D662791E14B00F69895 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04A82D592791E14B00F69895 /* Roboto-Regular.ttf */; };
@@ -82,6 +83,7 @@
 		045D109427D2268300FBDC4F /* WordPack+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordPack+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		045D109527D2268300FBDC4F /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
 		045D109627D2268300FBDC4F /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		047BF8D327DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		04A82D572791E14B00F69895 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		04A82D582791E14B00F69895 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		04A82D592791E14B00F69895 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -97,6 +99,8 @@
 		04A82D632791E14B00F69895 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		04A82D712791E76200F69895 /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
 		04A82D732791FCD800F69895 /* TranslateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateDelegate.swift; sourceTree = "<group>"; };
+		04C2F1D727D9DD390085CEAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04C2F1D827D9DD390085CEAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04CDEE4F2709F86E0068F6B7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		04CDEE51270A23660068F6B7 /* SwipeCardsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardsDataSource.swift; sourceTree = "<group>"; };
 		04CDEE86270D9A880068F6B7 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
@@ -105,9 +109,7 @@
 		04CDFC1726D8093200D3567E /* ComboTranslate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComboTranslate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CDFC1A26D8093200D3567E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04CDFC1C26D8093200D3567E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		04CDFC2126D8093300D3567E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04CDFC2326D8093A00D3567E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04CDFC2626D8093A00D3567E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04CDFC2826D8093A00D3567E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04CDFC6626EFAD8800D3567E /* TranslateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateController.swift; sourceTree = "<group>"; };
 		04CDFC6826F0FC0E00D3567E /* IBMTranslateApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMTranslateApi.swift; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 1; };
@@ -287,6 +289,7 @@
 				04EF2FEB27543BC700680656 /* UiColor+Hex.swift */,
 				04A82D732791FCD800F69895 /* TranslateDelegate.swift */,
 				0445397927BF9A7C00ACBD80 /* String+Base64.swift */,
+				047BF8D327DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				04CDFC1D26D8093200D3567E /* SceneDelegate.swift in Sources */,
 				044E67BA2700214000B6FA24 /* StorageWithUD.swift in Sources */,
 				04A82D722791E76200F69895 /* TranslateView.swift in Sources */,
+				047BF8D427DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
 				04CDFC7026FD0F2A00D3567E /* TranslateCell.swift in Sources */,
 				04EACBD027B502FE0027EC51 /* EditorCollectionViewCell.swift in Sources */,
 				04CDEE89270D9E9F0068F6B7 /* CardView.swift in Sources */,
@@ -463,7 +467,7 @@
 		04CDFC2026D8093300D3567E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				04CDFC2126D8093300D3567E /* Base */,
+				04C2F1D727D9DD390085CEAB /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -471,7 +475,7 @@
 		04CDFC2526D8093A00D3567E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				04CDFC2626D8093A00D3567E /* Base */,
+				04C2F1D827D9DD390085CEAB /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

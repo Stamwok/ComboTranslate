@@ -28,6 +28,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     var translateView: TranslateView!
     var translatedView: TranslatedView!
     var tableView: TranslateTableController!
+    var scrollView: UIScrollView!
     var languages: [String] = []
     
     var originLanguage: String! {
@@ -112,7 +113,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     // MARK: - Delegate translatedView
     func closeTranslatedView() {
         transFieldOriginState()
-        translatedView?.removeFromSuperview()
+        scrollView.removeFromSuperview()
     }
     func edit() {
         closeTranslatedView()
@@ -175,21 +176,37 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
         translateView.topAnchor.constraint(equalTo: transFieldView.topAnchor).isActive = true
         translateView.leftAnchor.constraint(equalTo: transFieldView.leftAnchor).isActive = true
         translateView.rightAnchor.constraint(equalTo: transFieldView.rightAnchor).isActive = true
-        translateView.bottomAnchor.constraint(equalTo: transFieldView.bottomAnchor).isActive = true
+//        translateView.bottomAnchor.constraint(equalTo: transFieldView.bottomAnchor).isActive = true
     }
     
-    private func configureTranslatedView(data: Word) {
+    func configureTranslatedView(data: Word) {
+        containerWithTable.isHidden = true
         transFieldView.isHidden = true
         translatedView = TranslatedView(data: data)
         translatedView.delegate = self
-        
+        scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         translatedView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.addSubview(translatedView)
-        translatedView.topAnchor.constraint(equalTo: transFieldView.topAnchor).isActive = true
-        translatedView.leftAnchor.constraint(equalTo: transFieldView.leftAnchor).isActive = true
-        translatedView.rightAnchor.constraint(equalTo: transFieldView.rightAnchor).isActive = true
-        translatedView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor).isActive = true
-        backgroundView.layoutIfNeeded()
+        backgroundView.addSubview(scrollView)
+        scrollView.addSubview(translatedView)
+        
+        NSLayoutConstraint.activate([
+            scrollView.centerXAnchor.constraint(equalTo: transFieldView.centerXAnchor),
+            scrollView.widthAnchor.constraint(equalTo: transFieldView.widthAnchor),
+            scrollView.topAnchor.constraint(equalTo: transFieldView.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
+            
+            translatedView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            translatedView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            translatedView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            translatedView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        ])
+        self.scrollView.layoutIfNeeded()
+//        backgroundView.layoutIfNeeded()
+        scrollView.layer.opacity = 0
+        UIView.animate(withDuration: 0.3) {
+            self.scrollView.layer.opacity = 1
+        }
     }
     
     private func configureOpacityView() {

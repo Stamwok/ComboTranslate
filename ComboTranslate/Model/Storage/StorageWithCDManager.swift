@@ -42,7 +42,9 @@ class StorageWithCDManager {
         newWord.translatedWord = word.translatedWord
         newWord.originLanguage = word.originLanguage
         newWord.translationLanguage = word.translationLanguage
-        newWord.addToWordPacks(getDefaultPack())
+        if word.word.count < 30 {
+            newWord.addToWordPacks(getDefaultPack())
+        }
         return newWord
     }
     
@@ -61,6 +63,16 @@ class StorageWithCDManager {
     func loadWords() -> [Word] {
         guard let words = try? moc.fetch(Word.fetchRequest()) else { return [] }
         return words
+    }
+    
+    func loadWordsToEditor() -> [Word] {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Word")
+        request.predicate = NSPredicate(format: "ANY wordPacks.id == 1")
+        if let words = try? moc.fetch(request) as? [Word] {
+            return words
+        } else {
+            return []
+        }
     }
     
     func loadWordPacks() -> [WordPack] {

@@ -44,6 +44,11 @@ class TranslateTableController: UITableViewController {
         }
         return UISwipeActionsConfiguration(actions: [actionDelete])
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        (self.parent as? TranslateController)?.configureTranslatedView(data: translateDataCollection.reversed()[indexPath.row])
+        tableView.cellForRow(at: indexPath)?.isSelected = false
+    }
+    
     private func getConfiguredTranslateCell(for indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TranslateCell", for: indexPath) as? TranslateCell
         cell?.translateLabel?.text = translateDataCollection.reversed()[indexPath.row].word

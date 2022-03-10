@@ -78,26 +78,23 @@ class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDat
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WordsPackCell", for: indexPath) as? WordsPackCell else { return WordsPackCell() }
         guard let words = wordPacks[indexPath.row].words?.allObjects as? [Word] else { return WordsPackCell() }
         cell.packName.text = wordPacks[indexPath.row].name
-        cell.wordsCount.text = String("\(words.count) слов")
-        var shortList: String = {
+        cell.wordsCount.text = String("Слов: \(words.count)")
+        let shortList: String = {
             var resultArr: [String] = []
             for item in words {
                 guard let word = item.word else { continue }
                 resultArr.append(word)
             }
-            
-            return resultArr.reduce("", {$0 + ", " + $1})
+            resultArr = resultArr.map({$0 + ", "})
+            return resultArr.reduce("", +)
         }()
         cell.shortList.text = shortList
         cell.delegate = self
-        if indexPath.row == 0 {
+        if wordPacks[indexPath.row].id == 1 {
             cell.editButton.isHidden = true
+        } else {
+            cell.editButton.isHidden = false
         }
         return cell
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard segue.identifier == "ToCardsViewSegue" else { return }
-//        (segue.destination as! CardsViewController).viewModelData = wordPacks
-//    }
 }
