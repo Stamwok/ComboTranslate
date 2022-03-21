@@ -26,10 +26,10 @@ class IBMTranslateApi {
     
     func translate(data: TranslateData, completionHandler: @escaping CompletionHandler) {
         var outputData = data
-        guard let originLanguage = languages[outputData.originLanguage],
-              let translationLanguage = languages[outputData.translationLanguage]
-        else { return }
-        outputData.command = "\(originLanguage)-\(translationLanguage)"
+//        guard let originLanguage = languages[outputData.originLanguage],
+//              let translationLanguage = languages[outputData.translationLanguage]
+//        else { return }
+//        outputData.command = "\(originLanguage)-\(translationLanguage)"
         let contentType: String = "application/json"
         let headers: HTTPHeaders = [
             "Authorization": authorization,
@@ -46,9 +46,8 @@ class IBMTranslateApi {
         ).responseDecodable(of: TranslateResponse.self) { response in
             switch response.result {
             case .success(let value):
-                outputData.translatedWord = value.translations.reduce("", +)
-                print(outputData)
                 completionHandler(outputData)
+                print(value)
             case .failure(let error):
                 outputData.translatedWord = ""
                 completionHandler(outputData)

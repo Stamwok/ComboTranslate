@@ -92,6 +92,9 @@
                             <buttonConfiguration key="configuration" style="plain" image="square.on.square" catalog="system">
                                 <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="copyButton:" destination="-1" eventType="touchUpInside" id="I1g-uu-pzK"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VH-87-Fbx">
                             <rect key="frame" x="198" y="91" width="44.5" height="31"/>
@@ -99,6 +102,9 @@
                             <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system">
                                 <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="shareButton:" destination="-1" eventType="touchUpInside" id="Lm5-tM-lHe"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VfP-u2-1MQ">
                             <rect key="frame" x="145" y="91" width="48" height="31"/>
@@ -106,6 +112,9 @@
                             <buttonConfiguration key="configuration" style="plain" image="cross" catalog="system">
                                 <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="addButton:" destination="-1" eventType="touchUpInside" id="cM4-NV-BR4"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.17952087520000001" green="0.55633819100000004" blue="0.9379547238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

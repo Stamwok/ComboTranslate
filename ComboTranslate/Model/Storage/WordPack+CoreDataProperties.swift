@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension WordPack {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<WordPack> {
@@ -19,6 +18,15 @@ extension WordPack {
     @NSManaged public var name: String?
     @NSManaged public var id: Double
     @NSManaged public var words: NSSet?
+    
+    var progress: Float {
+        var resultValue: Float = 0
+        guard let words = self.words?.allObjects as? [Word] else { return  resultValue }
+        for word in words {
+            resultValue += word.count
+        }
+        return resultValue / Float(words.count)
+    }
 
 }
 

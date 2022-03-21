@@ -11,22 +11,52 @@ class TranslatedView: UIView {
     
     weak var delegate: TranslatedViewDelegate?
     
+    var originLanguage: String?
+    var translatedLanguage: String?
+    var translateText: String?
+    var translatedText: String?
+    var word: Word!
+    
     @IBOutlet var originLanguageLabel: UILabel!
     @IBOutlet var translatedLanguageLabel: UILabel!
     @IBOutlet var translateTextLabel: UILabel!
     @IBOutlet var translatedTextLabel: UILabel!
     @IBOutlet var translateView: UIView!
     @IBOutlet var translatedView: UIView!
+    
+    @IBAction func addButton(_: UIButton) {
+        guard let view = (delegate as? UIViewController)?.view else { return }
+        guard let text = translatedText, text.count < 30 else {
+            ToastMessage.showMessage(toastWith: "Фраза слишком длинная", view: view)
+            return
+        }
+        guard let rootController = delegate as? UIViewController else { return }
+        guard let destination = rootController.storyboard?.instantiateViewController(withIdentifier: String(describing: AddWordToPackController.self)) as? AddWordToPackController
+        else { return }
+        destination.completionHandler = { wordPack in
+            wordPack.addToWords(self.word)
+            
+        }
+        rootController.present(destination, animated: true, completion: nil)
+    }
+    @IBAction func copyButton(_: UIButton) {
+        guard let view = (delegate as? UIViewController)?.view else { return }
+        UIPasteboard.general.string = translatedText
+        ToastMessage.showMessage(toastWith: "Перевод скопирован", view: view)
+    }
+    @IBAction func shareButton(_: UIButton) {
+        guard let rootVC = (delegate as? UIViewController), let textToShare = translatedText else { return }
+        let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = rootVC.view
+        
+        rootVC.present(activityVC, animated: true, completion: nil)
+    }
     @IBAction func closeButton(sender: UIButton) {
         delegate?.closeTranslatedView()
     }
     @IBAction func tapOnTranslateView (sender: UITapGestureRecognizer) {
         delegate?.edit()
     }
-    var originLanguage: String?
-    var translatedLanguage: String?
-    var translateText: String?
-    var translatedText: String?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -45,6 +75,7 @@ class TranslatedView: UIView {
         self.translatedLanguage = data.translationLanguage
         self.translateText = data.word
         self.translatedText = data.translatedWord
+        self.word = data
         
         translatedView.layer.shadowOffset = CGSize(width: 2, height: 2)
         translatedView.layer.shadowOpacity = 0.5

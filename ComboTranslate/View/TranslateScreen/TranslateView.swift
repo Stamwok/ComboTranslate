@@ -14,7 +14,13 @@ class TranslateView: UIView, UITextViewDelegate {
     weak var delegate: TranslateViewDelegate?
     var translateData: TranslateData? {
         didSet {
-            translatedField.text = translateData?.translatedWord
+            guard let newText = translateData?.translatedWord else { return }
+            translatedField.text = newText
+            if newText.trimmingCharacters(in: .whitespaces).count > 0 {
+                translateButton.isEnabled = true
+            } else {
+                translateButton.isEnabled = false
+            }
         }
     }
 
@@ -26,7 +32,6 @@ class TranslateView: UIView, UITextViewDelegate {
         delegate?.closeTranslateView()
     }
     @IBAction func translateButton(sender: UIButton) {
-//        guard let data = translateData else { return }
         delegate?.setData(data: translateData)
         
     }
@@ -47,7 +52,6 @@ class TranslateView: UIView, UITextViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         if translateField != nil {
-//            translateField.text = "   "
             translateField.becomeFirstResponder()
             translateButton.isEnabled = false
         }
@@ -64,13 +68,8 @@ class TranslateView: UIView, UITextViewDelegate {
     
     // MARK: - textViewDelegate
     func textViewDidChange(_ textView: UITextView) {
-        guard let textFieldText = textView.text else { return }
         updateTranslatedView()
-        if textFieldText.count > 3 {
-            translateButton.isEnabled = true
-        } else {
-            translateButton.isEnabled = false
-        }
+        
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -78,22 +77,11 @@ class TranslateView: UIView, UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard let textFieldText = textView.text,
-              let rangeOfTextToReplace = Range(range, in: textFieldText)
-        else {
-                  return false
-              }
-        let substringToReplace = textFieldText[rangeOfTextToReplace]
-        let count = textFieldText.count - substringToReplace.count + text.count
-        
         if text == "\n" {
             delegate?.setData(data: translateData)
             textView.resignFirstResponder()
-            return false
-//        } else if textView.text + text == "   " && text == "" && range.length > 0 {
-//            return false
+            return true
         } else {
-//            return count <= 39
             return true
         }
     }

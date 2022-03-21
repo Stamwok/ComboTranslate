@@ -21,7 +21,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     @IBOutlet var originLanguageButton: UIButton!
     @IBOutlet var translatedLanguageButton: UIButton!
     
-    var translateApi = IBMTranslateApi()
+    var translateApi = YandexTranslateApi()
     var storage = Storage()
 //    var cdManager = StorageWithCDManager()
     var opacityView: UIView!
@@ -53,7 +53,7 @@ class TranslateController: UIViewController, UITabBarControllerDelegate, UITextV
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView = self.children[0] as? TranslateTableController
-        translateApi.languages.forEach({ key, _ in
+        YandexLanguagesList.languages.forEach({ key, _ in
             self.languages.append(key)
         })
         configureShadows()

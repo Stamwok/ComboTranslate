@@ -34,12 +34,6 @@ class CardsViewController: UIViewController {
         configureStackContainer()
         cardsDataModel = generateDataForCards()
         stackContainer.dataSource = self
-//        let statusBar1 =  UIView()
-//        statusBar1.frame = UIApplication.shared.statusBarFrame
-//        statusBar1.backgroundColor = UIColor.init(hex: "#2E8EEF")
-//        UIApplication.shared.statusBarStyle = .lightContent
-//        UIApplication.shared.keyWindow?.addSubview(statusBar1)
-        
     }
     func configureStackContainer() {
         let widthStackContainer = view.frame.size.width - 40

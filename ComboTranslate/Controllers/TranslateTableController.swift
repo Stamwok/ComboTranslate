@@ -15,13 +15,6 @@ class TranslateTableController: UITableViewController {
             tableView.reloadData()
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
 
     // MARK: - Table view data source
 
@@ -50,15 +43,16 @@ class TranslateTableController: UITableViewController {
     }
     
     private func getConfiguredTranslateCell(for indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TranslateCell", for: indexPath) as? TranslateCell
-        cell?.translateLabel?.text = translateDataCollection.reversed()[indexPath.row].word
-        cell?.translatedLabel?.text = translateDataCollection.reversed()[indexPath.row].translatedWord
-        cell?.progress?.progress = translateDataCollection.reversed()[indexPath.row].count
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TranslateCell", for: indexPath) as? TranslateCell
+        else { fatalError("wrong cell") }
+        cell.translateLabel.text = translateDataCollection.reversed()[indexPath.row].word
+        cell.translatedLabel.text = translateDataCollection.reversed()[indexPath.row].translatedWord
+        cell.progress.progress = translateDataCollection.reversed()[indexPath.row].count
         if indexPath.row + 1 == translateDataCollection.count {
-            cell?.separatorInset = UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)
         } else {
-            cell?.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         }
-        return cell!
+        return cell
     }
 }

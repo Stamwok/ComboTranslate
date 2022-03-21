@@ -60,6 +60,9 @@ class EditorViewController: UIViewController, UICollectionViewDelegate, UICollec
         addButton.layer.shadowOpacity = 0.5
         addButton.layer.shadowRadius = 2
         addButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        nameField.layer.shadowOpacity = 0.5
+        nameField.layer.shadowRadius = 2
+        nameField.layer.shadowOffset = CGSize(width: 0, height: 2)
         collectionView.register(EditorCollectionViewCell.nib, forCellWithReuseIdentifier: EditorCollectionViewCell.reuseID)
         let flowLayout = CenterAlignedCollectionViewFlowLayout()
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
@@ -92,6 +95,9 @@ class EditorViewController: UIViewController, UICollectionViewDelegate, UICollec
         return cell
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        deleteButton.isHidden = true
+    }
     // MARK: - text field delegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

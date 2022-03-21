@@ -12,6 +12,7 @@ class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDat
     var storage = Storage()
     var wordPacks: [WordPack] = [] {
         didSet {
+            wordPacks.sort {$0.id < $1.id}
             tableView.reloadData()
         }
     }
@@ -34,20 +35,11 @@ class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         present(destination, animated: true, completion: nil)
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        let statusBar1 =  UIView()
-//        statusBar1.frame = UIApplication.shared.statusBarFrame
-//        statusBar1.backgroundColor = UIColor.init(hex: "#2E8EEF")
-//        UIApplication.shared.statusBarStyle = .lightContent
-//        UIApplication.shared.keyWindow?.addSubview(statusBar1)
-    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         wordPacks = StorageWithCDManager.instance.loadWordPacks()
-        print("viewWillAppear")
     }
 
     // MARK: - Table view data source
@@ -63,15 +55,14 @@ class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let destination = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CardsViewController.self)) as? CardsViewController else { return }
-        guard let words = wordPacks[indexPath.row].words, words.count > 6 else {
+        guard let words = wordPacks[indexPath.row].words, words.count > 5 else {
             tableView.cellForRow(at: indexPath)?.isSelected = false
+            ToastMessage.showMessage(toastWith: "Для начала изучения добавьте не менее 6 слов", view: self.view)
             return
         }
         destination.viewModelData = words.allObjects as? [Word]
         destination.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(destination, animated: true)
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        print(destination.viewModelData)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,6 +70,8 @@ class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDat
         guard let words = wordPacks[indexPath.row].words?.allObjects as? [Word] else { return WordsPackCell() }
         cell.packName.text = wordPacks[indexPath.row].name
         cell.wordsCount.text = String("Слов: \(words.count)")
+        
+        cell.progress.progress  = wordPacks[indexPath.row].progress
         let shortList: String = {
             var resultArr: [String] = []
             for item in words {
@@ -91,9 +84,9 @@ class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.shortList.text = shortList
         cell.delegate = self
         if wordPacks[indexPath.row].id == 1 {
-            cell.editButton.isHidden = true
+            cell.editButton?.isHidden = true
         } else {
-            cell.editButton.isHidden = false
+            cell.editButton?.isHidden = false
         }
         return cell
     }

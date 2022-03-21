@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0425A70D27DFAD4000240551 /* YandexTranslateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0425A70C27DFAD4000240551 /* YandexTranslateApi.swift */; };
 		042713962799A75D00DD862F /* TranslatedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042713952799A75D00DD862F /* TranslatedView.xib */; };
 		0427139A2799A7C200DD862F /* TranslatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042713992799A7C200DD862F /* TranslatedView.swift */; };
 		0433CB322767AEBB00404501 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433CB312767AEBB00404501 /* LanguagesTableViewController.swift */; };
@@ -21,7 +22,10 @@
 		045D109827D2268300FBDC4F /* WordPack+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D109427D2268300FBDC4F /* WordPack+CoreDataProperties.swift */; };
 		045D109927D2268300FBDC4F /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D109527D2268300FBDC4F /* Word+CoreDataClass.swift */; };
 		045D109A27D2268300FBDC4F /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D109627D2268300FBDC4F /* Word+CoreDataProperties.swift */; };
+		047B414A27E0E92E00C63FEB /* YandexLanguagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B414927E0E92E00C63FEB /* YandexLanguagesList.swift */; };
+		047B414C27E34D4600C63FEB /* VerticalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B414B27E34D4600C63FEB /* VerticalProgressView.swift */; };
 		047BF8D427DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047BF8D327DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift */; };
+		048BE66C27E79F1B00CF4C64 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BE66B27E79F1B00CF4C64 /* CircleProgressView.swift */; };
 		04A82D642791E14B00F69895 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04A82D572791E14B00F69895 /* Roboto-Medium.ttf */; };
 		04A82D652791E14B00F69895 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04A82D582791E14B00F69895 /* Roboto-Light.ttf */; };
 		04A82D662791E14B00F69895 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04A82D592791E14B00F69895 /* Roboto-Regular.ttf */; };
@@ -38,6 +42,8 @@
 		04A82D722791E76200F69895 /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D712791E76200F69895 /* TranslateView.swift */; };
 		04A82D742791FCD800F69895 /* TranslateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A82D732791FCD800F69895 /* TranslateDelegate.swift */; };
 		04A84FCD27BFF6980080C950 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 04A84FCC27BFF6980080C950 /* Alamofire */; };
+		04BBAD7727E8CE0D00E17893 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BBAD7627E8CE0D00E17893 /* ToastMessage.swift */; };
+		04BBAD7927E8E65400E17893 /* AddWordToPackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BBAD7827E8E65400E17893 /* AddWordToPackController.swift */; };
 		04CDEE502709F86E0068F6B7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 04CDEE4F2709F86E0068F6B7 /* .swiftlint.yml */; };
 		04CDEE52270A23660068F6B7 /* SwipeCardsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDEE51270A23660068F6B7 /* SwipeCardsDataSource.swift */; };
 		04CDEE87270D9A880068F6B7 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDEE86270D9A880068F6B7 /* CardView.xib */; };
@@ -69,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0425A70C27DFAD4000240551 /* YandexTranslateApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexTranslateApi.swift; sourceTree = "<group>"; };
 		042713952799A75D00DD862F /* TranslatedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TranslatedView.xib; sourceTree = "<group>"; };
 		042713992799A7C200DD862F /* TranslatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedView.swift; sourceTree = "<group>"; };
 		0433CB312767AEBB00404501 /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +90,10 @@
 		045D109427D2268300FBDC4F /* WordPack+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordPack+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		045D109527D2268300FBDC4F /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
 		045D109627D2268300FBDC4F /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		047B414927E0E92E00C63FEB /* YandexLanguagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexLanguagesList.swift; sourceTree = "<group>"; };
+		047B414B27E34D4600C63FEB /* VerticalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalProgressView.swift; sourceTree = "<group>"; };
 		047BF8D327DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		048BE66B27E79F1B00CF4C64 /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		04A82D572791E14B00F69895 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		04A82D582791E14B00F69895 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		04A82D592791E14B00F69895 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -99,6 +109,8 @@
 		04A82D632791E14B00F69895 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		04A82D712791E76200F69895 /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
 		04A82D732791FCD800F69895 /* TranslateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateDelegate.swift; sourceTree = "<group>"; };
+		04BBAD7627E8CE0D00E17893 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
+		04BBAD7827E8E65400E17893 /* AddWordToPackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordToPackController.swift; sourceTree = "<group>"; };
 		04C2F1D727D9DD390085CEAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04C2F1D827D9DD390085CEAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04CDEE4F2709F86E0068F6B7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -153,6 +165,7 @@
 				044E67B92700214000B6FA24 /* StorageWithUD.swift */,
 				0439D1CF27A0651400BD1C3C /* StorageWithCD.xcdatamodeld */,
 				0439D1E027A154A800BD1C3C /* StorageWithCDManager.swift */,
+				047B414927E0E92E00C63FEB /* YandexLanguagesList.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -165,6 +178,7 @@
 				04CDEE88270D9E9F0068F6B7 /* CardView.swift */,
 				04CDEE8E270EF3930068F6B7 /* StackContainerView.swift */,
 				04F966C92722D41B004FFCB6 /* EmptyView.swift */,
+				048BE66B27E79F1B00CF4C64 /* CircleProgressView.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -213,6 +227,8 @@
 			children = (
 				044A716A2791D9D000F4748C /* TranslateScreen */,
 				044A71692791D98200F4748C /* Cards */,
+				047B414B27E34D4600C63FEB /* VerticalProgressView.swift */,
+				04BBAD7627E8CE0D00E17893 /* ToastMessage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,7 +266,7 @@
 				04CDEE85270D9A5C0068F6B7 /* View */,
 				04CDFC6E26FD0EEE00D3567E /* Cell */,
 				04CDFC6526EFAD3400D3567E /* Model */,
-				04CDFC6426EFAD2C00D3567E /* Controller */,
+				04CDFC6426EFAD2C00D3567E /* Controllers */,
 				04CDFC1A26D8093200D3567E /* AppDelegate.swift */,
 				04CDFC1C26D8093200D3567E /* SceneDelegate.swift */,
 				04CDFC2026D8093300D3567E /* Main.storyboard */,
@@ -266,7 +282,7 @@
 			path = ComboTranslate;
 			sourceTree = "<group>";
 		};
-		04CDFC6426EFAD2C00D3567E /* Controller */ = {
+		04CDFC6426EFAD2C00D3567E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				04CDFC6626EFAD8800D3567E /* TranslateController.swift */,
@@ -275,8 +291,9 @@
 				04CDFC6C26FCFE3D00D3567E /* TranslateTableController.swift */,
 				044E67C02706477A00B6FA24 /* CardsViewController.swift */,
 				04EACBCC27B4FE5C0027EC51 /* EditorViewController.swift */,
+				04BBAD7827E8E65400E17893 /* AddWordToPackController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		04CDFC6526EFAD3400D3567E /* Model */ = {
@@ -286,6 +303,7 @@
 				04CDEE8D270DA1490068F6B7 /* Cards */,
 				04CDFC6826F0FC0E00D3567E /* IBMTranslateApi.swift */,
 				04CDFC6A26F37F6900D3567E /* TranslateData.swift */,
+				0425A70C27DFAD4000240551 /* YandexTranslateApi.swift */,
 				04EF2FEB27543BC700680656 /* UiColor+Hex.swift */,
 				04A82D732791FCD800F69895 /* TranslateDelegate.swift */,
 				0445397927BF9A7C00ACBD80 /* String+Base64.swift */,
@@ -337,7 +355,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					04CDFC1626D8093200D3567E = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -427,6 +445,7 @@
 			files = (
 				04F966C42715CBA6004FFCB6 /* SecretValue.swift in Sources */,
 				0433CB322767AEBB00404501 /* LanguagesTableViewController.swift in Sources */,
+				047B414C27E34D4600C63FEB /* VerticalProgressView.swift in Sources */,
 				045D109927D2268300FBDC4F /* Word+CoreDataClass.swift in Sources */,
 				04CDEE8F270EF3930068F6B7 /* StackContainerView.swift in Sources */,
 				04F966C22715B115004FFCB6 /* CardsGame.swift in Sources */,
@@ -437,7 +456,9 @@
 				04EACBCD27B4FE5C0027EC51 /* EditorViewController.swift in Sources */,
 				04A82D742791FCD800F69895 /* TranslateDelegate.swift in Sources */,
 				0439D1E127A154A800BD1C3C /* StorageWithCDManager.swift in Sources */,
+				0425A70D27DFAD4000240551 /* YandexTranslateApi.swift in Sources */,
 				04CDFC1B26D8093200D3567E /* AppDelegate.swift in Sources */,
+				04BBAD7927E8E65400E17893 /* AddWordToPackController.swift in Sources */,
 				045D109827D2268300FBDC4F /* WordPack+CoreDataProperties.swift in Sources */,
 				04CDFC6926F0FC0E00D3567E /* IBMTranslateApi.swift in Sources */,
 				045D109A27D2268300FBDC4F /* Word+CoreDataProperties.swift in Sources */,
@@ -454,9 +475,12 @@
 				04A82D722791E76200F69895 /* TranslateView.swift in Sources */,
 				047BF8D427DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
 				04CDFC7026FD0F2A00D3567E /* TranslateCell.swift in Sources */,
+				047B414A27E0E92E00C63FEB /* YandexLanguagesList.swift in Sources */,
 				04EACBD027B502FE0027EC51 /* EditorCollectionViewCell.swift in Sources */,
+				04BBAD7727E8CE0D00E17893 /* ToastMessage.swift in Sources */,
 				04CDEE89270D9E9F0068F6B7 /* CardView.swift in Sources */,
 				04CDFC6D26FCFE3D00D3567E /* TranslateTableController.swift in Sources */,
+				048BE66C27E79F1B00CF4C64 /* CircleProgressView.swift in Sources */,
 				04EF2FEC27543BC700680656 /* UiColor+Hex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
