@@ -44,10 +44,17 @@ class YandexTranslateApi {
         var outputData = data
         outputData.source = sourceLanguage
         outputData.target = targetLanguage
+        let contentType: String = "application/json"
+        let headers: HTTPHeaders = [
+            "X-Ios-Bundle-Identifier": Bundle.main.bundleIdentifier ?? "",
+            "Content-Type": contentType
+            ]
+
         AF.request(url,
                    method: .post,
                    parameters: outputData,
-                   encoder: JSONParameterEncoder.default
+                   encoder: JSONParameterEncoder.default,
+                   headers: headers
         ).responseDecodable(of: TranslateResponse.self) { response in
             switch response.result {
             case .success(let value):
