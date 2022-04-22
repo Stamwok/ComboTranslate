@@ -7,11 +7,11 @@
 
 import Foundation
 
-class CardsGame {
+final class CardsGame {
     var secretValue: Word
-    var transDataCollection: [Word]
-    var uniqueRandValues: [SecretValue] = []
-    var secretValueIndex: Int
+    private var transDataCollection: [Word]
+    private var uniqueRandValues: [SecretValue] = []
+    private var secretValueIndex: Int
     var isGameWin: Bool = false {
         didSet {
             if isGameWin {
@@ -19,7 +19,9 @@ class CardsGame {
             } else if secretValue.count > 0 {
                 secretValue.count -= 0.25
             }
+            secretValue.lastChanges = Date()
         }
+        
     }
     var closure: (CardsGame) -> Void
     init(collection: [Word], value: SecretValue, closure: @escaping (CardsGame) -> Void) {

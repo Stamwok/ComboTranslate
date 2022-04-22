@@ -8,13 +8,13 @@
 import Foundation
 import Alamofire
 
-class YandexTranslateApi {
+class GoogleTranslateApi {
     
     typealias CompletionHandler = (_ success: TranslateData) -> Void
     
-        let apiKey = "AIzaSyBg1ppjf39zYS6KFMPq60TIddddBIYhs7A"
-    let url = URL(string: "https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/5833f11f-0054-4a7a-bd00-d005efb4f6f9/v3/translate?version=2018-05-01")
-    var authorization: String {
+    private let apiKey = "AIzaSyBg1ppjf39zYS6KFMPq60TIddddBIYhs7A"
+    private let url = URL(string: "https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/5833f11f-0054-4a7a-bd00-d005efb4f6f9/v3/translate?version=2018-05-01")
+    private var authorization: String {
         return "Basic \(apiKey.toBase64())"
     }
     
@@ -38,8 +38,8 @@ class YandexTranslateApi {
     }
     
     func translate(data: TranslateData, completionHandler: @escaping CompletionHandler) {
-        guard let sourceLanguage = YandexLanguagesList.languages[data.originLanguage],
-              let targetLanguage = YandexLanguagesList.languages[data.translationLanguage] else { return }
+        guard let sourceLanguage = GoogleLanguagesList.languages[data.originLanguage],
+              let targetLanguage = GoogleLanguagesList.languages[data.translationLanguage] else { return }
         let url = "https://translation.googleapis.com/language/translate/v2?key=\(apiKey)"
         var outputData = data
         outputData.source = sourceLanguage

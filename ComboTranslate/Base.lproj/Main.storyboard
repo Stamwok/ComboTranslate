@@ -80,7 +80,7 @@
                                     <size key="itemSize" width="128" height="20"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
                                 <connections>
@@ -138,9 +138,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pm3-Hv-ulO">
-                                <rect key="frame" x="88.5" y="517" width="143" height="34"/>
+                                <rect key="frame" x="81" y="501" width="158.5" height="50"/>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.31372549019607843" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <buttonConfiguration key="configuration" style="plain">
+                                <buttonConfiguration key="configuration" style="plain" buttonSize="large">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Удалить набор">
                                             <attributes>
@@ -507,7 +507,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kus-PN-UK8">
-                                        <rect key="frame" x="270" y="0.0" width="50" height="38"/>
+                                        <rect key="frame" x="270" y="5" width="50" height="38"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
@@ -518,13 +518,14 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.17952087520000001" green="0.55633819100000004" blue="0.9379547238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.1803921568627451" green="0.55686274509803924" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="6bp-XT-37i" firstAttribute="centerX" secondItem="oOW-qR-rue" secondAttribute="centerX" id="Hu2-ja-oFJ"/>
                                     <constraint firstAttribute="trailing" secondItem="Kus-PN-UK8" secondAttribute="trailing" id="IXm-9P-5JP"/>
                                     <constraint firstItem="6bp-XT-37i" firstAttribute="centerY" secondItem="oOW-qR-rue" secondAttribute="centerY" id="VVO-EY-G3E"/>
+                                    <constraint firstItem="Kus-PN-UK8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6bp-XT-37i" secondAttribute="trailing" constant="8" symbolic="YES" id="iA9-qg-KOd"/>
                                     <constraint firstAttribute="height" constant="70" id="jeo-Ol-wp7"/>
-                                    <constraint firstItem="Kus-PN-UK8" firstAttribute="top" secondItem="oOW-qR-rue" secondAttribute="top" id="uCL-gB-10C"/>
+                                    <constraint firstItem="Kus-PN-UK8" firstAttribute="top" secondItem="oOW-qR-rue" secondAttribute="top" constant="5" id="uCL-gB-10C"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fuV-LC-J20">
@@ -624,6 +625,9 @@
                             <constraint firstItem="oOW-qR-rue" firstAttribute="leading" secondItem="DKl-fT-83p" secondAttribute="leading" id="siV-CQ-1kK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="fuV-LC-J20" id="pbI-ys-zeI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q53-En-wLq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

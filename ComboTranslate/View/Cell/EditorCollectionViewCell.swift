@@ -19,13 +19,11 @@ class EditorCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-//        self.layer.cornerRadius = 15
         colorView.layer.cornerRadius = 15
-//        colorView.clipsToBounds = false
         self.deselect()
     }
     
-    func configureShadows(opacity: Float) {
+    private func configureShadows(opacity: Float) {
         shadowView.backgroundColor = .clear
         shadowView.layer.shadowOpacity = opacity
         shadowView.layer.shadowOffset = CGSize(width: 2, height: 2)

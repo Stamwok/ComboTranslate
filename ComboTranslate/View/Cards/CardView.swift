@@ -8,8 +8,8 @@
 import UIKit
 
 class CardView: UIView {
-    var contentView: UIView!
-    var shadowView: UIView!
+    var contentView: UIView = UIView()
+    private var shadowView: UIView = UIView()
     @IBOutlet var labelTrans: UILabel!
     @IBOutlet var buttonTrans1: UIButton!
     @IBOutlet var buttonTrans2: UIButton!
@@ -22,9 +22,9 @@ class CardView: UIView {
     @IBOutlet var originLanguage: UILabel!
     @IBOutlet var translationLanguage: UILabel!
     
-    var buttonCollection: [UIButton] = []
+    private var buttonCollection: [UIButton] = []
     weak var delegate: SwipeCardsDelegate?
-    var correctButtonTag: Int?
+    private var correctButtonTag: Int?
     var dataSource: CardsGame? {
         didSet {
             configureProgressView()
@@ -51,28 +51,28 @@ class CardView: UIView {
     
     @IBAction func selectWord (sender: UIButton) {
         if sender.tag != correctButtonTag {
-            sender.backgroundColor = UIColor(hex: "#F05046")
+            sender.backgroundColor = ComboColors.red
             sender.setTitleColor(.white, for: .disabled)
-            
             dataSource?.isGameWin = false
         } else if sender.tag == correctButtonTag {
             dataSource?.isGameWin = true
         }
         buttonCollection.forEach {button in
             if button.tag == correctButtonTag {
-                button.backgroundColor = UIColor(hex: "#D9F016")
+                button.backgroundColor = ComboColors.green
                 button.setTitleColor(.white, for: .disabled)
                 
             }
             button.isEnabled = false
         }
-        if dataSource!.isGameWin {
+        guard let dataSource = dataSource else { return }
+        if dataSource.isGameWin {
             progressBar?.progress += 0.25
         } else {
             progressBar?.progress -= 0.25
         }
-        dataSource!.closure(dataSource!)
-
+        
+        dataSource.closure(dataSource)
     }
     
     // MARK: - Init
@@ -85,29 +85,29 @@ class CardView: UIView {
     }
     
     // MARK: - configure views
-    func configureShadowView() {
-        shadowView = UIView()
+    private func configureShadowView() {
         shadowView.backgroundColor = .clear
         addSubview(shadowView)
     }
     
-    func configureButtonView(button: UIButton) {
+    private func configureButtonView(button: UIButton) {
         button.layer.cornerRadius = 15
         button.setTitleColor(.lightGray, for: .disabled)
     }
     
-    func configureProgressView() {
+    private func configureProgressView() {
         progressBar.layer.cornerRadius = 15
         progressBar?.progress = Float((dataSource?.secretValue.count)!)
         progressBar?.transform = (progressBar?.transform.scaledBy(x: 1, y: 2))!
     }
     
-    func configureRectView() {
+    private func configureRectView() {
         rectView.layer.cornerRadius = 15
     }
     
     func configureCardView() {
-        contentView = Bundle.main.loadNibNamed("CardView", owner: self, options: nil)?[0] as? UIView
+        guard let contentViewFromNib = Bundle.main.loadNibNamed("CardView", owner: self, options: nil)?[0] as? UIView else { return }
+        contentView = contentViewFromNib
         contentView.layer.cornerRadius = 15
         contentView.clipsToBounds = true
 //        labelTrans?.layer.cornerRadius = 15

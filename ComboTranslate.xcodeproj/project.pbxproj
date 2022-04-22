@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0425A70D27DFAD4000240551 /* YandexTranslateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0425A70C27DFAD4000240551 /* YandexTranslateApi.swift */; };
+		0425A70D27DFAD4000240551 /* GoogleTranslateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0425A70C27DFAD4000240551 /* GoogleTranslateApi.swift */; };
 		042713962799A75D00DD862F /* TranslatedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042713952799A75D00DD862F /* TranslatedView.xib */; };
 		0427139A2799A7C200DD862F /* TranslatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042713992799A7C200DD862F /* TranslatedView.swift */; };
 		0433CB322767AEBB00404501 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433CB312767AEBB00404501 /* LanguagesTableViewController.swift */; };
@@ -20,9 +20,8 @@
 		044EC83D274EB70B00B41735 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EC83B274EB70A00B41735 /* 1.png */; };
 		045D109727D2268300FBDC4F /* WordPack+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D109327D2268300FBDC4F /* WordPack+CoreDataClass.swift */; };
 		045D109827D2268300FBDC4F /* WordPack+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D109427D2268300FBDC4F /* WordPack+CoreDataProperties.swift */; };
-		045D109927D2268300FBDC4F /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D109527D2268300FBDC4F /* Word+CoreDataClass.swift */; };
-		045D109A27D2268300FBDC4F /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D109627D2268300FBDC4F /* Word+CoreDataProperties.swift */; };
-		047B414A27E0E92E00C63FEB /* YandexLanguagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B414927E0E92E00C63FEB /* YandexLanguagesList.swift */; };
+		046EB47A27F07DDD004F16C4 /* ComboColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046EB47927F07DDD004F16C4 /* ComboColors.swift */; };
+		047B414A27E0E92E00C63FEB /* GoogleLanguagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B414927E0E92E00C63FEB /* GoogleLanguagesList.swift */; };
 		047B414C27E34D4600C63FEB /* VerticalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B414B27E34D4600C63FEB /* VerticalProgressView.swift */; };
 		047BF8D427DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047BF8D327DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift */; };
 		048BE66C27E79F1B00CF4C64 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BE66B27E79F1B00CF4C64 /* CircleProgressView.swift */; };
@@ -55,7 +54,6 @@
 		04CDFC2426D8093A00D3567E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CDFC2326D8093A00D3567E /* Assets.xcassets */; };
 		04CDFC2726D8093A00D3567E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CDFC2526D8093A00D3567E /* LaunchScreen.storyboard */; };
 		04CDFC6726EFAD8800D3567E /* TranslateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFC6626EFAD8800D3567E /* TranslateController.swift */; };
-		04CDFC6926F0FC0E00D3567E /* IBMTranslateApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFC6826F0FC0E00D3567E /* IBMTranslateApi.swift */; };
 		04CDFC6B26F37F6900D3567E /* TranslateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFC6A26F37F6900D3567E /* TranslateData.swift */; };
 		04CDFC6D26FCFE3D00D3567E /* TranslateTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFC6C26FCFE3D00D3567E /* TranslateTableController.swift */; };
 		04CDFC7026FD0F2A00D3567E /* TranslateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDFC6F26FD0F2A00D3567E /* TranslateCell.swift */; };
@@ -67,6 +65,8 @@
 		04EACBD127B502FE0027EC51 /* EditorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EACBCF27B502FE0027EC51 /* EditorCollectionViewCell.xib */; };
 		04EF2FEC27543BC700680656 /* UiColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF2FEB27543BC700680656 /* UiColor+Hex.swift */; };
 		04EF2FF027552A8600680656 /* Combo_translate-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EF2FEF27552A8500680656 /* Combo_translate-5.png */; };
+		04F2CDEA27F1F79100CE1890 /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2CDE927F1F79100CE1890 /* Word+CoreDataProperties.swift */; };
+		04F2CDEC27F1F7AA00CE1890 /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2CDEB27F1F7AA00CE1890 /* Word+CoreDataClass.swift */; };
 		04F966C22715B115004FFCB6 /* CardsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F966C12715B115004FFCB6 /* CardsGame.swift */; };
 		04F966C42715CBA6004FFCB6 /* SecretValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F966C32715CBA6004FFCB6 /* SecretValue.swift */; };
 		04F966C827202825004FFCB6 /* WordsPackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F966C727202825004FFCB6 /* WordsPackController.swift */; };
@@ -75,7 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0425A70C27DFAD4000240551 /* YandexTranslateApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexTranslateApi.swift; sourceTree = "<group>"; };
+		0425A70C27DFAD4000240551 /* GoogleTranslateApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslateApi.swift; sourceTree = "<group>"; };
 		042713952799A75D00DD862F /* TranslatedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TranslatedView.xib; sourceTree = "<group>"; };
 		042713992799A7C200DD862F /* TranslatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedView.swift; sourceTree = "<group>"; };
 		0433CB312767AEBB00404501 /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
@@ -88,9 +88,8 @@
 		044EC83B274EB70A00B41735 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		045D109327D2268300FBDC4F /* WordPack+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordPack+CoreDataClass.swift"; sourceTree = "<group>"; };
 		045D109427D2268300FBDC4F /* WordPack+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WordPack+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		045D109527D2268300FBDC4F /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
-		045D109627D2268300FBDC4F /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		047B414927E0E92E00C63FEB /* YandexLanguagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexLanguagesList.swift; sourceTree = "<group>"; };
+		046EB47927F07DDD004F16C4 /* ComboColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboColors.swift; sourceTree = "<group>"; };
+		047B414927E0E92E00C63FEB /* GoogleLanguagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLanguagesList.swift; sourceTree = "<group>"; };
 		047B414B27E34D4600C63FEB /* VerticalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalProgressView.swift; sourceTree = "<group>"; };
 		047BF8D327DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		048BE66B27E79F1B00CF4C64 /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
@@ -124,7 +123,6 @@
 		04CDFC2326D8093A00D3567E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04CDFC2826D8093A00D3567E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04CDFC6626EFAD8800D3567E /* TranslateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateController.swift; sourceTree = "<group>"; };
-		04CDFC6826F0FC0E00D3567E /* IBMTranslateApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMTranslateApi.swift; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 1; };
 		04CDFC6A26F37F6900D3567E /* TranslateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateData.swift; sourceTree = "<group>"; };
 		04CDFC6C26FCFE3D00D3567E /* TranslateTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateTableController.swift; sourceTree = "<group>"; };
 		04CDFC6F26FD0F2A00D3567E /* TranslateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateCell.swift; sourceTree = "<group>"; };
@@ -136,6 +134,8 @@
 		04EACBCF27B502FE0027EC51 /* EditorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorCollectionViewCell.xib; sourceTree = "<group>"; };
 		04EF2FEB27543BC700680656 /* UiColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiColor+Hex.swift"; sourceTree = "<group>"; };
 		04EF2FEF27552A8500680656 /* Combo_translate-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo_translate-5.png"; sourceTree = "<group>"; };
+		04F2CDE927F1F79100CE1890 /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		04F2CDEB27F1F7AA00CE1890 /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
 		04F966C12715B115004FFCB6 /* CardsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsGame.swift; sourceTree = "<group>"; };
 		04F966C32715CBA6004FFCB6 /* SecretValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretValue.swift; sourceTree = "<group>"; };
 		04F966C727202825004FFCB6 /* WordsPackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsPackController.swift; sourceTree = "<group>"; };
@@ -158,14 +158,14 @@
 		0439D1CE27A064CD00BD1C3C /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				04F2CDE927F1F79100CE1890 /* Word+CoreDataProperties.swift */,
+				04F2CDEB27F1F7AA00CE1890 /* Word+CoreDataClass.swift */,
 				045D109327D2268300FBDC4F /* WordPack+CoreDataClass.swift */,
 				045D109427D2268300FBDC4F /* WordPack+CoreDataProperties.swift */,
-				045D109527D2268300FBDC4F /* Word+CoreDataClass.swift */,
-				045D109627D2268300FBDC4F /* Word+CoreDataProperties.swift */,
 				044E67B92700214000B6FA24 /* StorageWithUD.swift */,
 				0439D1CF27A0651400BD1C3C /* StorageWithCD.xcdatamodeld */,
 				0439D1E027A154A800BD1C3C /* StorageWithCDManager.swift */,
-				047B414927E0E92E00C63FEB /* YandexLanguagesList.swift */,
+				047B414927E0E92E00C63FEB /* GoogleLanguagesList.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -176,9 +176,8 @@
 				04CDEE86270D9A880068F6B7 /* CardView.xib */,
 				04F966CB2722D6FF004FFCB6 /* EmptyView.xib */,
 				04CDEE88270D9E9F0068F6B7 /* CardView.swift */,
-				04CDEE8E270EF3930068F6B7 /* StackContainerView.swift */,
 				04F966C92722D41B004FFCB6 /* EmptyView.swift */,
-				048BE66B27E79F1B00CF4C64 /* CircleProgressView.swift */,
+				04CDEE8E270EF3930068F6B7 /* StackContainerView.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -192,6 +191,26 @@
 				042713992799A7C200DD862F /* TranslatedView.swift */,
 			);
 			path = TranslateScreen;
+			sourceTree = "<group>";
+		};
+		044B5EF32812B5FA0029CE8C /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				04EF2FEB27543BC700680656 /* UiColor+Hex.swift */,
+				0445397927BF9A7C00ACBD80 /* String+Base64.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		044B5EF42812B62D0029CE8C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				04A82D562791E14B00F69895 /* Roboto */,
+				044EC83B274EB70A00B41735 /* 1.png */,
+				04EF2FEF27552A8500680656 /* Combo_translate-5.png */,
+				04EACBC827B196B00027EC51 /* Combo_translate-6.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		04A82D562791E14B00F69895 /* Roboto */ = {
@@ -212,7 +231,7 @@
 				04A82D632791E14B00F69895 /* Roboto-Black.ttf */,
 			);
 			name = Roboto;
-			path = ComboTranslate/Roboto;
+			path = ComboTranslate/Resources/Roboto;
 			sourceTree = SOURCE_ROOT;
 		};
 		04A84FCB27BFF6980080C950 /* Frameworks */ = {
@@ -225,9 +244,11 @@
 		04CDEE85270D9A5C0068F6B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04CDFC6E26FD0EEE00D3567E /* Cell */,
 				044A716A2791D9D000F4748C /* TranslateScreen */,
 				044A71692791D98200F4748C /* Cards */,
 				047B414B27E34D4600C63FEB /* VerticalProgressView.swift */,
+				048BE66B27E79F1B00CF4C64 /* CircleProgressView.swift */,
 				04BBAD7627E8CE0D00E17893 /* ToastMessage.swift */,
 			);
 			path = View;
@@ -264,20 +285,16 @@
 			isa = PBXGroup;
 			children = (
 				04CDEE85270D9A5C0068F6B7 /* View */,
-				04CDFC6E26FD0EEE00D3567E /* Cell */,
 				04CDFC6526EFAD3400D3567E /* Model */,
 				04CDFC6426EFAD2C00D3567E /* Controllers */,
-				04CDFC1A26D8093200D3567E /* AppDelegate.swift */,
+				044B5EF42812B62D0029CE8C /* Resources */,
 				04CDFC1C26D8093200D3567E /* SceneDelegate.swift */,
+				04CDFC1A26D8093200D3567E /* AppDelegate.swift */,
 				04CDFC2026D8093300D3567E /* Main.storyboard */,
 				04CDFC2326D8093A00D3567E /* Assets.xcassets */,
 				04CDFC2526D8093A00D3567E /* LaunchScreen.storyboard */,
 				04CDFC2826D8093A00D3567E /* Info.plist */,
 				04CDEE4F2709F86E0068F6B7 /* .swiftlint.yml */,
-				04A82D562791E14B00F69895 /* Roboto */,
-				044EC83B274EB70A00B41735 /* 1.png */,
-				04EF2FEF27552A8500680656 /* Combo_translate-5.png */,
-				04EACBC827B196B00027EC51 /* Combo_translate-6.png */,
 			);
 			path = ComboTranslate;
 			sourceTree = "<group>";
@@ -299,15 +316,14 @@
 		04CDFC6526EFAD3400D3567E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				044B5EF32812B5FA0029CE8C /* Extentions */,
 				0439D1CE27A064CD00BD1C3C /* Storage */,
 				04CDEE8D270DA1490068F6B7 /* Cards */,
-				04CDFC6826F0FC0E00D3567E /* IBMTranslateApi.swift */,
 				04CDFC6A26F37F6900D3567E /* TranslateData.swift */,
-				0425A70C27DFAD4000240551 /* YandexTranslateApi.swift */,
-				04EF2FEB27543BC700680656 /* UiColor+Hex.swift */,
+				0425A70C27DFAD4000240551 /* GoogleTranslateApi.swift */,
 				04A82D732791FCD800F69895 /* TranslateDelegate.swift */,
-				0445397927BF9A7C00ACBD80 /* String+Base64.swift */,
 				047BF8D327DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift */,
+				046EB47927F07DDD004F16C4 /* ComboColors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -446,22 +462,21 @@
 				04F966C42715CBA6004FFCB6 /* SecretValue.swift in Sources */,
 				0433CB322767AEBB00404501 /* LanguagesTableViewController.swift in Sources */,
 				047B414C27E34D4600C63FEB /* VerticalProgressView.swift in Sources */,
-				045D109927D2268300FBDC4F /* Word+CoreDataClass.swift in Sources */,
 				04CDEE8F270EF3930068F6B7 /* StackContainerView.swift in Sources */,
 				04F966C22715B115004FFCB6 /* CardsGame.swift in Sources */,
 				04CDFC6B26F37F6900D3567E /* TranslateData.swift in Sources */,
 				0445397A27BF9A7C00ACBD80 /* String+Base64.swift in Sources */,
 				04F966CA2722D41C004FFCB6 /* EmptyView.swift in Sources */,
+				04F2CDEA27F1F79100CE1890 /* Word+CoreDataProperties.swift in Sources */,
 				04F966C827202825004FFCB6 /* WordsPackController.swift in Sources */,
 				04EACBCD27B4FE5C0027EC51 /* EditorViewController.swift in Sources */,
+				04F2CDEC27F1F7AA00CE1890 /* Word+CoreDataClass.swift in Sources */,
 				04A82D742791FCD800F69895 /* TranslateDelegate.swift in Sources */,
 				0439D1E127A154A800BD1C3C /* StorageWithCDManager.swift in Sources */,
-				0425A70D27DFAD4000240551 /* YandexTranslateApi.swift in Sources */,
+				0425A70D27DFAD4000240551 /* GoogleTranslateApi.swift in Sources */,
 				04CDFC1B26D8093200D3567E /* AppDelegate.swift in Sources */,
 				04BBAD7927E8E65400E17893 /* AddWordToPackController.swift in Sources */,
 				045D109827D2268300FBDC4F /* WordPack+CoreDataProperties.swift in Sources */,
-				04CDFC6926F0FC0E00D3567E /* IBMTranslateApi.swift in Sources */,
-				045D109A27D2268300FBDC4F /* Word+CoreDataProperties.swift in Sources */,
 				0427139A2799A7C200DD862F /* TranslatedView.swift in Sources */,
 				0439D1D127A0651400BD1C3C /* StorageWithCD.xcdatamodeld in Sources */,
 				04EACBCB27B1BE800027EC51 /* WordsPackCell.swift in Sources */,
@@ -475,12 +490,13 @@
 				04A82D722791E76200F69895 /* TranslateView.swift in Sources */,
 				047BF8D427DA363B00F0D17E /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
 				04CDFC7026FD0F2A00D3567E /* TranslateCell.swift in Sources */,
-				047B414A27E0E92E00C63FEB /* YandexLanguagesList.swift in Sources */,
+				047B414A27E0E92E00C63FEB /* GoogleLanguagesList.swift in Sources */,
 				04EACBD027B502FE0027EC51 /* EditorCollectionViewCell.swift in Sources */,
 				04BBAD7727E8CE0D00E17893 /* ToastMessage.swift in Sources */,
 				04CDEE89270D9E9F0068F6B7 /* CardView.swift in Sources */,
 				04CDFC6D26FCFE3D00D3567E /* TranslateTableController.swift in Sources */,
 				048BE66C27E79F1B00CF4C64 /* CircleProgressView.swift in Sources */,
+				046EB47A27F07DDD004F16C4 /* ComboColors.swift in Sources */,
 				04EF2FEC27543BC700680656 /* UiColor+Hex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

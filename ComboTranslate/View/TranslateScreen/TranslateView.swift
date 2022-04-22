@@ -12,7 +12,7 @@ class TranslateView: UIView, UITextViewDelegate {
     
     // MARK: - init and outlets
     weak var delegate: TranslateViewDelegate?
-    var translateData: TranslateData? {
+    private var translateData: TranslateData? {
         didSet {
             guard let newText = translateData?.translatedWord else { return }
             translatedField.text = newText

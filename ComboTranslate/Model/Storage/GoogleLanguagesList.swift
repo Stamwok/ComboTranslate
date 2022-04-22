@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YandexLanguagesList {
+struct GoogleLanguagesList {
     static let languages = [
         "Русский": "ru",
         "Бенгальский": "bn",

@@ -10,7 +10,7 @@ import Foundation
 struct SecretValue {
     var secretValue: Word?
     var secretValueIndex: Int
-    var transDataColection: [Word] = []
+    private var transDataColection: [Word] = []
 
     init?(collection: [Word]) {
         self.transDataColection = collection

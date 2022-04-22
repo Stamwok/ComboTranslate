@@ -11,7 +11,6 @@ class TranslateCell: UITableViewCell {
     @IBOutlet var translateLabel: UILabel!
     @IBOutlet var translatedLabel: UILabel!
     @IBOutlet var progress: VerticalProgressView!
-    @IBOutlet var progressView: UIProgressView!
 
     override func prepareForReuse() {
         super.prepareForReuse()

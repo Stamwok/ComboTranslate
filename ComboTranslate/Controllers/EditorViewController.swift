@@ -7,13 +7,17 @@
 
 import UIKit
 
-class EditorViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class EditorViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, UIScrollViewDelegate {
     
     var dataSource: [Word] = StorageWithCDManager.instance.loadWordsToEditor()
     var wordPack: WordPack?
-    let edgeInset: CGFloat = 8
-    let minSpacing: CGFloat = 8
+    private let edgeInset: CGFloat = 8
+    private let minSpacing: CGFloat = 8
     var completionHandler: (() -> Void)?
+    private var deleteButtonOriginalFrame: CGRect?
+    private var opacityView = UIView()
+    private var confirmButton = UIButton()
+    private var cancelButton = UIButton()
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var nameField: UITextField!
@@ -43,13 +47,59 @@ class EditorViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     @IBAction func deletePack (_: UIButton) {
+        configureOpactityView()
+//
+    }
+    
+    @objc func confirmDelete(_ sender: UIButton) {
         StorageWithCDManager.instance.removeItem(item: wordPack as Any)
         self.dismiss(animated: true)
         completionHandler?()
     }
     
+    @objc func cancelDelete(_ sender: UIButton) {
+        opacityView.removeFromSuperview()
+        confirmButton.removeFromSuperview()
+        cancelButton.removeFromSuperview()
+        deleteButton.isHidden = false
+    }
+    
+    private func configureOpactityView() {
+        view.addSubview(opacityView)
+        opacityView.translatesAutoresizingMaskIntoConstraints = false
+        opacityView.frame = view.frame
+        opacityView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        self.deleteButton.isHidden = true
+        
+        confirmButton.setImage(UIImage.init(systemName: "trash"), for: .normal)
+        confirmButton.tintColor = .white
+        confirmButton.backgroundColor = .red
+        view.addSubview(confirmButton)
+        confirmButton.frame = deleteButton.frame
+        confirmButton.frame.size.width = confirmButton.frame.height
+        confirmButton.layer.cornerRadius = confirmButton.frame.height / 2
+        confirmButton.addTarget(self, action: #selector(confirmDelete), for: .touchUpInside)
+        
+        cancelButton.setImage(UIImage.init(systemName: "xmark"), for: .normal)
+        cancelButton.tintColor = .white
+        cancelButton.backgroundColor = .lightGray
+        view.addSubview(cancelButton)
+        cancelButton.frame = deleteButton.frame
+        cancelButton.frame.size.width = cancelButton.frame.height
+        cancelButton.layer.cornerRadius = cancelButton.frame.height / 2
+        cancelButton.addTarget(self, action: #selector(cancelDelete), for: .touchUpInside)
+        
+        UIView.animate(withDuration: 0.3) {
+            self.confirmButton.center.x = self.view.center.x - self.confirmButton.frame.width / 2 - 10
+            self.cancelButton.center.x = self.view.center.x + self.confirmButton.frame.width / 2 + 10
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if wordPack == nil {
+            deleteButton.isHidden = true
+        }
         if let packName = wordPack?.name {
             nameField.text = packName
         }
@@ -65,19 +115,19 @@ class EditorViewController: UIViewController, UICollectionViewDelegate, UICollec
         nameField.layer.shadowOffset = CGSize(width: 0, height: 2)
         collectionView.register(EditorCollectionViewCell.nib, forCellWithReuseIdentifier: EditorCollectionViewCell.reuseID)
         let flowLayout = CenterAlignedCollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionView.collectionViewLayout = flowLayout
         collectionView.allowsMultipleSelection = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        deleteButtonOriginalFrame = deleteButton.frame
+    }
+    
     // MARK: - collectionView
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-    }
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-
-    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
@@ -96,7 +146,18 @@ class EditorViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        deleteButton.isHidden = true
+        guard wordPack != nil, let deleteButtonOriginalFrame = deleteButtonOriginalFrame else { return }
+        
+        let position = scrollView.contentOffset.y
+        if position > 0 {
+            UIView.animate(withDuration: 0.3) {
+                self.deleteButton.frame.origin.y = self.view.frame.maxY
+            }
+        } else {
+            UIView.animate(withDuration: 0.3) {
+                self.deleteButton.frame.origin.y = deleteButtonOriginalFrame.origin.y
+            }
+        }
     }
     // MARK: - text field delegate
     

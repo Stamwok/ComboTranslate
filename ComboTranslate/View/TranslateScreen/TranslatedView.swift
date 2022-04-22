@@ -11,11 +11,11 @@ class TranslatedView: UIView {
     
     weak var delegate: TranslatedViewDelegate?
     
-    var originLanguage: String?
-    var translatedLanguage: String?
-    var translateText: String?
-    var translatedText: String?
-    var word: Word!
+    private var originLanguage: String?
+    private var translatedLanguage: String?
+    private var translateText: String?
+    private var translatedText: String?
+    private var word: Word?
     
     @IBOutlet var originLanguageLabel: UILabel!
     @IBOutlet var translatedLanguageLabel: UILabel!
@@ -33,8 +33,9 @@ class TranslatedView: UIView {
         guard let rootController = delegate as? UIViewController else { return }
         guard let destination = rootController.storyboard?.instantiateViewController(withIdentifier: String(describing: AddWordToPackController.self)) as? AddWordToPackController
         else { return }
+        guard let word = word else { return }
         destination.completionHandler = { wordPack in
-            wordPack.addToWords(self.word)
+            wordPack.addToWords(word)
             
         }
         rootController.present(destination, animated: true, completion: nil)
@@ -63,7 +64,12 @@ class TranslatedView: UIView {
     }
     init?(data: Word) {
         super.init(frame: .zero)
-        let contentView = Bundle.main.loadNibNamed("TranslatedView", owner: self, options: nil)?.first as! UIView
+
+    }
+    
+    func configureTranslatedView(data: Word) {
+        guard let contentViewFromNib = Bundle.main.loadNibNamed("TranslatedView", owner: self, options: nil)?.first as? UIView else { return }
+        let contentView = contentViewFromNib
         addSubview(contentView)
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
@@ -84,8 +90,8 @@ class TranslatedView: UIView {
         translateView.layer.shadowOffset = CGSize(width: 0, height: 2)
         translateView.layer.shadowOpacity = 0.5
         translateView.layer.shadowRadius = 2
-        
     }
+    
     override func layoutSubviews() {
         if originLanguageLabel != nil {
             self.originLanguageLabel.text = originLanguage

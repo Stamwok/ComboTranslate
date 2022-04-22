@@ -9,10 +9,8 @@ import UIKit
 
 class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var storage = Storage()
-    var wordPacks: [WordPack] = [] {
+    private var wordPacks: [WordPack] = [] {
         didSet {
-            wordPacks.sort {$0.id < $1.id}
             tableView.reloadData()
         }
     }
@@ -38,9 +36,39 @@ class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         wordPacks = StorageWithCDManager.instance.loadWordPacks()
+        
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        if wordPacks.count == 0 {
+//            tableView.isHidden = true
+//            configureMessageLabel()
+//        } else {
+//            tableView.isHidden = false
+//        }
+//    }
+//    
+//    private func configureMessageLabel() {
+//        let messageLabel = UILabel()
+//        messageLabel.font = UIFont.init(name: "Roboto", size: 17)
+//        messageLabel.textColor = .lightGray
+//        messageLabel.text = "Нет доступных наборов"
+//        messageLabel.textAlignment = .center
+//        let backgroundView = UIView()
+//        backgroundView.backgroundColor = .white
+//        view.addSubview(backgroundView)
+//        backgroundView.frame = tableView.frame
+//        backgroundView.addSubview(messageLabel)
+//        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            messageLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+//            messageLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
+//            messageLabel.topAnchor.constraint(equalTo: view.centerYAnchor)
+//        ])
+//        view.layoutIfNeeded()
+//    }
 
     // MARK: - Table view data source
 
@@ -55,23 +83,28 @@ class WordsPackController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let destination = self.storyboard?.instantiateViewController(withIdentifier: String(describing: CardsViewController.self)) as? CardsViewController else { return }
-        guard let words = wordPacks[indexPath.row].words, words.count > 5 else {
+        if StorageWithCDManager.instance.loadWordsToEditor().count < 7 {
             tableView.cellForRow(at: indexPath)?.isSelected = false
-            ToastMessage.showMessage(toastWith: "Для начала изучения добавьте не менее 6 слов", view: self.view)
+            ToastMessage.showMessage(toastWith: "Для начала изучения добавьте не менее 7 слов", view: self.view)
             return
         }
-        destination.viewModelData = words.allObjects as? [Word]
+        guard let words = wordPacks[indexPath.row].words?.allObjects as? [Word] else { return }
+        if words.filter({ $0.count < 1.0 }).count < 1 {
+            tableView.cellForRow(at: indexPath)?.isSelected = false
+            ToastMessage.showMessage(toastWith: "Все слова изучены", view: self.view)
+            return
+        }
+        destination.viewModelData = words
         destination.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(destination, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WordsPackCell", for: indexPath) as? WordsPackCell else { return WordsPackCell() }
-        guard let words = wordPacks[indexPath.row].words?.allObjects as? [Word] else { return WordsPackCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WordsPackCell", for: indexPath) as? WordsPackCell else { return UITableViewCell() }
+        guard let words = wordPacks[indexPath.row].words?.allObjects as? [Word] else { return UITableViewCell() }
         cell.packName.text = wordPacks[indexPath.row].name
         cell.wordsCount.text = String("Слов: \(words.count)")
-        
-        cell.progress.progress  = wordPacks[indexPath.row].progress
+        cell.progress.progress = wordPacks[indexPath.row].progress
         let shortList: String = {
             var resultArr: [String] = []
             for item in words {

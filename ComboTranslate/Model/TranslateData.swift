@@ -16,7 +16,6 @@ struct TranslateData: Encodable {
     var translationLanguage: String
     var source: String = ""
     var target: String = ""
-//    var key: String = ""
     init(word: String, from originLanguage: String, to translationLanguage: String) {
         self.word = word
         self.originLanguage = originLanguage
@@ -27,7 +26,6 @@ struct TranslateData: Encodable {
         case source = "source"
         case target = "target"
         case format = "format"
-//        case key = "key"
     }
 }
 

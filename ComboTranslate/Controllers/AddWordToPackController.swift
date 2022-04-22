@@ -10,7 +10,8 @@ import UIKit
 class AddWordToPackController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     lazy var wordPacks: [WordPack] = StorageWithCDManager.instance.loadWordPacks()
-    var completionHandler: ((WordPack) -> Void)!
+    var completionHandler: ((WordPack) -> Void)?
+    @IBOutlet var tableView: UITableView!
     
     @IBAction func closeButton(_: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -19,6 +20,31 @@ class AddWordToPackController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         wordPacks.removeFirst()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if wordPacks.count == 0 {
+            tableView.isHidden = true
+            configureMessageLabel()
+        } else {
+            tableView.isHidden = false
+        }
+    }
+    
+    private func configureMessageLabel() {
+        let messageLabel = UILabel()
+        messageLabel.font = UIFont.init(name: "Roboto", size: 17)
+        messageLabel.textColor = .lightGray
+        messageLabel.text = "Нет доступных наборов"
+        messageLabel.textAlignment = .center
+        view.addSubview(messageLabel)
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            messageLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+            messageLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
+            messageLabel.topAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        view.layoutIfNeeded()
     }
     
     // MARK: - tableView delegate
@@ -47,15 +73,16 @@ class AddWordToPackController: UIViewController, UITableViewDelegate, UITableVie
             return resultArr.reduce("", +)
         }()
         cell.shortList.text = shortList
-        if wordPacks[indexPath.row].id == 1 {
-            cell.editButton?.isHidden = true
-        } else {
-            cell.editButton?.isHidden = false
-        }
+//        if wordPacks[indexPath.row].id == 1 {
+//            cell.editButton?.isHidden = true
+//        } else {
+//            cell.editButton?.isHidden = false
+//        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let completionHandler = completionHandler else { return }
         completionHandler(wordPacks[indexPath.row])
         self.dismiss(animated: true, completion: nil)
     }

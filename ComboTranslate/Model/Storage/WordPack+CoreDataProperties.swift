@@ -20,6 +20,9 @@ extension WordPack {
     @NSManaged public var words: NSSet?
     
     var progress: Float {
+        if words?.count == 0 {
+            return 0
+        }
         var resultValue: Float = 0
         guard let words = self.words?.allObjects as? [Word] else { return  resultValue }
         for word in words {
@@ -27,7 +30,6 @@ extension WordPack {
         }
         return resultValue / Float(words.count)
     }
-
 }
 
 // MARK: Generated accessors for words

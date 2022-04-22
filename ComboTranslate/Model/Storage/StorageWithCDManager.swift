@@ -42,6 +42,7 @@ class StorageWithCDManager {
         newWord.translatedWord = word.translatedWord
         newWord.originLanguage = word.originLanguage
         newWord.translationLanguage = word.translationLanguage
+        newWord.lastChanges = Date()
         if word.word.count < 30 {
             newWord.addToWordPacks(getDefaultPack())
         }
@@ -57,27 +58,43 @@ class StorageWithCDManager {
         newWord.originLanguage = word.originLanguage
         newWord.translationLanguage = word.translationLanguage
         newWord.wordPacks = word.wordPacks
+        newWord.lastChanges = word.lastChanges
         return newWord
     }
     
     func loadWords() -> [Word] {
         guard let words = try? moc.fetch(Word.fetchRequest()) else { return [] }
-        return words
+        for word in words {
+            guard let lastChangesDate = word.lastChanges else { continue }
+            let currentDate = Date()
+            guard let numberOfPastDays = Calendar.current.dateComponents([.day], from: lastChangesDate, to: currentDate).day else { continue }
+            
+            if word.count > 0 {
+                word.count -= Float(numberOfPastDays / 5) * 0.25
+            } else {
+                word.count = 0
+            }
+        }
+        return words.sorted(by: { $0.id < $1.id })
     }
     
     func loadWordsToEditor() -> [Word] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Word")
         request.predicate = NSPredicate(format: "ANY wordPacks.id == 1")
         if let words = try? moc.fetch(request) as? [Word] {
-            return words
+            return words.sorted(by: { $0.id < $1.id })
         } else {
             return []
         }
     }
     
     func loadWordPacks() -> [WordPack] {
-        guard let packs = try? moc.fetch(WordPack.fetchRequest()) else { return [] }
-        return packs
+        guard let packs = try? moc.fetch(WordPack.fetchRequest()) else {
+            var defaultPack = [WordPack]()
+            defaultPack.append(getDefaultPack())
+            return defaultPack
+        }
+        return packs.sorted(by: { $0.id < $1.id })
     }
     
     func removeItem (item: Any) {
@@ -86,6 +103,7 @@ class StorageWithCDManager {
         } else if let itemForRemove = item as? WordPack {
             moc.delete(itemForRemove)
         }
+        saveContext()
     }
     
     func saveContext() {
@@ -116,5 +134,9 @@ class StorageWithCDManager {
             defaultPack.words = []
             return defaultPack
         }
+    }
+    
+    private func getCurentDate() {
+        
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class EmptyView: CardView {
     
-    @IBOutlet var labelCount: UILabel!
+    @IBOutlet var circleProgressView: CircleProgressView!
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -19,7 +19,8 @@ class EmptyView: CardView {
     }
     
     override func configureCardView() {
-        contentView = Bundle.main.loadNibNamed("EmptyView", owner: self, options: nil)?[0] as? UIView
+        guard let contentViewFromNib = Bundle.main.loadNibNamed("EmptyView", owner: self, options: nil)?[0] as? UIView else { return }
+        contentView = contentViewFromNib
         contentView.layer.cornerRadius = 15
         contentView.clipsToBounds = true
         addSubview(contentView)

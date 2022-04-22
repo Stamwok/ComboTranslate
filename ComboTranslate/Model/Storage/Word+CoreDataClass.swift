@@ -2,8 +2,7 @@
 //  Word+CoreDataClass.swift
 //  ComboTranslate
 //
-//  Created by  Егор Шуляк on 4.03.22.
-//
+//  Created by  Егор Шуляк on 28.03.22.
 //
 
 import Foundation

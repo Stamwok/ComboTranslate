@@ -15,7 +15,8 @@ class VerticalProgressView: UIView {
         didSet {
             progressLayer.removeFromSuperlayer()
             progressLayer = CALayer()
-            setNeedsDisplay() }
+            setNeedsDisplay()
+        }
     }
     
     override func draw(_ rect: CGRect) {
@@ -31,4 +32,14 @@ class VerticalProgressView: UIView {
     }
     
     private var progressLayer = CALayer()
+    
+    private func changeColor(progress: Float) {
+        if progress <= 0.25 {
+            color = ComboColors.red
+        } else if progress <= 0.5 {
+            color = ComboColors.yellow
+        } else if progress <= 1 {
+            color = ComboColors.green
+        }
+    }
 }

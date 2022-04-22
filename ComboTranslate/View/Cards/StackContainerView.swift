@@ -10,14 +10,14 @@ import UIKit
 class StackContainerView: UIView, SwipeCardsDelegate {
     
     // MARK: - Properties
-    var numberOfCardsToShow: Int = 0
-    var cardsBeToVisible: Int = 3
-    var cardViews: [CardView] = []
-    var remainingCards: Int = 0
-    let horizontalInset: CGFloat = 10.0
-    let verticalInset: CGFloat = 10.0
-    var correctAnswers = 0
-    var visibleCards: [CardView] {
+    private var numberOfCardsToShow: Int = 0
+    private var cardsBeToVisible: Int = 3
+    private var cardViews: [CardView] = []
+    private var remainingCards: Int = 0
+    private let horizontalInset: CGFloat = 10.0
+    private let verticalInset: CGFloat = 10.0
+    private var correctAnswers = 0
+    private var visibleCards: [CardView] {
         return subviews as? [CardView] ?? []
     }
     var dataSource: SwipeCardsDataSource? {
@@ -36,7 +36,7 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func reloadData() {
+    private func reloadData() {
         guard let datasource = dataSource else { return }
         layoutIfNeeded()
         numberOfCardsToShow = datasource.numberOfCardsToShow()
@@ -64,7 +64,7 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         addCardFrame(index: index, cardView: cardView)
     }
     
-    func addCardFrame(index: Int, cardView: CardView) {
+    private func addCardFrame(index: Int, cardView: CardView) {
         cardView.frame = frame
         let measurements = measurementsForCard(cardView, at: index)
         cardView.frame = measurements.0
@@ -89,6 +89,11 @@ class StackContainerView: UIView, SwipeCardsDelegate {
             case 0:
                 card.contentView.backgroundColor = .white
                 card.isUserInteractionEnabled = true
+                if let card = card as? EmptyView, let numberOfCards = self.dataSource?.numberOfCardsToShow() {
+                    UIView.animate(withDuration: 0.2) {
+                        card.circleProgressView.progress = CGFloat(self.correctAnswers) / CGFloat(numberOfCards)
+                    }
+                }
             case 1:
                 card.contentView.backgroundColor = UIColor(hex: "#89BFF7")
                 card.isUserInteractionEnabled = false
@@ -134,7 +139,6 @@ class StackContainerView: UIView, SwipeCardsDelegate {
             for (cardIndex, cardView) in self.visibleCards.reversed().enumerated() {
                 let measurements = self.measurementsForCard(cardView, at: cardIndex)
                 UIView.animate(withDuration: 0.5) {
-                    (cardView as? EmptyView)?.labelCount.text = "combo: \(self.correctAnswers)"
                     cardView.frame = measurements.0
                     cardView.transform = measurements.1
                     }
@@ -142,12 +146,14 @@ class StackContainerView: UIView, SwipeCardsDelegate {
         }
     }
     func swipeDidStart(on view: CardView) {
+        guard visibleCards.count > 1 else { return }
         UIView.animate(withDuration: 0.2) {
             self.visibleCards.reversed()[1].contentView.backgroundColor = .white
         }
     }
     
     func swipeDidNotEnded(on view: CardView) {
+        guard visibleCards.count > 1 else { return }
         UIView.animate(withDuration: 0.2) {
             self.visibleCards.reversed()[1].contentView.backgroundColor = UIColor(hex: "#89BFF7")
         }

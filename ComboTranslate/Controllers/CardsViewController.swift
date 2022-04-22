@@ -12,12 +12,10 @@ class CardsViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     @IBOutlet var cancelButton: UIButton!
-    let storage = Storage()
-    var viewModelData: [Word]!
-    var stackContainer: StackContainerView!
-    var cardsDataModel: [SecretValue] = []
+    var viewModelData: [Word]?
+    private var stackContainer = StackContainerView()
+    private var cardsDataModel: [SecretValue] = []
     
-    var game: CardsGame!
     // MARK: - Init
     override func loadView() {
         super.loadView()
@@ -29,7 +27,7 @@ class CardsViewController: UIViewController {
         cancelButton.layer.shadowRadius = 2
         cancelButton.layer.shadowOffset = CGSize(width: 2, height: 2)
         cancelButton.layer.shadowOpacity = 0.5
-        stackContainer = StackContainerView()
+//        stackContainer = StackContainerView()
         view.addSubview(stackContainer)
         configureStackContainer()
         cardsDataModel = generateDataForCards()
@@ -53,7 +51,7 @@ extension CardsViewController: SwipeCardsDataSource {
     }
     func card(at index: Int) -> CardView {
         let card = CardView()
-        card.dataSource = CardsGame(collection: viewModelData, value: cardsDataModel[index]) { _ in
+        card.dataSource = CardsGame(collection: StorageWithCDManager.instance.loadWordsToEditor(), value: cardsDataModel[index]) { _ in
             StorageWithCDManager.instance.saveContext()
         }
         return card
@@ -64,22 +62,26 @@ extension CardsViewController: SwipeCardsDataSource {
     }
 
     private func generateDataForCards () -> [SecretValue] {
+        guard let viewModelData = viewModelData else { return [] }
         var dataForCard: [SecretValue] = []
         var randomIndex: Int {
             get {
                 return Array(0...viewModelData.count - 1).randomElement()!
             }
         }
-        while dataForCard.count < 6 {
+        var wordsNotLearnedNumber: Int {
+            return viewModelData.filter({$0.count < 1.0 }).count
+        }
+        while dataForCard.count < min(6, wordsNotLearnedNumber) {
             let newRandomIndex = randomIndex
             let newRandValue = viewModelData[newRandomIndex]
             let coinsidenceCount = dataForCard.filter({ value in
                 return value.secretValue!.word == newRandValue.word
             }).count
             if coinsidenceCount < 1 && newRandValue.count < 1.0 {
-                var newValue = SecretValue(collection: [newRandValue])
-                newValue?.secretValueIndex = newRandomIndex
-                dataForCard.append(newValue!)
+                guard var newValue = SecretValue(collection: [newRandValue]) else { return [] }
+                newValue.secretValueIndex = newRandomIndex
+                dataForCard.append(newValue)
             }
         }
         return dataForCard

@@ -2,7 +2,7 @@
 //  Word+CoreDataProperties.swift
 //  ComboTranslate
 //
-//  Created by  Егор Шуляк on 4.03.22.
+//  Created by  Егор Шуляк on 28.03.22.
 //
 //
 
@@ -16,12 +16,13 @@ extension Word {
     }
 
     @NSManaged public var count: Float
+    @NSManaged public var id: Double
     @NSManaged public var originLanguage: String?
     @NSManaged public var translatedWord: String?
     @NSManaged public var translationLanguage: String?
     @NSManaged public var word: String?
-    @NSManaged public var id: Double
     @NSManaged public var wordPacks: NSSet?
+    @NSManaged public var lastChanges: Date?
 
 }
 
@@ -43,4 +44,5 @@ extension Word {
 }
 
 extension Word: Identifiable {
+
 }
